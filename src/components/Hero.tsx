@@ -53,7 +53,7 @@ export default function Hero() {
     >
       {/* Background video — 120% width, top-aligned */}
       <FadingVideo
-        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_080021_d598092b-c4c2-4e53-8e46-94cf9064cd50.mp4"
+        src="https://res.cloudinary.com/dd6uh0fb2/video/upload/2026-06-26_17-14-33_Lumina_1_r8rbdk.mp4"
         className="absolute left-1/2 top-0 -translate-x-1/2 object-cover object-top"
         style={{ width: '120%', height: '120%', zIndex: 0 }}
       />
