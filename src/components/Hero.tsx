@@ -93,7 +93,7 @@ export default function Hero() {
 
           {/* Headline — BlurText */}
           <BlurText
-            text="Discover Knowledge Beyond Boundaries"
+            text="Cytoskeleton and Motility"
             className="font-heading text-white"
             style={{
               fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
