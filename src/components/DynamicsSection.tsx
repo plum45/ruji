@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import FadingVideo from './FadingVideo';
-import TopicSection, { type TopicCard } from './TopicSection';
+import type { TopicCard } from './TopicSection';
 
 const CARDS: TopicCard[] = [
   {
