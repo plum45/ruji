@@ -3,10 +3,10 @@ import { ArrowUpRight } from 'lucide-react';
 
 const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
-  { label: 'Topics', href: '#topics' },
-  { label: 'Articles', href: '#articles' },
+  { label: 'Structure', href: '#topics' },
+  { label: 'Dynamics', href: '#articles' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'About', href: '#about' },
+  { label: 'Research', href: '#about' },
 ];
 
 export default function Navbar() {
@@ -37,7 +37,7 @@ export default function Navbar() {
         style={{ width: 48, height: 48, borderRadius: '50%', cursor: 'default' }}
       >
         <span style={{ fontFamily: '"Instrument Serif", serif', fontStyle: 'italic', fontSize: '1.25rem', color: '#fff' }}>
-          k
+          c
         </span>
       </div>
 
@@ -50,6 +50,13 @@ export default function Navbar() {
           <a
             key={link.label}
             href={link.href}
+            onClick={(e) => {
+              const target = document.querySelector(link.href);
+              if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
             className="font-body font-medium text-white/90 text-sm hover:text-white transition-colors"
             style={{ padding: '8px 12px', borderRadius: 9999, textDecoration: 'none' }}
           >
@@ -57,7 +64,14 @@ export default function Navbar() {
           </a>
         ))}
         <a
-          href="#about"
+          href="#footer"
+          onClick={(e) => {
+            const target = document.querySelector('#footer');
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
           className="pointer-events-auto font-body font-semibold text-black text-sm flex items-center gap-1 whitespace-nowrap"
           style={{
             background: '#fff',

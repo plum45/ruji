@@ -17,7 +17,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer style={{ background: '#000', padding: '4rem 2rem', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <footer id="footer" style={{ background: '#000', padding: '4rem 2rem', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
           <div
             className="liquid-glass pointer-events-auto flex items-center justify-center"

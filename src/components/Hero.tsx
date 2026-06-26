@@ -18,8 +18,8 @@ const STATS = [
         <polyline points="12 6 12 12 16 14" />
       </svg>
     ),
-    number: '500+',
-    label: 'In-depth Articles',
+    number: '50+',
+    label: 'Cell Types',
   },
   {
     icon: (
@@ -30,12 +30,12 @@ const STATS = [
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
       </svg>
     ),
-    number: '12+',
-    label: 'Topics Covered',
+    number: '3',
+    label: 'Filament Systems',
   },
 ];
 
-const PARTNERS = ['Aeon', 'Vela', 'Apex', 'Orbit', 'Zeno'];
+const PARTNERS = ['BioSys', 'CellTech', 'CytoLab', 'Kinesin', 'Myosin'];
 
 export default function Hero() {
   return (
@@ -88,7 +88,7 @@ export default function Hero() {
               New
             </span>
             <span className="font-body text-white/90 text-sm" style={{ paddingRight: 12 }}>
-              Explore the latest knowledge articles
+              Explore cellular mechanics
             </span>
           </motion.div>
 
@@ -112,7 +112,7 @@ export default function Hero() {
             className="font-body font-light text-white"
             style={{ fontSize: 'clamp(0.875rem, 2vw, 1rem)', maxWidth: 520, lineHeight: 1.6, marginTop: '1rem', marginBottom: 0 }}
           >
-            Curated insights on science, nature, and the world around us — presented with a design worthy of the content inside.
+            Exploring the intricate network of protein filaments that organize the cell and drive its dynamic movements.
           </motion.p>
 
           {/* CTAs */}
@@ -124,7 +124,7 @@ export default function Hero() {
               className="liquid-glass-strong font-body font-medium text-sm flex items-center gap-1.5"
               style={{ borderRadius: 9999, padding: '10px 20px', textDecoration: 'none', color: '#fff' }}
             >
-              Start Reading
+              Explore Structure
               <ArrowUpRight size={18} />
             </a>
             <a
@@ -132,7 +132,7 @@ export default function Hero() {
               className="font-body text-sm flex items-center gap-1.5"
               style={{ textDecoration: 'none', color: '#fff' }}
             >
-              Browse Topics
+              View Dynamics
               <Play size={14} fill="white" />
             </a>
           </motion.div>
@@ -172,7 +172,7 @@ export default function Hero() {
             className="liquid-glass font-body font-medium text-white text-xs"
             style={{ borderRadius: 9999, padding: '4px 14px' }}
           >
-            Featured in top knowledge communities globally
+            Supported by leading molecular biology research centers
           </div>
           <div style={{ display: 'flex', gap: 'clamp(2rem, 4vw, 4rem)', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
             {PARTNERS.map((name) => (
