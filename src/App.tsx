@@ -2,6 +2,7 @@ import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import CapabilitiesSection from './components/CapabilitiesSection';
+import DynamicsSection from './components/DynamicsSection';
 import GallerySection from './components/GallerySection';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <main>
         <Hero />
         <CapabilitiesSection />
+        <DynamicsSection />
         <GallerySection />
       </main>
 
