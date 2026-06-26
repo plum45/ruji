@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="relative min-h-screen w-full flex flex-col justify-between overflow-x-hidden bg-[#010101] text-white">
       {/* Background Video */}
-      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+      <div className="fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
         <video
           autoPlay
           muted
@@ -123,7 +123,7 @@ function App() {
               className="w-full flex flex-col items-center"
             >
               {/* Hero Content Section */}
-              <section className="relative z-10 flex-grow flex flex-col items-center justify-center text-center px-5 sm:px-8 pt-12 sm:pt-16 md:pt-24 pb-12">
+              <section className="relative z-10 w-full min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-96px)] flex flex-col items-center justify-center text-center px-5 sm:px-8 pb-12">
                 <h1 className="font-garamond font-normal text-white leading-[1.08] tracking-tight mb-6 sm:mb-8 text-4xl sm:text-6xl md:text-8xl lg:text-9xl flex flex-col items-center">
                   <span className="block overflow-hidden py-1">
                     <StaggeredFade text="WITNESS THE" />
