@@ -3,10 +3,12 @@ import { ArrowUpRight } from 'lucide-react';
 
 const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
-  { label: 'Structure', href: '#topics' },
-  { label: 'Dynamics', href: '#articles' },
+  { label: 'Cytoskeleton', href: '#articles' },
+  { label: 'Actin', href: '#actin' },
+  { label: 'Microtubules', href: '#microtubules' },
+  { label: 'Motors', href: '#motors' },
+  { label: 'Motility', href: '#motility' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'Research', href: '#about' },
 ];
 
 export default function Navbar() {
