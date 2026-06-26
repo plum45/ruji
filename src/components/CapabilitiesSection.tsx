@@ -106,22 +106,41 @@ export default function CapabilitiesSection() {
                 minHeight: 0,
               }}
             >
-              {/* Image Placeholder */}
-              <div 
-                style={{
-                  flex: 1,
-                  background: 'rgba(255,255,255,0.04)',
-                  borderRadius: '0.75rem',
-                  marginBottom: '0.875rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px dashed rgba(255,255,255,0.15)',
-                  minHeight: 80,
-                }}
-              >
-                <span className="font-body text-white/25 text-xs">Image Placeholder</span>
-              </div>
+              {/* Image / Placeholder */}
+              {(card as any).imagePath ? (
+                <div
+                  style={{
+                    flex: 1,
+                    borderRadius: '0.75rem',
+                    marginBottom: '0.875rem',
+                    overflow: 'hidden',
+                    minHeight: 80,
+                    display: 'flex',
+                  }}
+                >
+                  <img
+                    src={(card as any).imagePath}
+                    alt={card.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+              ) : (
+                <div 
+                  style={{
+                    flex: 1,
+                    background: 'rgba(255,255,255,0.04)',
+                    borderRadius: '0.75rem',
+                    marginBottom: '0.875rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px dashed rgba(255,255,255,0.15)',
+                    minHeight: 80,
+                  }}
+                >
+                  <span className="font-body text-white/25 text-xs">Image Placeholder</span>
+                </div>
+              )}
               {/* Top row: icon + tags */}
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10, marginBottom: '0.75rem' }}>
                 {/* Icon box */}
