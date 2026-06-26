@@ -5,6 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
     background-color: #000;
     color: #fff;
   }
@@ -20,6 +21,11 @@
     overflow-x: hidden;
   }
   * { box-sizing: border-box; }
+
+  main > section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }
 
 /* ─── Liquid Glass Design System ─────────────────────────────── */

@@ -41,6 +41,9 @@ function Card({ label, gradient }: { label: string; gradient: string }) {
       }}
     >
       <div style={{ background: gradient, width: '100%', height: '100%', position: 'absolute', inset: 0 }} />
+      <div style={{ position: 'absolute', inset: 0, border: '2px dashed rgba(255,255,255,0.2)', margin: '10px', borderRadius: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <span className="font-body text-white/30 text-xs">Image Placeholder</span>
+      </div>
       <div
         style={{
           position: 'absolute',
@@ -63,12 +66,17 @@ export default function GallerySection() {
   return (
     <section
       id="gallery"
+      className="snap-start snap-always"
       style={{
         position: 'relative',
+        height: '100svh',
         background: '#000',
         paddingTop: '6rem',
-        paddingBottom: '6rem',
+        paddingBottom: '2rem',
         overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
       }}
     >
       {/* Header */}

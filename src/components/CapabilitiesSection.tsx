@@ -35,9 +35,11 @@ export default function CapabilitiesSection() {
       id="topics"
       style={{
         position: 'relative',
-        minHeight: '100vh',
+        height: '100svh',
         background: '#000',
         overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       {/* Background video — full bleed */}
@@ -53,8 +55,8 @@ export default function CapabilitiesSection() {
           zIndex: 10,
           display: 'flex',
           flexDirection: 'column',
-          minHeight: '100vh',
-          padding: 'clamp(5rem, 10vw, 6rem) clamp(1.5rem, 5vw, 5rem) 2.5rem',
+          flex: 1,
+          padding: 'clamp(3rem, 6vh, 6rem) clamp(1.5rem, 5vw, 5rem) 2.5rem',
         }}
       >
         {/* Header */}
@@ -96,11 +98,28 @@ export default function CapabilitiesSection() {
               style={{
                 borderRadius: '1.25rem',
                 padding: '1.5rem',
-                minHeight: 360,
+                flex: 1,
                 display: 'flex',
                 flexDirection: 'column',
+                position: 'relative',
+                overflow: 'hidden',
               }}
             >
+              {/* Image Placeholder */}
+              <div 
+                style={{
+                  height: '140px',
+                  background: 'rgba(255,255,255,0.05)',
+                  borderRadius: '0.75rem',
+                  marginBottom: '1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '1px dashed rgba(255,255,255,0.2)'
+                }}
+              >
+                <span className="font-body text-white/30 text-xs">Image Placeholder</span>
+              </div>
               {/* Top row: icon + tags */}
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
                 {/* Icon box */}
