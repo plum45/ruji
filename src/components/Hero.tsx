@@ -44,7 +44,7 @@ export default function Hero() {
       style={{
         position: 'relative',
         width: '100%',
-        height: '100vh',
+        minHeight: '100vh',
         overflow: 'hidden',
         background: '#000',
         display: 'flex',
@@ -120,16 +120,16 @@ export default function Hero() {
           >
             <a
               href="#topics"
-              className="liquid-glass-strong font-body font-medium text-white text-sm flex items-center gap-1.5"
-              style={{ borderRadius: 9999, padding: '10px 20px', textDecoration: 'none' }}
+              className="liquid-glass-strong font-body font-medium text-sm flex items-center gap-1.5"
+              style={{ borderRadius: 9999, padding: '10px 20px', textDecoration: 'none', color: '#fff' }}
             >
               Start Reading
               <ArrowUpRight size={18} />
             </a>
             <a
               href="#articles"
-              className="font-body text-white text-sm flex items-center gap-1.5"
-              style={{ textDecoration: 'none' }}
+              className="font-body text-sm flex items-center gap-1.5"
+              style={{ textDecoration: 'none', color: '#fff' }}
             >
               Browse Topics
               <Play size={14} fill="white" />
