@@ -26,7 +26,7 @@ const FADE_UP = (delay: number) => ({
   initial: { filter: 'blur(8px)', opacity: 0, y: 30 },
   whileInView: { filter: 'blur(0px)', opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.15 },
-  transition: { duration: 0.7, delay, ease: 'easeOut' },
+  transition: { duration: 0.7, delay, ease: 'easeOut' as const },
 });
 
 export default function CapabilitiesSection() {

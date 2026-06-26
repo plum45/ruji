@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 interface BlurTextProps {
   text: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export default function BlurText({ text, className = '' }: BlurTextProps) {
+export default function BlurText({ text, className = '', style }: BlurTextProps) {
   const ref = useRef<HTMLParagraphElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -27,7 +28,7 @@ export default function BlurText({ text, className = '' }: BlurTextProps) {
     <p
       ref={ref}
       className={className}
-      style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', rowGap: '0.1em' }}
+      style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', rowGap: '0.1em', ...style }}
     >
       {words.map((word, i) => (
         <motion.span
