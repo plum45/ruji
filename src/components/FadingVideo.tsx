@@ -4,12 +4,13 @@ interface FadingVideoProps {
   src: string;
   className?: string;
   style?: React.CSSProperties;
+  playbackRate?: number;
 }
 
 const FADE_MS = 500;
 const FADE_OUT_LEAD = 0.55; // seconds before end to start fade out
 
-export default function FadingVideo({ src, className = '', style }: FadingVideoProps) {
+export default function FadingVideo({ src, className = '', style, playbackRate = 1 }: FadingVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const rafRef = useRef<number>(0);
   const fadingOutRef = useRef<boolean>(false);
@@ -36,6 +37,7 @@ export default function FadingVideo({ src, className = '', style }: FadingVideoP
     if (!video) return;
 
     video.style.opacity = '0';
+    video.playbackRate = playbackRate;
 
     const onLoaded = () => {
       video.style.opacity = '0';
@@ -75,7 +77,7 @@ export default function FadingVideo({ src, className = '', style }: FadingVideoP
       video.removeEventListener('timeupdate', onTimeUpdate);
       video.removeEventListener('ended', onEnded);
     };
-  }, [src]);
+  }, [src, playbackRate]);
 
   return (
     <video

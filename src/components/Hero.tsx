@@ -56,6 +56,7 @@ export default function Hero() {
         src="https://res.cloudinary.com/dd6uh0fb2/video/upload/2026-06-26_17-14-33_Lumina_1_r8rbdk.mp4"
         className="absolute left-1/2 top-0 -translate-x-1/2 object-cover object-top"
         style={{ width: '120%', height: '120%', zIndex: 0 }}
+        playbackRate={0.75}
       />
 
       {/* z-10 content layer */}
@@ -69,7 +70,7 @@ export default function Hero() {
             flexDirection: 'column',
             alignItems: 'flex-start',
             justifyContent: 'center',
-            paddingTop: '6rem',
+            paddingTop: '4rem',
             paddingLeft: 'clamp(2rem, 5vw, 8rem)',
             paddingRight: '2rem',
             textAlign: 'left',
