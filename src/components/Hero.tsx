@@ -61,18 +61,18 @@ export default function Hero() {
       {/* z-10 content layer */}
       <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', flex: 1 }}>
 
-        {/* Hero content — centered */}
+        {/* Hero content — left aligned */}
         <div
           style={{
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
+            alignItems: 'flex-start',
             justifyContent: 'center',
             paddingTop: '6rem',
-            paddingLeft: '1rem',
-            paddingRight: '1rem',
-            textAlign: 'center',
+            paddingLeft: 'clamp(2rem, 5vw, 8rem)',
+            paddingRight: '2rem',
+            textAlign: 'left',
           }}
         >
           {/* Badge */}
@@ -102,6 +102,7 @@ export default function Hero() {
               maxWidth: '700px',
               letterSpacing: '-0.04em',
               marginBottom: '1rem',
+              justifyContent: 'flex-start',
             } as React.CSSProperties}
           />
 
@@ -137,7 +138,7 @@ export default function Hero() {
 
           {/* Stats */}
           <motion.div {...FADE_UP(1.3)}
-            style={{ display: 'flex', alignItems: 'stretch', gap: 16, marginTop: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}
+            style={{ display: 'flex', alignItems: 'stretch', gap: 16, marginTop: '2rem', flexWrap: 'wrap', justifyContent: 'flex-start' }}
           >
             {STATS.map((s) => (
               <div
@@ -164,7 +165,7 @@ export default function Hero() {
 
         {/* Partners strip */}
         <motion.div {...FADE_UP(1.4)}
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, paddingBottom: '2rem' }}
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 16, paddingBottom: '2rem', paddingLeft: 'clamp(2rem, 5vw, 8rem)', paddingRight: '2rem' }}
         >
           <div
             className="liquid-glass font-body font-medium text-white text-xs"
@@ -172,7 +173,7 @@ export default function Hero() {
           >
             Featured in top knowledge communities globally
           </div>
-          <div style={{ display: 'flex', gap: 'clamp(2rem, 4vw, 4rem)', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', gap: 'clamp(2rem, 4vw, 4rem)', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
             {PARTNERS.map((name) => (
               <span
                 key={name}
