@@ -114,8 +114,8 @@ export default function GallerySection() {
           position: 'relative', 
           zIndex: 10, 
           textAlign: 'center', 
-          marginBottom: '2rem', 
-          paddingTop: '5.5rem', // Prevent Navbar overlapping
+          marginBottom: '1rem', 
+          paddingTop: '4.25rem', // Shift header up, still clearing navbar
           paddingLeft: '1rem', 
           paddingRight: '1rem' 
         }}
