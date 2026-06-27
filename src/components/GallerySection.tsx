@@ -107,75 +107,85 @@ export default function GallerySection() {
         }} 
       />
 
-      {/* Header */}
-      <motion.div
-        {...FADE_UP(0)}
+      {/* Centered Content Wrapper */}
+      <div 
         style={{ 
           position: 'relative', 
           zIndex: 10, 
-          textAlign: 'center', 
-          marginBottom: '2.5rem', 
-          paddingTop: '5rem', // Clear navbar
-          paddingLeft: '1rem', 
-          paddingRight: '1rem' 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          width: '100%'
         }}
       >
-        <p 
-          className="font-body text-sm" 
+        {/* Header */}
+        <motion.div
+          {...FADE_UP(0)}
           style={{ 
-            marginBottom: '1rem', 
-            letterSpacing: '0.05em',
-            color: isLight ? 'rgba(0, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.8)'
+            textAlign: 'center', 
+            marginBottom: '2.5rem', 
+            paddingLeft: '1rem', 
+            paddingRight: '1rem' 
           }}
         >
-          // Gallery
-        </p>
-        <h2
-          className="font-heading"
+          <p 
+            className="font-body text-sm" 
+            style={{ 
+              marginBottom: '1rem', 
+              letterSpacing: '0.05em',
+              color: isLight ? 'rgba(0, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.8)'
+            }}
+          >
+            // Gallery
+          </p>
+          <h2
+            className="font-heading"
+            style={{
+              fontStyle: 'italic',
+              fontSize: 'clamp(2.5rem, 7vw, 5rem)',
+              lineHeight: 0.9,
+              letterSpacing: '-0.03em',
+              margin: 0,
+              color: isLight ? '#111' : '#fff'
+            }}
+          >
+            Visual explorations
+          </h2>
+        </motion.div>
+
+        {/* 3D Tilted Wrapper for Marquees */}
+        <div
           style={{
-            fontStyle: 'italic',
-            fontSize: 'clamp(2.5rem, 7vw, 5rem)',
-            lineHeight: 0.9,
-            letterSpacing: '-0.03em',
-            margin: 0,
-            color: isLight ? '#111' : '#fff'
+            position: 'relative',
+            transform: 'perspective(1200px) rotateX(10deg) rotateY(-8deg) rotateZ(-3deg) scale(1.0)',
+            transformOrigin: 'center center',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.25rem',
+            width: '100%',
+            paddingTop: '0.5rem',
+            paddingBottom: '0.5rem'
           }}
         >
-          Visual explorations
-        </h2>
-      </motion.div>
+          {/* Row 1 — scrolls left */}
+          <motion.div {...FADE_UP(0.15)}>
+            <Marquee speed={30} direction="left" gap={20}>
+              {ROW_1.map((item) => (
+                <Card key={item.label} {...item} />
+              ))}
+            </Marquee>
+          </motion.div>
 
-      {/* 3D Tilted Wrapper for Marquees */}
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 10,
-          transform: 'perspective(1200px) rotateX(10deg) rotateY(-8deg) rotateZ(-3deg) scale(1.0)',
-          transformOrigin: 'center center',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1.25rem',
-          paddingTop: '1rem',
-          paddingBottom: '1rem'
-        }}
-      >
-        {/* Row 1 — scrolls left */}
-        <motion.div {...FADE_UP(0.15)}>
-          <Marquee speed={30} direction="left" gap={20}>
-            {ROW_1.map((item) => (
-              <Card key={item.label} {...item} />
-            ))}
-          </Marquee>
-        </motion.div>
-
-        {/* Row 2 — scrolls right */}
-        <motion.div {...FADE_UP(0.25)}>
-          <Marquee speed={25} direction="right" gap={20}>
-            {ROW_2.map((item) => (
-              <Card key={item.label} {...item} />
-            ))}
-          </Marquee>
-        </motion.div>
+          {/* Row 2 — scrolls right */}
+          <motion.div {...FADE_UP(0.25)}>
+            <Marquee speed={25} direction="right" gap={20}>
+              {ROW_2.map((item) => (
+                <Card key={item.label} {...item} />
+              ))}
+            </Marquee>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
