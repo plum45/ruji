@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useTheme } from '../ThemeContext';
 import { useSmoothMouse } from '../hooks/useSmoothMouse';
 import { motion, useTransform } from 'framer-motion';
@@ -6,7 +7,7 @@ const CARDS = [
   {
     tags: ['Microfilaments', 'Motility', 'Shape', 'Actin'],
     iconPath: 'M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21H5Zm1-4h12l-3.75-5-3 4L9 13l-3 4Z',
-    title: 'Actin Filaments',
+    title: 'Microfilaments',
     body: 'Microfilaments providing mechanical support, determining cell shape, and enabling directed cell movement.',
   },
   {
@@ -18,7 +19,7 @@ const CARDS = [
   {
     tags: ['ATP Driven', 'Kinesin', 'Dynein', 'Myosin'],
     iconPath: 'M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1Zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7Z',
-    title: 'Motor Proteins',
+    title: 'Intermidia filaments',
     body: 'Specialized enzymes generating force and directing cargo payloads across the vast cytoskeletal network.',
   },
 ];
@@ -54,6 +55,15 @@ const CARD_ANIMATION = (delay: number) => ({
 export default function CapabilitiesSection() {
   const { theme } = useTheme();
   const isLight = theme === 'light';
+
+  // Detect iOS/Safari to serve transparent WebP instead of WebM
+  const [isSafariOrIOS, setIsSafariOrIOS] = useState(false);
+  useEffect(() => {
+    const ua = navigator.userAgent.toLowerCase();
+    const isIOS = /ipad|iphone|ipod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isSafari = ua.includes('safari') && !ua.includes('chrome') && !ua.includes('android');
+    setIsSafariOrIOS(isIOS || isSafari);
+  }, []);
 
   // Mouse tilt variables
   const { x, y } = useSmoothMouse();
@@ -227,19 +237,31 @@ export default function CapabilitiesSection() {
                   : 'drop-shadow(0 30px 45px rgba(0, 0, 0, 0.55)) drop-shadow(0 15px 30px rgba(0, 229, 255, 0.15))',
               }}
             >
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                style={{
-                  width: '100%',
-                  maxHeight: '520px',
-                  objectFit: 'contain',
-                }}
-              >
-                <source src="/video_transparent.webm" type="video/webm" />
-              </video>
+              {isSafariOrIOS ? (
+                <img
+                  src="/video_transparent.webp"
+                  alt="Cytoskeleton 3D Model"
+                  style={{
+                    width: '100%',
+                    maxHeight: '520px',
+                    objectFit: 'contain',
+                  }}
+                />
+              ) : (
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{
+                    width: '100%',
+                    maxHeight: '520px',
+                    objectFit: 'contain',
+                  }}
+                >
+                  <source src="/video_transparent.webm" type="video/webm" />
+                </video>
+              )}
             </motion.div>
           </div>
         </div>

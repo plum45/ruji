@@ -140,9 +140,9 @@ export default function IntroSection() {
                   color: isLight ? 'rgba(0,0,0,0.75)' : 'rgba(255,255,255,0.85)',
                 }}
               >
-                The cytoskeleton is a dynamic, complex network of interlinking protein filaments present in the cytoplasm of all cells. It extends from the cell nucleus to the cell membrane and is composed of similar proteins in various organisms. 
+                โครงร่างเซลล์ (Cytoskeleton) คือเครือข่ายเส้นใยโปรตีนภายในไซโทพลาซึมของเซลล์ยูแคริโอต ที่ไม่ได้แข็งทื่อแต่มีพลวัตสูง (Dynamic) สามารถประกอบและสลายตัวได้อย่างรวดเร็วเพื่อตอบสนองต่อสิ่งเร้า ประกอบด้วยเส้นใย 3 ชนิดหลัก คือ ไมโครฟิลาเมนต์ (Microfilaments) ที่ยืดหยุ่นสูง, ไมโครทิวบูล (Microtubules) ที่เป็นหลอดกลวงแข็งแรง และอินเทอร์มีเดียทฟิลาเมนต์ (Intermediate filaments) ที่ช่วยรับแรงดึงและต้านทานความเครียดทางกล การทำงานประสานกันของเส้นใยเหล่านี้เป็นรากฐานสำคัญในการรักษารูปร่างเซลล์ จัดระเบียบออร์แกเนลล์ และช่วยให้เซลล์คงสภาพได้อย่างสมบูรณ์
                 <br /><br />
-                Unlike a mechanical scaffold, the cytoskeleton is a highly dynamic structure that continuously reorganizes as the cell changes shape, divides, or responds to its external environment, acting as both a cellular highway and structural engine.
+                นอกจากการค้ำจุน โครงร่างเซลล์ยังเป็นกลไกหลักที่ทำให้เกิดการเคลื่อนที่ (Motility) โดยทำงานร่วมกับโปรตีนมอเตอร์ (Motor proteins) ที่ใช้พลังงานจาก ATP ในการเคลื่อนที่ เช่น โปรตีนไมโอซิน (Myosin) ที่ทำงานร่วมกับไมโครฟิลาเมนต์เพื่อขับเคลื่อนการหดตัวของกล้ามเนื้อและการคลานของเซลล์ ขณะที่โปรตีนไคนีซิน (Kinesin) และไดนีน (Dynein) จะเคลื่อนที่บนรางไมโครทิวบูลเพื่อขนส่งสารและออร์แกเนลล์ นอกจากนี้ ไมโครทิวบูลและไดนีนยังเป็นแกนกลางของซีเลีย (Cilia) และแฟลเจลลา (Flagella) ที่ช่วยในการโบกพัดและขับเคลื่อนเซลล์อย่างแม่นยำ
               </p>
             </motion.div>
           </div>
