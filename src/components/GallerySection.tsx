@@ -80,7 +80,7 @@ export default function GallerySection() {
     >
       {/* Background video — full bleed */}
       <FadingVideo
-        src="https://www.dropbox.com/scl/fi/pqynwn6da76xdf9i260gy/Untitled-20design.mp4?rlkey=ww7pk7zikgw5fq1r0m7yvaeo9&raw=1"
+        src="https://www.dropbox.com/scl/fi/jr53xvb80t1mz5j5laudl/5.mp4?rlkey=oagwyrtncl1apnpmg9w4s4d2p&raw=1"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
       />
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.65)', zIndex: 1 }} />
