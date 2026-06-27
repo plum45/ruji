@@ -2,10 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Responsive nav display ───────────────────────────────────── */
+:root {
+  --nav-desktop-display: none;
+  --nav-mobile-display: flex;
+}
+@media (min-width: 768px) {
+  :root {
+    --nav-desktop-display: block;
+    --nav-mobile-display: none;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
     background-color: #000;
     color: #fff;
   }
@@ -22,9 +33,15 @@
   }
   * { box-sizing: border-box; }
 
-  main > section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+  /* Scroll snap only on desktop */
+  @media (min-width: 768px) {
+    html {
+      scroll-snap-type: y mandatory;
+    }
+    main > section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
   }
 }
 

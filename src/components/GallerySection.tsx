@@ -70,7 +70,7 @@ export default function GallerySection() {
       className="snap-start snap-always"
       style={{
         position: 'relative',
-        height: '100svh',
+        minHeight: '100svh',
         background: '#000',
         overflow: 'hidden',
         display: 'flex',

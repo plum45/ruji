@@ -59,7 +59,7 @@ export default function CapabilitiesSection() {
       id="topics"
       style={{
         position: 'relative',
-        height: '100svh',
+        minHeight: '100svh',
         background: isLight
           ? 'linear-gradient(180deg, #f5f4f0 0%, #eae8e3 100%)'
           : 'linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%)',
@@ -107,7 +107,7 @@ export default function CapabilitiesSection() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))',
             gap: '1rem',
             flex: 1,
             minHeight: 0,
