@@ -330,16 +330,21 @@ html, body, section, nav, footer {
   background: radial-gradient(
     circle at center,
     rgba(255, 255, 255, 0.95) 0%,   /* สีขาวสว่างตรงกลาง */
-    rgba(244, 63, 94, 0.65) 45%,     /* ชมพู Rose ตรงขอบของลูกแก้ว */
-    rgba(147, 51, 234, 0.3) 65%,     /* ม่วงพาสเทลจางๆ */
-    rgba(59, 130, 246, 0) 80%        /* เฟดจางหายไป 100% ป้องกันขอบแข็ง */
+    rgba(244, 63, 94, 0.65) 35%,     /* ชมพู Rose */
+    rgba(147, 51, 234, 0.25) 55%,    /* ม่วงพาสเทลจางๆ */
+    rgba(59, 130, 246, 0) 70%        /* เฟดจางหายไป 100% ตั้งแต่ช่วง 70% เพื่อหดขอบเข้ามา */
   );
   border-radius: 50%;
   mix-blend-mode: overlay;
   pointer-events: none;
   z-index: 10;
   transform: scale(1.25); /* แมตช์ขนาด scale ของวิดีโอ */
-  will-change: transform;
+  
+  /* เบลอขอบขั้นสูงเพื่อสลายขอบวงกลมให้เนียนเป็นเนื้อเดียวกับพื้นหลัง */
+  filter: blur(16px);
+  -webkit-filter: blur(16px);
+  
+  will-change: transform, filter;
 }
 
 
