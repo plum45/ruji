@@ -72,8 +72,8 @@ export default function DynamicsSection() {
         position: 'relative',
         minHeight: '100svh',
         background: isLight
-          ? 'linear-gradient(180deg, #eae8e3 0%, #f5f4f0 100%)'
-          : 'linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%)',
+          ? 'linear-gradient(180deg, #eef6f2 0%, #deeade 100%)'
+          : 'linear-gradient(180deg, #050a08 0%, #0b1410 100%)',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',

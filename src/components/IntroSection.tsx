@@ -34,8 +34,8 @@ export default function IntroSection() {
         position: 'relative',
         minHeight: '100svh',
         background: isLight
-          ? 'linear-gradient(180deg, #eae8e3 0%, #f5f4f0 100%)'
-          : 'linear-gradient(180deg, #0f0f0f 0%, #050505 100%)',
+          ? 'linear-gradient(180deg, #f7f5f0 0%, #eae7e0 100%)'
+          : 'linear-gradient(180deg, #0b0a08 0%, #050504 100%)',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',

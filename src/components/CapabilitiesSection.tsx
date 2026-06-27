@@ -70,8 +70,8 @@ export default function CapabilitiesSection() {
         position: 'relative',
         minHeight: '100svh',
         background: isLight
-          ? 'linear-gradient(180deg, #f5f4f0 0%, #eae8e3 100%)'
-          : 'linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%)',
+          ? 'linear-gradient(180deg, #eef4f8 0%, #e0e8f0 100%)'
+          : 'linear-gradient(180deg, #05080c 0%, #0b1018 100%)',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
