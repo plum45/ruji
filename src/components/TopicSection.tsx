@@ -191,7 +191,7 @@ export default function TopicSection({
                   transition={{ duration: 0.3, ease: 'easeOut' }}
                   style={{ width: 38, height: 38, borderRadius: '0.625rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d={card.iconPath} />
                   </svg>
                 </motion.div>
