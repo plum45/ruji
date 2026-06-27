@@ -1,8 +1,7 @@
-import { motion, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowUpRight, Play } from 'lucide-react';
 import FadingVideo from './FadingVideo';
 import BlurText from './BlurText';
-import { useSmoothMouse } from '../hooks/useSmoothMouse';
 
 const FADE_UP = (delay: number) => ({
   initial: { filter: 'blur(10px)', opacity: 0, y: 20 },
@@ -11,11 +10,6 @@ const FADE_UP = (delay: number) => ({
 });
 
 export default function Hero() {
-  // Mouse parallax variables for the floating orb
-  const { x, y } = useSmoothMouse();
-  const orbX = useTransform(x, [-0.5, 0.5], [-35, 35]); // subtle drift horizontal
-  const orbY = useTransform(y, [-0.5, 0.5], [-35, 35]); // subtle drift vertical
-
   return (
     <section
       id="hero"
@@ -36,40 +30,6 @@ export default function Hero() {
         style={{ width: '120%', height: '120%', zIndex: 0 }}
         playbackRate={0.75}
       />
-
-      {/* Floating Glassy Orb (desktop only, aligned right) */}
-      <div
-        className="orb-wrapper"
-        style={{
-          position: 'absolute',
-          right: '8vw',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          zIndex: 5,
-          display: 'var(--orb-display, flex)',
-          pointerEvents: 'none',
-        }}
-      >
-        <motion.div
-          style={{
-            x: orbX,
-            y: orbY,
-          }}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: 'easeOut' }}
-        >
-          <video 
-            className="glassy-orb" 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-          >
-            <source src="https://future.co/images/homepage/glassy-orb/orb-purple.webm" type="video/webm" />
-          </video>
-        </motion.div>
-      </div>
 
       {/* z-10 content layer */}
       <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', flex: 1 }}>

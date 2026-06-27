@@ -1,6 +1,7 @@
 import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import IntroSection from './components/IntroSection';
 import CapabilitiesSection from './components/CapabilitiesSection';
 import DynamicsSection from './components/DynamicsSection';
 import GallerySection from './components/GallerySection';
@@ -150,6 +151,7 @@ function AppInner() {
 
       <main>
         <Hero />
+        <IntroSection />
         <CapabilitiesSection />
         <DynamicsSection />
 
