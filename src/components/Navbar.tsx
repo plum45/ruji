@@ -4,14 +4,18 @@ import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
 
 const NAV_LINKS = [
-  { label: 'Home', tab: 'home', href: '#hero' },
-  { label: 'Cytoskeleton', tab: 'cytoskeleton', href: '#articles' },
-  { label: 'Actin', tab: 'actin', href: '#actin' },
-  { label: 'Microtubules', tab: 'microtubules', href: '#microtubules' },
-  { label: 'Motors', tab: 'motors', href: '#motors' },
-  { label: 'Motility', tab: 'motility', href: '#motility' },
-  { label: 'Gallery', tab: 'home', href: '#gallery' },
+  { label: 'Home',             tab: 'home',           href: '#hero' },
+  { label: 'Components',       tab: 'overview',       href: '#overview' },
+  { label: 'Microfilaments',   tab: 'microfilaments', href: '#microfilaments' },
+  { label: 'Int. Filaments',   tab: 'intermediate',   href: '#intermediate' },
+  { label: 'Microtubules',     tab: 'microtubules',   href: '#microtubules' },
+  { label: 'Cell Structure',   tab: 'structure',      href: '#structure' },
+  { label: 'Movement',         tab: 'movement',       href: '#movement' },
+  { label: 'Cilia & Flagella', tab: 'cilia',          href: '#cilia' },
+  { label: 'Cell Division',    tab: 'division',       href: '#division' },
+  { label: 'Additional',       tab: 'additional',     href: '#additional' },
 ];
+
 
 export default function Navbar({
   activeTab,
