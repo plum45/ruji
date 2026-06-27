@@ -33,7 +33,7 @@ export default function Navbar() {
       };
 
   return (
-    <nav className="fixed top-4 left-0 right-0 z-50 flex items-center justify-between px-8 lg:px-16 pointer-events-none">
+    <nav className="fixed top-4 left-0 right-0 z-50 flex items-center justify-between px-4 lg:px-8 pointer-events-none">
       {/* Logo */}
       <div
         className={isLight ? 'pointer-events-auto flex items-center justify-center' : 'liquid-glass pointer-events-auto flex items-center justify-center'}
@@ -44,9 +44,9 @@ export default function Navbar() {
         </span>
       </div>
 
-      {/* Center pill nav — desktop */}
+      {/* Center pill nav */}
       <div
-        className={isLight ? 'pointer-events-auto hidden md:flex items-center gap-1' : 'liquid-glass pointer-events-auto hidden md:flex items-center gap-1'}
+        className={isLight ? 'pointer-events-auto flex items-center gap-1' : 'liquid-glass pointer-events-auto flex items-center gap-1'}
         style={{ borderRadius: 9999, padding: '6px', ...glassStyle }}
       >
         {NAV_LINKS.map((link) => (

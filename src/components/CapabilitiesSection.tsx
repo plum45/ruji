@@ -45,8 +45,6 @@ const CARD_ANIMATION = (delay: number) => ({
     hover: {
       y: -8,
       scale: 1.015,
-      backgroundColor: 'rgba(255, 255, 255, 0.04)',
-      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 255, 255, 0.05)',
       transition: { duration: 0.3, ease: 'easeOut' as const }
     }
   }
