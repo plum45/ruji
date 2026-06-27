@@ -34,8 +34,8 @@ function Card({ label, gradient }: { label: string; gradient: string }) {
     <div
       className="liquid-glass"
       style={{
-        width: 280,
-        height: 180,
+        width: 260,
+        height: 160,
         borderRadius: '1.25rem',
         overflow: 'hidden',
         position: 'relative',
@@ -63,11 +63,11 @@ function Card({ label, gradient }: { label: string; gradient: string }) {
           bottom: 0,
           left: 0,
           right: 0,
-          padding: '1.25rem 1rem',
+          padding: '1rem',
           background: 'linear-gradient(transparent, rgba(0,0,0,0.85))',
         }}
       >
-        <span className="font-heading text-white font-medium" style={{ fontStyle: 'italic', fontSize: '1.35rem', letterSpacing: '-0.02em', textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
+        <span className="font-heading text-white font-medium" style={{ fontStyle: 'italic', fontSize: '1.25rem', letterSpacing: '-0.02em', textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
           {label}
         </span>
       </div>
@@ -114,8 +114,8 @@ export default function GallerySection() {
           position: 'relative', 
           zIndex: 10, 
           textAlign: 'center', 
-          marginBottom: '1rem', 
-          paddingTop: '4.25rem', // Shift header up, still clearing navbar
+          marginBottom: '2.5rem', 
+          paddingTop: '5rem', // Clear navbar
           paddingLeft: '1rem', 
           paddingRight: '1rem' 
         }}
@@ -150,11 +150,11 @@ export default function GallerySection() {
         style={{
           position: 'relative',
           zIndex: 10,
-          transform: 'perspective(1200px) rotateX(10deg) rotateY(-8deg) rotateZ(-3deg) scale(1.05) translateY(-25px)',
+          transform: 'perspective(1200px) rotateX(10deg) rotateY(-8deg) rotateZ(-3deg) scale(1.0)',
           transformOrigin: 'center center',
           display: 'flex',
           flexDirection: 'column',
-          gap: '1rem',
+          gap: '1.25rem',
           paddingTop: '1rem',
           paddingBottom: '1rem'
         }}
