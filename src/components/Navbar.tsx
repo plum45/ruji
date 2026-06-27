@@ -36,14 +36,11 @@ export default function Navbar() {
   const hoverBg = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.1)';
 
   return (
-    <nav
-      className="fixed top-4 left-0 right-0 z-50 pointer-events-none"
-      style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 1rem' }}
-    >
+    <nav className="fixed top-4 z-50 pointer-events-none" style={{ left: '50%', transform: 'translateX(-50%)' }}>
       {/* Single centered pill containing logo + links + theme toggle */}
       <div
         className={isLight ? 'pointer-events-auto flex items-center gap-1' : 'liquid-glass pointer-events-auto flex items-center gap-1'}
-        style={{ borderRadius: 9999, padding: '5px 6px', ...glassStyle }}
+        style={{ borderRadius: 9999, padding: '5px 6px', ...glassStyle, whiteSpace: 'nowrap' }}
       >
         {/* Logo */}
         <motion.div
