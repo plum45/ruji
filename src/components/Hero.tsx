@@ -13,7 +13,7 @@ const STATS = [
   {
     icon: (
       // Clock icon (SVG outline)
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
         <polyline points="12 6 12 12 16 14" />
       </svg>
@@ -24,7 +24,7 @@ const STATS = [
   {
     icon: (
       // Globe icon (SVG outline)
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
         <line x1="2" y1="12" x2="22" y2="12" />
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -122,7 +122,7 @@ export default function Hero() {
             <a
               href="#topics"
               className="liquid-glass-strong font-body font-medium text-sm flex items-center gap-1.5"
-              style={{ borderRadius: 9999, padding: '10px 20px', textDecoration: 'none', color: '#fff' }}
+              style={{ borderRadius: 9999, padding: '10px 20px', textDecoration: 'none', color: 'inherit' }}
             >
               Explore Structure
               <ArrowUpRight size={18} />
@@ -130,10 +130,10 @@ export default function Hero() {
             <a
               href="#articles"
               className="font-body text-sm flex items-center gap-1.5"
-              style={{ textDecoration: 'none', color: '#fff' }}
+              style={{ textDecoration: 'none', color: 'inherit' }}
             >
               View Dynamics
-              <Play size={14} fill="white" />
+              <Play size={14} fill="currentColor" />
             </a>
           </motion.div>
 
