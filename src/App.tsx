@@ -5,6 +5,7 @@ import CapabilitiesSection from './components/CapabilitiesSection';
 import DynamicsSection from './components/DynamicsSection';
 import GallerySection from './components/GallerySection';
 import TopicSection, { type TopicCard } from './components/TopicSection';
+import { ThemeProvider, useTheme } from './ThemeContext';
 
 // ── Actin Networks ──────────────────────────────────────────────
 const ACTIN_CARDS: TopicCard[] = [
@@ -138,7 +139,10 @@ const CILIA_CARDS: TopicCard[] = [
   },
 ];
 
-function App() {
+function AppInner() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   return (
     <>
       <ScrollProgress />
@@ -155,8 +159,8 @@ function App() {
           label="// Actin Networks"
           heading={"Dynamic,\nnetworks."}
           cards={ACTIN_CARDS}
-          bgColor="#050a0f"
-          overlayColor="linear-gradient(135deg, rgba(0,20,40,0.8) 0%, rgba(0,0,0,0.3) 100%)"
+          bgColor={isLight ? '#eef2f7' : '#050a0f'}
+          overlayColor={isLight ? 'linear-gradient(135deg, rgba(200,220,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(0,20,40,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
         />
 
         <TopicSection
@@ -164,8 +168,8 @@ function App() {
           label="// Microtubule Dynamics"
           heading={"Tracks &\npolarity."}
           cards={MT_CARDS}
-          bgColor="#080510"
-          overlayColor="linear-gradient(135deg, rgba(20,0,50,0.8) 0%, rgba(0,0,0,0.3) 100%)"
+          bgColor={isLight ? '#f0eef7' : '#080510'}
+          overlayColor={isLight ? 'linear-gradient(135deg, rgba(220,200,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(20,0,50,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
         />
 
         <TopicSection
@@ -173,8 +177,8 @@ function App() {
           label="// Intermediate Filaments"
           heading={"Resilience,\nunder stress."}
           cards={IF_CARDS}
-          bgColor="#0a0804"
-          overlayColor="linear-gradient(135deg, rgba(40,20,0,0.8) 0%, rgba(0,0,0,0.3) 100%)"
+          bgColor={isLight ? '#f7f4ee' : '#0a0804'}
+          overlayColor={isLight ? 'linear-gradient(135deg, rgba(255,240,200,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(40,20,0,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
         />
 
         <TopicSection
@@ -182,8 +186,8 @@ function App() {
           label="// Motor Proteins"
           heading={"Directed,\nmovement."}
           cards={MOTOR_CARDS}
-          bgColor="#04080a"
-          overlayColor="linear-gradient(135deg, rgba(0,30,40,0.8) 0%, rgba(0,0,0,0.3) 100%)"
+          bgColor={isLight ? '#eef6f7' : '#04080a'}
+          overlayColor={isLight ? 'linear-gradient(135deg, rgba(200,240,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(0,30,40,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
         />
 
         <TopicSection
@@ -191,8 +195,8 @@ function App() {
           label="// Cell Motility"
           heading={"Migration\n& sensing."}
           cards={MOTILITY_CARDS}
-          bgColor="#08050a"
-          overlayColor="linear-gradient(135deg, rgba(25,0,40,0.8) 0%, rgba(0,0,0,0.3) 100%)"
+          bgColor={isLight ? '#f4eef7' : '#08050a'}
+          overlayColor={isLight ? 'linear-gradient(135deg, rgba(240,200,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(25,0,40,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
         />
 
         <TopicSection
@@ -200,30 +204,46 @@ function App() {
           label="// Cilia & Flagella"
           heading={"Beating\nin sync."}
           cards={CILIA_CARDS}
-          bgColor="#050a08"
-          overlayColor="linear-gradient(135deg, rgba(0,25,15,0.8) 0%, rgba(0,0,0,0.3) 100%)"
+          bgColor={isLight ? '#eef7f2' : '#050a08'}
+          overlayColor={isLight ? 'linear-gradient(135deg, rgba(200,255,220,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(0,25,15,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
         />
 
         <GallerySection />
       </main>
 
       {/* Footer */}
-      <footer id="footer" style={{ background: '#000', padding: '4rem 2rem', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <footer
+        id="footer"
+        style={{
+          background: isLight ? '#e8e6e0' : '#000',
+          padding: '4rem 2rem',
+          textAlign: 'center',
+          borderTop: isLight ? '1px solid rgba(0,0,0,0.08)' : '1px solid rgba(255,255,255,0.05)',
+        }}
+      >
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
           <div
             className="liquid-glass pointer-events-auto flex items-center justify-center"
             style={{ width: 40, height: 40, borderRadius: '50%' }}
           >
-            <span style={{ fontFamily: '"Instrument Serif", serif', fontStyle: 'italic', fontSize: '1rem', color: '#fff' }}>
+            <span style={{ fontFamily: '"Instrument Serif", serif', fontStyle: 'italic', fontSize: '1rem', color: isLight ? '#111' : '#fff' }}>
               k
             </span>
           </div>
-          <p className="font-body text-white/50 text-sm">
+          <p className="font-body text-sm" style={{ color: isLight ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)' }}>
             © 2026 Knowledge Hub. All rights reserved.
           </p>
         </div>
       </footer>
     </>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppInner />
+    </ThemeProvider>
   );
 }
 
