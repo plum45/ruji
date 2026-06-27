@@ -247,7 +247,7 @@ html, body, section, nav, footer {
   color: #111 !important;
 }
 
-[data-theme="light"] main > section {
+[data-theme="light"] main > section:not(#hero):not(#gallery) {
   background: #f5f4f0 !important;
 }
 
