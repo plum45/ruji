@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Marquee from './Marquee';
+import FadingVideo from './FadingVideo';
 
 const FADE_UP = (delay: number) => ({
   initial: { filter: 'blur(8px)', opacity: 0, y: 30 },
@@ -71,18 +72,23 @@ export default function GallerySection() {
         position: 'relative',
         height: '100svh',
         background: '#000',
-        paddingTop: '6rem',
-        paddingBottom: '2rem',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
       }}
     >
+      {/* Background video — full bleed */}
+      <FadingVideo
+        src="https://www.dropbox.com/scl/fi/pqynwn6da76xdf9i260gy/Untitled-20design.mp4?rlkey=ww7pk7zikgw5fq1r0m7yvaeo9&raw=1"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+      />
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.65)', zIndex: 1 }} />
+
       {/* Header */}
       <motion.div
         {...FADE_UP(0)}
-        style={{ textAlign: 'center', marginBottom: '3rem', paddingLeft: '1rem', paddingRight: '1rem' }}
+        style={{ position: 'relative', zIndex: 10, textAlign: 'center', marginBottom: '3rem', paddingLeft: '1rem', paddingRight: '1rem' }}
       >
         <p className="font-body text-white/80 text-sm" style={{ marginBottom: '1rem', letterSpacing: '0.05em' }}>
           // Gallery
@@ -104,6 +110,8 @@ export default function GallerySection() {
       {/* 3D Tilted Wrapper for Marquees */}
       <div
         style={{
+          position: 'relative',
+          zIndex: 10,
           transform: 'perspective(1200px) rotateX(10deg) rotateY(-8deg) rotateZ(-3deg) scale(1.1)',
           transformOrigin: 'center center',
           display: 'flex',
