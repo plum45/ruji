@@ -197,6 +197,7 @@ export default function CapabilitiesSection() {
 
           {/* Right Column: Transparent Video */}
           <div
+            className="cytoskeleton-video-container"
             style={{
               display: 'flex',
               justifyContent: 'center',
@@ -207,19 +208,39 @@ export default function CapabilitiesSection() {
               minHeight: '300px',
             }}
           >
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
+            <motion.div
+              animate={{
+                y: [0, -18, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
               style={{
                 width: '100%',
-                maxHeight: '520px',
-                objectFit: 'contain',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                filter: isLight
+                  ? 'drop-shadow(0 25px 30px rgba(0, 0, 0, 0.12))'
+                  : 'drop-shadow(0 30px 45px rgba(0, 0, 0, 0.55)) drop-shadow(0 15px 30px rgba(0, 229, 255, 0.15))',
               }}
             >
-              <source src="/video_transparent.webm" type="video/webm" />
-            </video>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{
+                  width: '100%',
+                  maxHeight: '520px',
+                  objectFit: 'contain',
+                }}
+              >
+                <source src="/video_transparent.webm" type="video/webm" />
+              </video>
+            </motion.div>
           </div>
         </div>
       </motion.div>

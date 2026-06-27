@@ -378,5 +378,30 @@ html, body, section, nav, footer {
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
 }
 
+/* ─── Cytoskeleton 3D Video Styles ─── */
+.cytoskeleton-video-container {
+  transform: translateX(0);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (min-width: 768px) {
+  .cytoskeleton-video-container {
+    transform: translateX(35px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cytoskeleton-video-container {
+    transform: translateX(85px); /* Moved slightly more to the right from the original 60px */
+  }
+}
+
+@media (min-width: 1280px) {
+  .cytoskeleton-video-container {
+    transform: translateX(110px); /* Move even further right on wider desktop screens */
+  }
+}
+
+
 
 
