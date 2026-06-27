@@ -67,7 +67,7 @@ export default function Navbar({
     <>
       {/* Desktop navbar — hidden on mobile */}
       <nav
-        className="fixed top-4 z-50 pointer-events-none"
+        className="fixed top-6 z-50 pointer-events-none"
         style={{ left: '50%', transform: 'translateX(-50%)', display: 'var(--nav-desktop-display, none)' }}
       >
         <div
@@ -133,7 +133,7 @@ export default function Navbar({
 
       {/* Mobile navbar — hidden on desktop */}
       <nav
-        className="fixed top-4 left-4 right-4 z-50 pointer-events-none"
+        className="fixed top-6 left-4 right-4 z-50 pointer-events-none"
         style={{ display: 'var(--nav-mobile-display, flex)', justifyContent: 'space-between', alignItems: 'center' }}
       >
         {/* Logo */}
