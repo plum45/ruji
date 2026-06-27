@@ -99,6 +99,7 @@ export default function IntroSection() {
               >
                 <source src="https://future.co/images/homepage/glassy-orb/orb-purple.webm" type="video/webm" />
               </video>
+              <div className="orb-overlay" />
             </div>
           </motion.div>
 
