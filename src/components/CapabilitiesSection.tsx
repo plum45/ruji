@@ -98,7 +98,7 @@ export default function CapabilitiesSection() {
         }}
       >
         {/* Header */}
-        <motion.div {...FADE_UP(0)} style={{ marginBottom: '1rem' }}>
+        <motion.div {...FADE_UP(0)} style={{ marginBottom: '1.5rem' }}>
           <p
             className="font-body text-sm"
             style={{ marginBottom: '0.5rem', letterSpacing: '0.05em', color: isLight ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.6)' }}
@@ -116,121 +116,91 @@ export default function CapabilitiesSection() {
               color: isLight ? '#111' : '#fff',
             }}
           >
-            Structural,<br />integrity.
+            Cytoskeleton
           </h2>
         </motion.div>
 
-        {/* Cards grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
-            gap: '1rem',
-            flex: 1,
-            minHeight: 0,
-          }}
-        >
-          {CARDS.map((card, i) => (
-            <motion.div
-              key={card.title}
-              {...CARD_ANIMATION(0.15 + i * 0.1)}
-              className="liquid-glass"
+        {/* Two-Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center flex-1 min-h-0">
+          {/* Left Column: Squeezed Cards */}
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            {CARDS.map((card, i) => (
+              <motion.div
+                key={card.title}
+                {...CARD_ANIMATION(0.15 + i * 0.1)}
+                className="liquid-glass"
+                style={{
+                  borderRadius: '1.25rem',
+                  padding: '1.125rem 1.25rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  overflow: 'hidden',
+                  minHeight: 0,
+                  cursor: 'pointer',
+                }}
+              >
+                {/* Top row: icon + tags */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10, marginBottom: '0.5rem' }}>
+                  {/* Icon box */}
+                  <motion.div
+                    className="liquid-glass"
+                    variants={{
+                      hover: { rotate: 15, scale: 1.05 }
+                    }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                    style={{ width: 34, height: 34, borderRadius: '0.625rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill={isLight ? "#111" : "white"}>
+                      <path d={card.iconPath} />
+                    </svg>
+                  </motion.div>
+
+                  {/* Tags */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-end', gap: 4, maxWidth: '80%' }}>
+                    {card.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="liquid-glass font-body text-white/90"
+                        style={{ borderRadius: 9999, padding: '2px 8px', fontSize: 10, whiteSpace: 'nowrap' }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom: title + body */}
+                <div>
+                  <h3
+                    className="font-heading"
+                    style={{ fontStyle: 'italic', fontSize: 'clamp(1.25rem, 2vw, 1.5rem)', letterSpacing: '-0.03em', lineHeight: 1.1, margin: 0, color: isLight ? '#111' : '#fff' }}
+                  >
+                    {card.title}
+                  </h3>
+                  <p className="font-body text-xs" style={{ marginTop: '0.35rem', lineHeight: 1.5, color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)' }}>
+                    {card.body}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Right Column: Transparent Video */}
+          <div className="lg:col-span-7 flex justify-center items-center relative w-full h-full min-h-[300px] lg:min-h-[450px]">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
               style={{
-                borderRadius: '1.25rem',
-                padding: '1.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                overflow: 'hidden',
-                minHeight: 0,
-                cursor: 'pointer',
+                width: '100%',
+                maxHeight: '520px',
+                objectFit: 'contain',
               }}
             >
-              {/* Image / Placeholder */}
-              {(card as any).imagePath ? (
-                <div
-                  style={{
-                    flex: 1,
-                    borderRadius: '0.75rem',
-                    marginBottom: '0.875rem',
-                    overflow: 'hidden',
-                    minHeight: 80,
-                    display: 'flex',
-                  }}
-                >
-                  <motion.img
-                    src={(card as any).imagePath}
-                    alt={card.title}
-                    variants={{
-                      hover: { scale: 1.05 }
-                    }}
-                    transition={{ duration: 0.4, ease: 'easeOut' }}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </div>
-              ) : (
-                <div 
-                  style={{
-                    flex: 1,
-                    background: isLight ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.04)',
-                    borderRadius: '0.75rem',
-                    marginBottom: '0.875rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: isLight ? '1px dashed rgba(0,0,0,0.1)' : '1px dashed rgba(255,255,255,0.15)',
-                    minHeight: 80,
-                  }}
-                >
-                  <span className="font-body text-xs" style={{ color: isLight ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.25)' }}>Image Placeholder</span>
-                </div>
-              )}
-              {/* Top row: icon + tags */}
-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10, marginBottom: '0.75rem' }}>
-                {/* Icon box */}
-                <motion.div
-                  className="liquid-glass"
-                  variants={{
-                    hover: { rotate: 15, scale: 1.05 }
-                  }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  style={{ width: 38, height: 38, borderRadius: '0.625rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
-                >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill={isLight ? "#111" : "white"}>
-                    <path d={card.iconPath} />
-                  </svg>
-                </motion.div>
-
-                {/* Tags */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-end', gap: 6, maxWidth: '70%' }}>
-                  {card.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="liquid-glass font-body text-white/90"
-                      style={{ borderRadius: 9999, padding: '4px 10px', fontSize: 11, whiteSpace: 'nowrap' }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Spacer */}
-              <div style={{ flex: 1 }} />
-
-              {/* Bottom: title + body */}
-              <div style={{ marginTop: '1.5rem' }}>
-                <h3
-                  className="font-heading"
-                  style={{ fontStyle: 'italic', fontSize: 'clamp(1.75rem, 3vw, 2.25rem)', letterSpacing: '-0.03em', lineHeight: 1, margin: 0, color: isLight ? '#111' : '#fff' }}
-                >
-                  {card.title}
-                </h3>
-                <p className="font-body text-sm" style={{ marginTop: '0.75rem', lineHeight: 1.6, color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)' }}>
-                  {card.body}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+              <source src="/video_transparent.webm" type="video/webm" />
+            </video>
+          </div>
         </div>
       </motion.div>
     </section>
