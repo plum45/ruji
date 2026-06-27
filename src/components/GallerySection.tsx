@@ -150,13 +150,13 @@ export default function GallerySection() {
         style={{
           position: 'relative',
           zIndex: 10,
-          transform: 'perspective(1200px) rotateX(10deg) rotateY(-8deg) rotateZ(-3deg) scale(1.1)',
+          transform: 'perspective(1200px) rotateX(10deg) rotateY(-8deg) rotateZ(-3deg) scale(1.05) translateY(-25px)',
           transformOrigin: 'center center',
           display: 'flex',
           flexDirection: 'column',
-          gap: '1.5rem',
-          paddingTop: '2rem',
-          paddingBottom: '2rem'
+          gap: '1rem',
+          paddingTop: '1rem',
+          paddingBottom: '1rem'
         }}
       >
         {/* Row 1 — scrolls left */}
