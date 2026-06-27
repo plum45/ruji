@@ -69,6 +69,10 @@ export default function DynamicsSection() {
         flexDirection: 'column',
       }}
     >
+      {/* Ambient background glow orbs */}
+      <div className="glow-orb orb-1" style={{ top: '20%', right: '-5%' }} />
+      <div className="glow-orb orb-2" style={{ bottom: '10%', left: '-5%' }} />
+
       {/* Content */}
       <div
         style={{

@@ -77,6 +77,10 @@ export default function TopicSection({
         }}
       />
 
+      {/* Ambient background glow orbs */}
+      <div className="glow-orb orb-1" style={{ top: '15%', left: '10%' }} />
+      <div className="glow-orb orb-2" style={{ bottom: '20%', right: '10%' }} />
+
       {/* Content */}
       <div
         style={{

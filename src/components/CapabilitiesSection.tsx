@@ -68,6 +68,10 @@ export default function CapabilitiesSection() {
         flexDirection: 'column',
       }}
     >
+      {/* Ambient background glow orbs */}
+      <div className="glow-orb orb-1" style={{ top: '10%', left: '-5%' }} />
+      <div className="glow-orb orb-2" style={{ bottom: '15%', right: '-5%' }} />
+
       {/* Content */}
       <div
         style={{

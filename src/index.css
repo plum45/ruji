@@ -14,6 +14,13 @@
   }
 }
 
+/* ─── Global Smooth Transitions ───────────────────────────────── */
+html, body, section, nav, footer {
+  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -45,6 +52,83 @@
   }
 }
 
+/* ─── Custom Premium Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* ─── Ambient Glow Background Orbs ────────────────────────────── */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  -webkit-filter: blur(140px);
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: plus-lighter;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.12) 0%, rgba(147, 51, 234, 0) 70%);
+  animation: float-slow 22s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0) 70%);
+  animation: float-medium 28s ease-in-out infinite alternate;
+}
+
+[data-theme="light"] .orb-1 {
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.08) 0%, rgba(147, 51, 234, 0) 70%);
+}
+
+[data-theme="light"] .orb-2 {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, rgba(59, 130, 246, 0) 70%);
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -40px) scale(1.1); }
+  66% { transform: translate(-30px, 30px) scale(0.95); }
+}
+
+@keyframes float-medium {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, 40px) scale(1.15); }
+  100% { transform: translate(30px, -30px) scale(0.9); }
+}
+
 /* ─── Liquid Glass Design System ─────────────────────────────── */
 
 .liquid-glass {
@@ -56,6 +140,34 @@
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s ease;
+}
+
+/* Glass Glare Swipe Effect */
+.liquid-glass::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.75s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.liquid-glass:hover::after {
+  left: 150%;
 }
 
 .liquid-glass::before {
@@ -78,6 +190,7 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+  transition: opacity 0.6s ease;
 }
 
 .liquid-glass-strong {
@@ -90,6 +203,9 @@
               inset 0 1px 1px rgba(255, 255, 255, 0.15);
   position: relative;
   overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s ease;
 }
 
 .liquid-glass-strong::before {
@@ -140,6 +256,15 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.03), inset 0 1px 1px rgba(255,255,255,0.7) !important;
 }
 
+/* Glass Glare Swipe Light Mode Adjustment */
+[data-theme="light"] .liquid-glass::after {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
 
 [data-theme="light"] .font-heading,
 [data-theme="light"] .text-white,
