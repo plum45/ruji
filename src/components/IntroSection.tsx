@@ -131,17 +131,39 @@ export default function IntroSection() {
               </h2>
             </motion.div>
 
-            <motion.div {...FADE_UP(0.4)} className="liquid-glass" style={{ borderRadius: '1.25rem', padding: '1.5rem 2rem' }}>
+            <motion.div
+              {...FADE_UP(0.4)}
+              className="liquid-glass"
+              style={{
+                borderRadius: '1.25rem',
+                padding: '2rem 2.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.25rem',
+              }}
+            >
               <p
                 className="font-body text-sm"
                 style={{
-                  lineHeight: 1.7,
+                  lineHeight: 1.9,
                   margin: 0,
                   color: isLight ? 'rgba(0,0,0,0.75)' : 'rgba(255,255,255,0.85)',
+                  textAlign: 'justify',
+                  textIndent: '2.5rem',
                 }}
               >
                 โครงร่างเซลล์ (Cytoskeleton) คือเครือข่ายเส้นใยโปรตีนภายในไซโทพลาซึมของเซลล์ยูแคริโอต ที่ไม่ได้แข็งทื่อแต่มีพลวัตสูง (Dynamic) สามารถประกอบและสลายตัวได้อย่างรวดเร็วเพื่อตอบสนองต่อสิ่งเร้า ประกอบด้วยเส้นใย 3 ชนิดหลัก คือ ไมโครฟิลาเมนต์ (Microfilaments) ที่ยืดหยุ่นสูง, ไมโครทิวบูล (Microtubules) ที่เป็นหลอดกลวงแข็งแรง และอินเทอร์มีเดียทฟิลาเมนต์ (Intermediate filaments) ที่ช่วยรับแรงดึงและต้านทานความเครียดทางกล การทำงานประสานกันของเส้นใยเหล่านี้เป็นรากฐานสำคัญในการรักษารูปร่างเซลล์ จัดระเบียบออร์แกเนลล์ และช่วยให้เซลล์คงสภาพได้อย่างสมบูรณ์
-                <br /><br />
+              </p>
+              <p
+                className="font-body text-sm"
+                style={{
+                  lineHeight: 1.9,
+                  margin: 0,
+                  color: isLight ? 'rgba(0,0,0,0.75)' : 'rgba(255,255,255,0.85)',
+                  textAlign: 'justify',
+                  textIndent: '2.5rem',
+                }}
+              >
                 นอกจากการค้ำจุน โครงร่างเซลล์ยังเป็นกลไกหลักที่ทำให้เกิดการเคลื่อนที่ (Motility) โดยทำงานร่วมกับโปรตีนมอเตอร์ (Motor proteins) ที่ใช้พลังงานจาก ATP ในการเคลื่อนที่ เช่น โปรตีนไมโอซิน (Myosin) ที่ทำงานร่วมกับไมโครฟิลาเมนต์เพื่อขับเคลื่อนการหดตัวของกล้ามเนื้อและการคลานของเซลล์ ขณะที่โปรตีนไคนีซิน (Kinesin) และไดนีน (Dynein) จะเคลื่อนที่บนรางไมโครทิวบูลเพื่อขนส่งสารและออร์แกเนลล์ นอกจากนี้ ไมโครทิวบูลและไดนีนยังเป็นแกนกลางของซีเลีย (Cilia) และแฟลเจลลา (Flagella) ที่ช่วยในการโบกพัดและขับเคลื่อนเซลล์อย่างแม่นยำ
               </p>
             </motion.div>
