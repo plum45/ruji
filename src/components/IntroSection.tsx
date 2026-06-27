@@ -56,7 +56,7 @@ export default function IntroSection() {
           flexDirection: 'column',
           justifyContent: 'center',
           flex: 1,
-          padding: 'clamp(4rem, 8vh, 6rem) clamp(1.5rem, 5vw, 6rem)',
+          padding: 'clamp(3rem, 6vh, 4.5rem) clamp(1rem, 3vw, 3.5rem)',
           rotateX,
           rotateY,
           transformStyle: 'preserve-3d',
@@ -66,13 +66,14 @@ export default function IntroSection() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))',
             gap: '3rem',
             alignItems: 'center',
             width: '100%',
-            maxWidth: '1200px',
+            maxWidth: '1800px',
             margin: '0 auto',
           }}
+          className="lg:!grid-cols-[1fr_1.8fr]"
         >
           {/* Left Column: Glassy Orb Video */}
           <motion.div
