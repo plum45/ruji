@@ -30,6 +30,29 @@ const FADE_UP = (delay: number) => ({
   transition: { duration: 0.7, delay, ease: 'easeOut' as const },
 });
 
+const CARD_ANIMATION = (delay: number) => ({
+  initial: 'initial',
+  whileInView: 'animate',
+  whileHover: 'hover',
+  viewport: { once: true, amount: 0.15 },
+  variants: {
+    initial: { filter: 'blur(8px)', opacity: 0, y: 30 },
+    animate: {
+      filter: 'blur(0px)',
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, delay, ease: 'easeOut' as const }
+    },
+    hover: {
+      y: -8,
+      scale: 1.015,
+      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 255, 255, 0.05)',
+      transition: { duration: 0.3, ease: 'easeOut' as const }
+    }
+  }
+});
+
 export default function DynamicsSection() {
   return (
     <section
@@ -63,15 +86,15 @@ export default function DynamicsSection() {
         }}
       >
         {/* Header */}
-        <motion.div {...FADE_UP(0)} style={{ marginBottom: '1rem' }}>
+        <motion.div {...FADE_UP(0)} style={{ marginBottom: '1.5rem' }}>
           <p className="font-body text-white/60 text-sm" style={{ marginBottom: '0.5rem', letterSpacing: '0.05em' }}>
-            // Cytoskeleton
+            // Dynamic Processes
           </p>
           <h2
             className="font-heading text-white"
             style={{ fontStyle: 'italic', fontSize: 'clamp(2.25rem, 6vw, 4.5rem)', lineHeight: 0.9, letterSpacing: '-0.03em', margin: 0 }}
           >
-            Structural,<br />integrity.
+            Visualizing,<br />motion.
           </h2>
         </motion.div>
 
@@ -88,9 +111,17 @@ export default function DynamicsSection() {
           {CARDS.map((card, i) => (
             <motion.div
               key={card.title}
-              {...FADE_UP(0.1 + i * 0.08)}
+              {...CARD_ANIMATION(0.1 + i * 0.08)}
               className="liquid-glass"
-              style={{ borderRadius: '1.25rem', padding: '1.25rem', display: 'flex', flexDirection: 'column', overflow: 'hidden', minHeight: 0 }}
+              style={{
+                borderRadius: '1.25rem',
+                padding: '1.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+                overflow: 'hidden',
+                minHeight: 0,
+                cursor: 'pointer',
+              }}
             >
               {/* Image / Placeholder */}
               {card.imagePath ? (
@@ -104,9 +135,13 @@ export default function DynamicsSection() {
                     display: 'flex',
                   }}
                 >
-                  <img
+                  <motion.img
                     src={card.imagePath}
                     alt={card.title}
+                    variants={{
+                      hover: { scale: 1.05 }
+                    }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
@@ -130,9 +165,16 @@ export default function DynamicsSection() {
 
               {/* Icon + tags */}
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10, marginBottom: '0.75rem' }}>
-                <div className="liquid-glass" style={{ width: 38, height: 38, borderRadius: '0.625rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <motion.div
+                  className="liquid-glass"
+                  variants={{
+                    hover: { rotate: 15, scale: 1.05 }
+                  }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  style={{ width: 38, height: 38, borderRadius: '0.625rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
+                >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d={card.iconPath} /></svg>
-                </div>
+                </motion.div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-end', gap: 4 }}>
                   {card.tags.map((tag) => (
                     <span key={tag} className="liquid-glass font-body text-white/80" style={{ borderRadius: 9999, padding: '3px 8px', fontSize: 10, whiteSpace: 'nowrap' }}>

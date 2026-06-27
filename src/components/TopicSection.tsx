@@ -24,6 +24,29 @@ const FADE_UP = (delay: number) => ({
   transition: { duration: 0.6, delay, ease: 'easeOut' as const },
 });
 
+const CARD_ANIMATION = (delay: number) => ({
+  initial: 'initial',
+  whileInView: 'animate',
+  whileHover: 'hover',
+  viewport: { once: true, amount: 0.1 },
+  variants: {
+    initial: { filter: 'blur(8px)', opacity: 0, y: 24 },
+    animate: {
+      filter: 'blur(0px)',
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay, ease: 'easeOut' as const }
+    },
+    hover: {
+      y: -8,
+      scale: 1.015,
+      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 255, 255, 0.05)',
+      transition: { duration: 0.3, ease: 'easeOut' as const }
+    }
+  }
+});
+
 export default function TopicSection({
   id,
   label,
@@ -69,7 +92,7 @@ export default function TopicSection({
         }}
       >
         {/* Header */}
-        <motion.div {...FADE_UP(0)} style={{ marginBottom: '1rem' }}>
+        <motion.div {...FADE_UP(0)} style={{ marginBottom: '1.5rem' }}>
           <p
             className="font-body text-white/60 text-sm"
             style={{ marginBottom: '0.5rem', letterSpacing: '0.05em' }}
@@ -108,7 +131,7 @@ export default function TopicSection({
           {cards.map((card, i) => (
             <motion.div
               key={card.title}
-              {...FADE_UP(0.1 + i * 0.08)}
+              {...CARD_ANIMATION(0.1 + i * 0.08)}
               className="liquid-glass"
               style={{
                 borderRadius: '1.25rem',
@@ -117,6 +140,7 @@ export default function TopicSection({
                 flexDirection: 'column',
                 overflow: 'hidden',
                 minHeight: 0,
+                cursor: 'pointer',
               }}
             >
               {/* Image / Placeholder */}
@@ -131,9 +155,13 @@ export default function TopicSection({
                     display: 'flex',
                   }}
                 >
-                  <img
+                  <motion.img
                     src={card.imagePath}
                     alt={card.title}
+                    variants={{
+                      hover: { scale: 1.05 }
+                    }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
@@ -157,14 +185,18 @@ export default function TopicSection({
 
               {/* Top row: icon + tags */}
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10, marginBottom: '0.75rem' }}>
-                <div
+                <motion.div
                   className="liquid-glass"
+                  variants={{
+                    hover: { rotate: 15, scale: 1.05 }
+                  }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
                   style={{ width: 38, height: 38, borderRadius: '0.625rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                     <path d={card.iconPath} />
                   </svg>
-                </div>
+                </motion.div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-end', gap: 4 }}>
                   {card.tags.map((tag) => (
                     <span

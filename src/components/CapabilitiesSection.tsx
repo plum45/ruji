@@ -29,6 +29,29 @@ const FADE_UP = (delay: number) => ({
   transition: { duration: 0.7, delay, ease: 'easeOut' as const },
 });
 
+const CARD_ANIMATION = (delay: number) => ({
+  initial: 'initial',
+  whileInView: 'animate',
+  whileHover: 'hover',
+  viewport: { once: true, amount: 0.15 },
+  variants: {
+    initial: { filter: 'blur(8px)', opacity: 0, y: 30 },
+    animate: {
+      filter: 'blur(0px)',
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, delay, ease: 'easeOut' as const }
+    },
+    hover: {
+      y: -8,
+      scale: 1.015,
+      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 255, 255, 0.05)',
+      transition: { duration: 0.3, ease: 'easeOut' as const }
+    }
+  }
+});
+
 export default function CapabilitiesSection() {
   return (
     <section
@@ -95,7 +118,7 @@ export default function CapabilitiesSection() {
           {CARDS.map((card, i) => (
             <motion.div
               key={card.title}
-              {...FADE_UP(0.15 + i * 0.1)}
+              {...CARD_ANIMATION(0.15 + i * 0.1)}
               className="liquid-glass"
               style={{
                 borderRadius: '1.25rem',
@@ -104,6 +127,7 @@ export default function CapabilitiesSection() {
                 flexDirection: 'column',
                 overflow: 'hidden',
                 minHeight: 0,
+                cursor: 'pointer',
               }}
             >
               {/* Image / Placeholder */}
@@ -118,9 +142,13 @@ export default function CapabilitiesSection() {
                     display: 'flex',
                   }}
                 >
-                  <img
+                  <motion.img
                     src={(card as any).imagePath}
                     alt={card.title}
+                    variants={{
+                      hover: { scale: 1.05 }
+                    }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
@@ -144,14 +172,18 @@ export default function CapabilitiesSection() {
               {/* Top row: icon + tags */}
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10, marginBottom: '0.75rem' }}>
                 {/* Icon box */}
-                <div
+                <motion.div
                   className="liquid-glass"
+                  variants={{
+                    hover: { rotate: 15, scale: 1.05 }
+                  }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
                   style={{ width: 38, height: 38, borderRadius: '0.625rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                     <path d={card.iconPath} />
                   </svg>
-                </div>
+                </motion.div>
 
                 {/* Tags */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-end', gap: 6, maxWidth: '70%' }}>
