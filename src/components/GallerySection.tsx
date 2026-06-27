@@ -38,12 +38,23 @@ function Card({ label, gradient }: { label: string; gradient: string }) {
         borderRadius: '1.25rem',
         overflow: 'hidden',
         position: 'relative',
-        boxShadow: '-10px 15px 30px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        boxShadow: '0 12px 32px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
       }}
     >
-      <div style={{ background: gradient, width: '100%', height: '100%', position: 'absolute', inset: 0 }} />
-      <div style={{ position: 'absolute', inset: 0, border: '2px dashed rgba(255,255,255,0.2)', margin: '10px', borderRadius: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <span className="font-body text-white/30 text-xs">Image Placeholder</span>
+      <div 
+        style={{ 
+          background: gradient, 
+          width: '100%', 
+          height: '100%', 
+          position: 'absolute', 
+          inset: 0,
+          opacity: 0.5, // Semi-transparent for colored glass look
+        }} 
+      />
+      <div style={{ position: 'absolute', inset: 0, border: '1.5px dashed rgba(255,255,255,0.25)', margin: '10px', borderRadius: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <span className="font-body text-white/40 text-xs font-medium">Image Preview</span>
       </div>
       <div
         style={{
@@ -51,11 +62,11 @@ function Card({ label, gradient }: { label: string; gradient: string }) {
           bottom: 0,
           left: 0,
           right: 0,
-          padding: '1rem',
-          background: 'linear-gradient(transparent, rgba(0,0,0,0.6))',
+          padding: '1.25rem 1rem',
+          background: 'linear-gradient(transparent, rgba(0,0,0,0.85))',
         }}
       >
-        <span className="font-heading text-white" style={{ fontStyle: 'italic', fontSize: '1.25rem' }}>
+        <span className="font-heading text-white font-medium" style={{ fontStyle: 'italic', fontSize: '1.35rem', letterSpacing: '-0.02em', textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
           {label}
         </span>
       </div>
@@ -83,12 +94,20 @@ export default function GallerySection() {
         src="https://www.dropbox.com/scl/fi/h5k8xh5dfoaq74ofehpne/3D_glass_sculpture_fluid_motion_202606271449.mp4?rlkey=1grlebvruxp2pqz628uf7ixh9&raw=1"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
       />
-      <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.65)', zIndex: 1 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.25)', zIndex: 1 }} />
 
       {/* Header */}
       <motion.div
         {...FADE_UP(0)}
-        style={{ position: 'relative', zIndex: 10, textAlign: 'center', marginBottom: '3rem', paddingLeft: '1rem', paddingRight: '1rem' }}
+        style={{ 
+          position: 'relative', 
+          zIndex: 10, 
+          textAlign: 'center', 
+          marginBottom: '2rem', 
+          paddingTop: '5.5rem', // Prevent Navbar overlapping
+          paddingLeft: '1rem', 
+          paddingRight: '1rem' 
+        }}
       >
         <p className="font-body text-white/80 text-sm" style={{ marginBottom: '1rem', letterSpacing: '0.05em' }}>
           // Gallery
