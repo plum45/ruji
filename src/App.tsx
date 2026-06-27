@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -143,74 +144,90 @@ const CILIA_CARDS: TopicCard[] = [
 function AppInner() {
   const { theme } = useTheme();
   const isLight = theme === 'light';
+  const [activeTab, setActiveTab] = useState('home');
 
   return (
     <>
       <ScrollProgress />
-      <Navbar />
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main>
-        <Hero />
-        <IntroSection />
-        <CapabilitiesSection />
-        <DynamicsSection />
+        {activeTab === 'home' && (
+          <>
+            <Hero />
+            <IntroSection />
+            <GallerySection />
+          </>
+        )}
 
-        {/* 5 new topic pages */}
-        <TopicSection
-          id="actin"
-          label="// Actin Networks"
-          heading={"Dynamic,\nnetworks."}
-          cards={ACTIN_CARDS}
-          bgColor={isLight ? '#eef2f7' : '#050a0f'}
-          overlayColor={isLight ? 'linear-gradient(135deg, rgba(200,220,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(0,20,40,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
-        />
+        {activeTab === 'cytoskeleton' && (
+          <>
+            <CapabilitiesSection />
+            <DynamicsSection />
+            <TopicSection
+              id="intermediate"
+              label="// Intermediate Filaments"
+              heading={"Resilience,\nunder stress."}
+              cards={IF_CARDS}
+              bgColor={isLight ? '#f7f4ee' : '#0a0804'}
+              overlayColor={isLight ? 'linear-gradient(135deg, rgba(255,240,200,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(40,20,0,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
+            />
+          </>
+        )}
 
-        <TopicSection
-          id="microtubules"
-          label="// Microtubule Dynamics"
-          heading={"Tracks &\npolarity."}
-          cards={MT_CARDS}
-          bgColor={isLight ? '#f0eef7' : '#080510'}
-          overlayColor={isLight ? 'linear-gradient(135deg, rgba(220,200,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(20,0,50,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
-        />
+        {activeTab === 'actin' && (
+          <TopicSection
+            id="actin"
+            label="// Actin Networks"
+            heading={"Dynamic,\nnetworks."}
+            cards={ACTIN_CARDS}
+            bgColor={isLight ? '#eef2f7' : '#050a0f'}
+            overlayColor={isLight ? 'linear-gradient(135deg, rgba(200,220,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(0,20,40,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
+          />
+        )}
 
-        <TopicSection
-          id="intermediate"
-          label="// Intermediate Filaments"
-          heading={"Resilience,\nunder stress."}
-          cards={IF_CARDS}
-          bgColor={isLight ? '#f7f4ee' : '#0a0804'}
-          overlayColor={isLight ? 'linear-gradient(135deg, rgba(255,240,200,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(40,20,0,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
-        />
+        {activeTab === 'microtubules' && (
+          <>
+            <TopicSection
+              id="microtubules"
+              label="// Microtubule Dynamics"
+              heading={"Tracks &\npolarity."}
+              cards={MT_CARDS}
+              bgColor={isLight ? '#f0eef7' : '#080510'}
+              overlayColor={isLight ? 'linear-gradient(135deg, rgba(220,200,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(20,0,50,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
+            />
+            <TopicSection
+              id="cilia"
+              label="// Cilia & Flagella"
+              heading={"Beating\nin sync."}
+              cards={CILIA_CARDS}
+              bgColor={isLight ? '#eef7f2' : '#050a08'}
+              overlayColor={isLight ? 'linear-gradient(135deg, rgba(200,255,220,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(0,25,15,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
+            />
+          </>
+        )}
 
-        <TopicSection
-          id="motors"
-          label="// Motor Proteins"
-          heading={"Directed,\nmovement."}
-          cards={MOTOR_CARDS}
-          bgColor={isLight ? '#eef6f7' : '#04080a'}
-          overlayColor={isLight ? 'linear-gradient(135deg, rgba(200,240,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(0,30,40,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
-        />
+        {activeTab === 'motors' && (
+          <TopicSection
+            id="motors"
+            label="// Motor Proteins"
+            heading={"Directed,\nmovement."}
+            cards={MOTOR_CARDS}
+            bgColor={isLight ? '#eef6f7' : '#04080a'}
+            overlayColor={isLight ? 'linear-gradient(135deg, rgba(200,240,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(0,30,40,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
+          />
+        )}
 
-        <TopicSection
-          id="motility"
-          label="// Cell Motility"
-          heading={"Migration\n& sensing."}
-          cards={MOTILITY_CARDS}
-          bgColor={isLight ? '#f4eef7' : '#08050a'}
-          overlayColor={isLight ? 'linear-gradient(135deg, rgba(240,200,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(25,0,40,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
-        />
-
-        <TopicSection
-          id="cilia"
-          label="// Cilia & Flagella"
-          heading={"Beating\nin sync."}
-          cards={CILIA_CARDS}
-          bgColor={isLight ? '#eef7f2' : '#050a08'}
-          overlayColor={isLight ? 'linear-gradient(135deg, rgba(200,255,220,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(0,25,15,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
-        />
-
-        <GallerySection />
+        {activeTab === 'motility' && (
+          <TopicSection
+            id="motility"
+            label="// Cell Motility"
+            heading={"Migration\n& sensing."}
+            cards={MOTILITY_CARDS}
+            bgColor={isLight ? '#f4eef7' : '#08050a'}
+            overlayColor={isLight ? 'linear-gradient(135deg, rgba(240,200,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' : 'linear-gradient(135deg, rgba(25,0,40,0.8) 0%, rgba(0,0,0,0.3) 100%)'}
+          />
+        )}
       </main>
 
       {/* Footer */}

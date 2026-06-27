@@ -4,16 +4,22 @@ import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
 
 const NAV_LINKS = [
-  { label: 'Home', href: '#hero' },
-  { label: 'Cytoskeleton', href: '#articles' },
-  { label: 'Actin', href: '#actin' },
-  { label: 'Microtubules', href: '#microtubules' },
-  { label: 'Motors', href: '#motors' },
-  { label: 'Motility', href: '#motility' },
-  { label: 'Gallery', href: '#gallery' },
+  { label: 'Home', tab: 'home', href: '#hero' },
+  { label: 'Cytoskeleton', tab: 'cytoskeleton', href: '#articles' },
+  { label: 'Actin', tab: 'actin', href: '#actin' },
+  { label: 'Microtubules', tab: 'microtubules', href: '#microtubules' },
+  { label: 'Motors', tab: 'motors', href: '#motors' },
+  { label: 'Motility', tab: 'motility', href: '#motility' },
+  { label: 'Gallery', tab: 'home', href: '#gallery' },
 ];
 
-export default function Navbar() {
+export default function Navbar({
+  activeTab,
+  setActiveTab,
+}: {
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+}) {
   const { theme, toggle } = useTheme();
   const isLight = theme === 'light';
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,10 +43,20 @@ export default function Navbar() {
 
   const hoverBg = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.1)';
 
-  const handleNav = (href: string) => {
+  const handleNav = (link: typeof NAV_LINKS[number]) => {
     setMenuOpen(false);
-    const target = document.querySelector(href);
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    setActiveTab(link.tab);
+    
+    setTimeout(() => {
+      if (link.href === '#gallery') {
+        const target = document.querySelector('#gallery');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   return (
@@ -59,26 +75,43 @@ export default function Navbar() {
             whileHover={{ scale: 1.08, backgroundColor: hoverBg }}
             whileTap={{ scale: 0.95 }}
             style={{ width: 36, height: 36, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', marginRight: 4 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => {
+              setActiveTab('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           >
             <span style={{ fontFamily: '"Instrument Serif", serif', fontStyle: 'italic', fontSize: '1.1rem', color: textColor }}>c</span>
           </motion.div>
 
           <div style={{ width: 1, height: 20, background: isLight ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.15)', marginRight: 4 }} />
 
-          {NAV_LINKS.map((link) => (
-            <motion.a
-              key={link.label}
-              href={link.href}
-              whileHover={{ scale: 1.05, backgroundColor: hoverBg }}
-              whileTap={{ scale: 0.95 }}
-              onClick={(e) => { e.preventDefault(); handleNav(link.href); }}
-              className="font-body font-medium text-sm transition-colors"
-              style={{ padding: '6px 10px', borderRadius: 9999, textDecoration: 'none', color: isLight ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.9)', whiteSpace: 'nowrap' }}
-            >
-              {link.label}
-            </motion.a>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = link.label === 'Gallery' ? false : activeTab === link.tab;
+            return (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                whileHover={{ scale: 1.05, backgroundColor: hoverBg }}
+                whileTap={{ scale: 0.95 }}
+                onClick={(e) => { e.preventDefault(); handleNav(link); }}
+                className="font-body font-medium text-sm transition-colors"
+                style={{
+                  padding: '6px 10px',
+                  borderRadius: 9999,
+                  textDecoration: 'none',
+                  color: isActive
+                    ? (isLight ? '#0284c7' : '#38bdf8')
+                    : (isLight ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.9)'),
+                  backgroundColor: isActive
+                    ? (isLight ? 'rgba(2, 132, 199, 0.08)' : 'rgba(56, 189, 248, 0.15)')
+                    : 'transparent',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {link.label}
+              </motion.a>
+            );
+          })}
 
           <div style={{ width: 1, height: 20, background: isLight ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.15)', marginLeft: 4, marginRight: 4 }} />
 
@@ -152,23 +185,31 @@ export default function Navbar() {
               ...glassStyle,
             }}
           >
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNav(link.href); }}
-                className="font-body font-medium text-sm"
-                style={{
-                  padding: '12px 16px',
-                  borderRadius: '0.75rem',
-                  textDecoration: 'none',
-                  color: textColor,
-                  display: 'block',
-                }}
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = link.label === 'Gallery' ? false : activeTab === link.tab;
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); handleNav(link); }}
+                  className="font-body font-medium text-sm"
+                  style={{
+                    padding: '12px 16px',
+                    borderRadius: '0.75rem',
+                    textDecoration: 'none',
+                    color: isActive
+                      ? (isLight ? '#0284c7' : '#38bdf8')
+                      : textColor,
+                    backgroundColor: isActive
+                      ? (isLight ? 'rgba(2, 132, 199, 0.08)' : 'rgba(56, 189, 248, 0.15)')
+                      : 'transparent',
+                    display: 'block',
+                  }}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>

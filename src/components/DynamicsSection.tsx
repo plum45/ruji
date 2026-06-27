@@ -3,6 +3,7 @@ import { useTheme } from '../ThemeContext';
 import { useSmoothMouse } from '../hooks/useSmoothMouse';
 import { useTransform } from 'framer-motion';
 import type { TopicCard } from './TopicSection';
+import { ReadMoreText } from './ReadMoreText';
 
 const CARDS: TopicCard[] = [
   {
@@ -201,9 +202,7 @@ export default function DynamicsSection() {
                   <h3 className="font-heading" style={{ fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.5vw, 1.75rem)', letterSpacing: '-0.02em', lineHeight: 1, margin: 0, color: isLight ? '#111' : '#fff' }}>
                     {card.title}
                   </h3>
-                  <p className="font-body text-sm" style={{ marginTop: '0.5rem', lineHeight: 1.6, color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)' }}>
-                    {card.body}
-                  </p>
+                  <ReadMoreText text={card.body} isLight={isLight} />
                 </div>
               </div>
             </motion.div>

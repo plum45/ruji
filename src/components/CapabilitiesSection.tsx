@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '../ThemeContext';
 import { useSmoothMouse } from '../hooks/useSmoothMouse';
 import { motion, useTransform } from 'framer-motion';
+import { ReadMoreText } from './ReadMoreText';
 
 const CARDS = [
   {
@@ -197,9 +198,7 @@ export default function CapabilitiesSection() {
                   >
                     {card.title}
                   </h3>
-                  <p className="font-body text-xs" style={{ marginTop: '0.35rem', lineHeight: 1.5, color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)' }}>
-                    {card.body}
-                  </p>
+                  <ReadMoreText text={card.body} isLight={isLight} />
                 </div>
               </motion.div>
             ))}

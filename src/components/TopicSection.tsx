@@ -1,5 +1,7 @@
 import { motion, useTransform } from 'framer-motion';
 import { useSmoothMouse } from '../hooks/useSmoothMouse';
+import { useTheme } from '../ThemeContext';
+import { ReadMoreText } from './ReadMoreText';
 
 export interface TopicCard {
   tags: string[];
@@ -54,6 +56,8 @@ export default function TopicSection({
   bgColor = '#000',
   overlayColor = 'rgba(0,0,0,0.3)',
 }: TopicSectionProps) {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   const headingLines = heading.split('\n');
 
   // Mouse tilt variables
@@ -233,12 +237,7 @@ export default function TopicSection({
                 >
                   {card.title}
                 </h3>
-                <p
-                  className="font-body font-light text-white/80 text-xs"
-                  style={{ marginTop: '0.5rem', lineHeight: 1.55, maxWidth: '30ch' }}
-                >
-                  {card.body}
-                </p>
+                <ReadMoreText text={card.body} isLight={isLight} />
               </div>
             </motion.div>
           ))}
