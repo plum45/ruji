@@ -31,6 +31,8 @@ html, body, section, nav, footer {
     font-family: 'Barlow', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    font-optical-sizing: auto;
     margin: 0;
     padding: 0;
   }

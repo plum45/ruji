@@ -6,6 +6,13 @@ export function ReadMoreText({ text, isLight }: { text: string; isLight: boolean
   // Consider text long if it exceeds 70 characters (approx 1.5 - 2 lines in Thai)
   const isLong = text.length > 70;
 
+  const sharpTextStyle = {
+    letterSpacing: '0.01em',
+    fontFeatureSettings: '"liga" 1, "kern" 1',
+    WebkitFontSmoothing: 'antialiased',
+    textRendering: 'geometricPrecision' as const,
+  };
+
   if (!isLong) {
     return (
       <p
@@ -14,6 +21,7 @@ export function ReadMoreText({ text, isLight }: { text: string; isLight: boolean
           marginTop: '0.35rem',
           lineHeight: 1.6,
           color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)',
+          ...sharpTextStyle,
         }}
       >
         {text}
@@ -33,13 +41,14 @@ export function ReadMoreText({ text, isLight }: { text: string; isLight: boolean
           fontSize: '0.75rem',
           color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)',
           paddingRight: expanded ? '6px' : '0px',
+          ...sharpTextStyle,
         }}
       >
         {text}
       </div>
       <button
         onClick={(e) => {
-          e.stopPropagation(); // Stop click from triggering parent card click events
+          e.stopPropagation();
           setExpanded(!expanded);
         }}
         className="font-body font-semibold hover:underline"
