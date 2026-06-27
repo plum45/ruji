@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import IntroSection from './components/IntroSection';
 import GallerySection from './components/GallerySection';
+import CapabilitiesSection from './components/CapabilitiesSection';
+import DynamicsSection from './components/DynamicsSection';
 import TopicSection, { type TopicCard } from './components/TopicSection';
 import { ThemeProvider, useTheme } from './ThemeContext';
 
@@ -300,13 +302,17 @@ function AppInner() {
 
         {/* ── A: Cytoskeletal Components ── */}
         {activeTab === 'overview' && (
-          <TopicSection
-            id="overview"
-            label="// Cytoskeletal Components"
-            heading={"The building\nblocks."}
-            cards={OVERVIEW_CARDS}
-            {...t('overview')}
-          />
+          <>
+            <CapabilitiesSection />
+            <DynamicsSection />
+            <TopicSection
+              id="overview"
+              label="// Cytoskeletal Components"
+              heading={"The building\nblocks."}
+              cards={OVERVIEW_CARDS}
+              {...t('overview')}
+            />
+          </>
         )}
 
         {/* ── B: Microfilaments ── */}
