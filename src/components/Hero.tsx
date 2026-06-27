@@ -9,34 +9,6 @@ const FADE_UP = (delay: number) => ({
   transition: { duration: 0.7, delay, ease: 'easeOut' as const },
 });
 
-const STATS = [
-  {
-    icon: (
-      // Clock icon (SVG outline)
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    ),
-    number: '50+',
-    label: 'Cell Types',
-  },
-  {
-    icon: (
-      // Globe icon (SVG outline)
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <line x1="2" y1="12" x2="22" y2="12" />
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-      </svg>
-    ),
-    number: '3',
-    label: 'Filament Systems',
-  },
-];
-
-const PARTNERS = ['BioSys', 'CellTech', 'CytoLab', 'Kinesin', 'Myosin'];
-
 export default function Hero() {
   return (
     <section
@@ -136,56 +108,7 @@ export default function Hero() {
               <Play size={14} fill="currentColor" />
             </a>
           </motion.div>
-
-          {/* Stats */}
-          <motion.div {...FADE_UP(1.3)}
-            style={{ display: 'flex', alignItems: 'stretch', gap: 16, marginTop: '2rem', flexWrap: 'wrap', justifyContent: 'flex-start' }}
-          >
-            {STATS.map((s) => (
-              <div
-                key={s.label}
-                className="liquid-glass"
-                style={{ borderRadius: '1.25rem', padding: '20px', width: 200, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 12 }}
-              >
-                {s.icon}
-                <div>
-                  <div
-                    className="font-heading text-white"
-                    style={{ fontStyle: 'italic', fontSize: '2.5rem', letterSpacing: '-0.04em', lineHeight: 1 }}
-                  >
-                    {s.number}
-                  </div>
-                  <div className="font-body font-light text-white text-xs" style={{ marginTop: 6 }}>
-                    {s.label}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
         </div>
-
-        {/* Partners strip */}
-        <motion.div {...FADE_UP(1.4)}
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 16, paddingBottom: '2rem', paddingLeft: 'clamp(2rem, 5vw, 8rem)', paddingRight: '2rem' }}
-        >
-          <div
-            className="liquid-glass font-body font-medium text-white text-xs"
-            style={{ borderRadius: 9999, padding: '4px 14px' }}
-          >
-            Supported by leading molecular biology research centers
-          </div>
-          <div style={{ display: 'flex', gap: 'clamp(2rem, 4vw, 4rem)', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
-            {PARTNERS.map((name) => (
-              <span
-                key={name}
-                className="font-heading text-white"
-                style={{ fontStyle: 'italic', fontSize: 'clamp(1.25rem, 3vw, 1.75rem)', letterSpacing: '-0.02em' }}
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
