@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Marquee from './Marquee';
 import FadingVideo from './FadingVideo';
+import { useTheme } from '../ThemeContext';
 
 const FADE_UP = (delay: number) => ({
   initial: { filter: 'blur(8px)', opacity: 0, y: 30 },
@@ -75,6 +76,9 @@ function Card({ label, gradient }: { label: string; gradient: string }) {
 }
 
 export default function GallerySection() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   return (
     <section
       id="gallery"
@@ -82,7 +86,7 @@ export default function GallerySection() {
       style={{
         position: 'relative',
         minHeight: '100svh',
-        background: '#000',
+        background: isLight ? '#fff' : '#000',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
@@ -94,7 +98,14 @@ export default function GallerySection() {
         src="https://www.dropbox.com/scl/fi/h5k8xh5dfoaq74ofehpne/3D_glass_sculpture_fluid_motion_202606271449.mp4?rlkey=1grlebvruxp2pqz628uf7ixh9&raw=1"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
       />
-      <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.25)', zIndex: 1 }} />
+      <div 
+        style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          background: isLight ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.35)', 
+          zIndex: 1 
+        }} 
+      />
 
       {/* Header */}
       <motion.div
@@ -109,17 +120,25 @@ export default function GallerySection() {
           paddingRight: '1rem' 
         }}
       >
-        <p className="font-body text-white/80 text-sm" style={{ marginBottom: '1rem', letterSpacing: '0.05em' }}>
+        <p 
+          className="font-body text-sm" 
+          style={{ 
+            marginBottom: '1rem', 
+            letterSpacing: '0.05em',
+            color: isLight ? 'rgba(0, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.8)'
+          }}
+        >
           // Gallery
         </p>
         <h2
-          className="font-heading text-white"
+          className="font-heading"
           style={{
             fontStyle: 'italic',
             fontSize: 'clamp(2.5rem, 7vw, 5rem)',
             lineHeight: 0.9,
             letterSpacing: '-0.03em',
             margin: 0,
+            color: isLight ? '#111' : '#fff'
           }}
         >
           Visual explorations
