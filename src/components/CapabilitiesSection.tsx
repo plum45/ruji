@@ -56,13 +56,13 @@ export default function CapabilitiesSection() {
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
-  // Detect iOS/Safari to serve transparent WebP instead of WebM
-  const [isSafariOrIOS, setIsSafariOrIOS] = useState(false);
+  // Detect mobile devices/Safari to serve transparent WebP instead of WebM
+  const [isMobileOrSafari, setIsMobileOrSafari] = useState(false);
   useEffect(() => {
     const ua = navigator.userAgent.toLowerCase();
-    const isIOS = /ipad|iphone|ipod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isMobile = /mobi|android|iphone|ipad|ipod/.test(ua);
     const isSafari = ua.includes('safari') && !ua.includes('chrome') && !ua.includes('android');
-    setIsSafariOrIOS(isIOS || isSafari);
+    setIsMobileOrSafari(isMobile || isSafari);
   }, []);
 
   // Mouse tilt variables
@@ -71,7 +71,7 @@ export default function CapabilitiesSection() {
   const rotateY = useTransform(x, [-0.5, 0.5], [-4, 4]); // subtle horizontal tilt
 
   const orbX = useTransform(x, [-0.5, 0.5], [30, -30]); // moves opposite to mouse
-  const orbY = useTransform(y, [-0.5, 0.5], [30, -30]);
+  const bgOrbY = useTransform(y, [-0.5, 0.5], [30, -30]);
 
   return (
     <section
@@ -89,8 +89,8 @@ export default function CapabilitiesSection() {
       }}
     >
       {/* Ambient background glow orbs */}
-      <motion.div className="glow-orb orb-1" style={{ top: '10%', left: '-5%', x: orbX, y: orbY }} />
-      <motion.div className="glow-orb orb-2" style={{ bottom: '15%', right: '-5%', x: orbX, y: orbY }} />
+      <motion.div className="glow-orb orb-1" style={{ top: '10%', left: '-5%', x: orbX, y: bgOrbY }} />
+      <motion.div className="glow-orb orb-2" style={{ bottom: '15%', right: '-5%', x: orbX, y: bgOrbY }} />
 
       {/* Content */}
       <motion.div
@@ -237,7 +237,7 @@ export default function CapabilitiesSection() {
                   : 'drop-shadow(0 30px 45px rgba(0, 0, 0, 0.55)) drop-shadow(0 15px 30px rgba(0, 229, 255, 0.15))',
               }}
             >
-              {isSafariOrIOS ? (
+              {isMobileOrSafari ? (
                 <img
                   src="/video_transparent.webp"
                   alt="Cytoskeleton 3D Model"

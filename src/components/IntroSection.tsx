@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useTransform } from 'framer-motion';
 import { useTheme } from '../ThemeContext';
 import { useSmoothMouse } from '../hooks/useSmoothMouse';
@@ -14,6 +14,15 @@ export default function IntroSection() {
   const { theme } = useTheme();
   const isLight = theme === 'light';
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Detect mobile devices/Safari to serve transparent WebP instead of WebM
+  const [isMobileOrSafari, setIsMobileOrSafari] = useState(false);
+  useEffect(() => {
+    const ua = navigator.userAgent.toLowerCase();
+    const isMobile = /mobi|android|iphone|ipad|ipod/.test(ua);
+    const isSafari = ua.includes('safari') && !ua.includes('chrome') && !ua.includes('android');
+    setIsMobileOrSafari(isMobile || isSafari);
+  }, []);
 
   // Mouse parallax variables
   const { x, y } = useSmoothMouse();
@@ -90,16 +99,25 @@ export default function IntroSection() {
             transition={{ duration: 1.2, ease: 'easeOut' }}
           >
             <div className="orb-wrapper" style={{ width: '100%', maxWidth: '400px', height: '400px' }}>
-              <video
-                className="glassy-orb"
-                autoPlay
-                loop
-                muted
-                playsInline
-                style={{ width: '100%', height: '100%' }}
-              >
-                <source src="https://future.co/images/homepage/glassy-orb/orb-purple.webm" type="video/webm" />
-              </video>
+              {isMobileOrSafari ? (
+                <img
+                  className="glassy-orb"
+                  src="/orb-purple.webp"
+                  alt="Glassy Orb"
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                />
+              ) : (
+                <video
+                  className="glassy-orb"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{ width: '100%', height: '100%' }}
+                >
+                  <source src="/orb-purple.webm" type="video/webm" />
+                </video>
+              )}
               <div className="orb-overlay" />
             </div>
           </motion.div>
