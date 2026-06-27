@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { ArrowUpRight, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
 
@@ -13,20 +12,8 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const [hidden, setHidden] = useState(false);
-  const lastY = { current: 0 };
   const { theme, toggle } = useTheme();
   const isLight = theme === 'light';
-
-  useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setHidden(y > lastY.current && y > 80);
-      lastY.current = y;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   const textColor = isLight ? '#111' : '#fff';
   const glassStyle = isLight
@@ -46,13 +33,7 @@ export default function Navbar() {
       };
 
   return (
-    <nav
-      className="fixed top-4 left-0 right-0 z-50 flex items-center justify-between px-8 lg:px-16 pointer-events-none"
-      style={{
-        transform: hidden ? 'translateY(-140%)' : 'translateY(0)',
-        transition: 'transform 0.4s cubic-bezier(0.4,0,0.2,1)',
-      }}
-    >
+    <nav className="fixed top-4 left-0 right-0 z-50 flex items-center justify-between px-8 lg:px-16 pointer-events-none">
       {/* Logo */}
       <div
         className={isLight ? 'pointer-events-auto flex items-center justify-center' : 'liquid-glass pointer-events-auto flex items-center justify-center'}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import FadingVideo from './FadingVideo';
+import { useTheme } from '../ThemeContext';
 
 const CARDS = [
   {
@@ -53,24 +53,21 @@ const CARD_ANIMATION = (delay: number) => ({
 });
 
 export default function CapabilitiesSection() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   return (
     <section
       id="topics"
       style={{
         position: 'relative',
         height: '100svh',
-        background: '#000',
+        background: isLight ? '#f5f4f0' : '#000',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
       }}
     >
-      {/* Background video — full bleed */}
-      <FadingVideo
-        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_094631_d30ab262-45ee-4b7d-99f3-5d5848c8ef13.mp4"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
-      />
-
       {/* Content */}
       <div
         style={{
@@ -86,19 +83,20 @@ export default function CapabilitiesSection() {
         {/* Header */}
         <motion.div {...FADE_UP(0)} style={{ marginBottom: '1rem' }}>
           <p
-            className="font-body text-white/60 text-sm"
-            style={{ marginBottom: '0.5rem', letterSpacing: '0.05em' }}
+            className="font-body text-sm"
+            style={{ marginBottom: '0.5rem', letterSpacing: '0.05em', color: isLight ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.6)' }}
           >
             // Cellular Anatomy
           </p>
           <h2
-            className="font-heading text-white"
+            className="font-heading"
             style={{
               fontStyle: 'italic',
               fontSize: 'clamp(2.25rem, 6vw, 4.5rem)',
               lineHeight: 0.9,
               letterSpacing: '-0.03em',
               margin: 0,
+              color: isLight ? '#111' : '#fff',
             }}
           >
             Structural,<br />integrity.
@@ -156,17 +154,17 @@ export default function CapabilitiesSection() {
                 <div 
                   style={{
                     flex: 1,
-                    background: 'rgba(255,255,255,0.04)',
+                    background: isLight ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.04)',
                     borderRadius: '0.75rem',
                     marginBottom: '0.875rem',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    border: '1px dashed rgba(255,255,255,0.15)',
+                    border: isLight ? '1px dashed rgba(0,0,0,0.1)' : '1px dashed rgba(255,255,255,0.15)',
                     minHeight: 80,
                   }}
                 >
-                  <span className="font-body text-white/25 text-xs">Image Placeholder</span>
+                  <span className="font-body text-xs" style={{ color: isLight ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.25)' }}>Image Placeholder</span>
                 </div>
               )}
               {/* Top row: icon + tags */}
@@ -180,7 +178,7 @@ export default function CapabilitiesSection() {
                   transition={{ duration: 0.3, ease: 'easeOut' }}
                   style={{ width: 38, height: 38, borderRadius: '0.625rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill={isLight ? "#111" : "white"}>
                     <path d={card.iconPath} />
                   </svg>
                 </motion.div>
@@ -205,15 +203,12 @@ export default function CapabilitiesSection() {
               {/* Bottom: title + body */}
               <div style={{ marginTop: '1.5rem' }}>
                 <h3
-                  className="font-heading text-white"
-                  style={{ fontStyle: 'italic', fontSize: 'clamp(1.75rem, 3vw, 2.25rem)', letterSpacing: '-0.03em', lineHeight: 1, margin: 0 }}
+                  className="font-heading"
+                  style={{ fontStyle: 'italic', fontSize: 'clamp(1.75rem, 3vw, 2.25rem)', letterSpacing: '-0.03em', lineHeight: 1, margin: 0, color: isLight ? '#111' : '#fff' }}
                 >
                   {card.title}
                 </h3>
-                <p
-                  className="font-body font-light text-white/90 text-sm"
-                  style={{ marginTop: '0.75rem', lineHeight: 1.6, maxWidth: '32ch' }}
-                >
+                <p className="font-body text-sm" style={{ marginTop: '0.75rem', lineHeight: 1.6, color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)' }}>
                   {card.body}
                 </p>
               </div>

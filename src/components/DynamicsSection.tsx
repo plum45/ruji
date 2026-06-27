@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import FadingVideo from './FadingVideo';
+import { useTheme } from '../ThemeContext';
 import type { TopicCard } from './TopicSection';
 
 const CARDS: TopicCard[] = [
@@ -54,25 +54,21 @@ const CARD_ANIMATION = (delay: number) => ({
 });
 
 export default function DynamicsSection() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   return (
     <section
       id="articles"
       style={{
         position: 'relative',
         height: '100svh',
-        background: '#000',
+        background: isLight ? '#f5f4f0' : '#000',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
       }}
     >
-      {/* Background video */}
-      <FadingVideo
-        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_094631_d30ab262-45ee-4b7d-99f3-5d5848c8ef13.mp4"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
-      />
-      <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.55)', zIndex: 1 }} />
-
       {/* Content */}
       <div
         style={{
@@ -87,12 +83,12 @@ export default function DynamicsSection() {
       >
         {/* Header */}
         <motion.div {...FADE_UP(0)} style={{ marginBottom: '1.5rem' }}>
-          <p className="font-body text-white/60 text-sm" style={{ marginBottom: '0.5rem', letterSpacing: '0.05em' }}>
+          <p className="font-body text-sm" style={{ marginBottom: '0.5rem', letterSpacing: '0.05em', color: isLight ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.6)' }}>
             // Dynamic Processes
           </p>
           <h2
-            className="font-heading text-white"
-            style={{ fontStyle: 'italic', fontSize: 'clamp(2.25rem, 6vw, 4.5rem)', lineHeight: 0.9, letterSpacing: '-0.03em', margin: 0 }}
+            className="font-heading"
+            style={{ fontStyle: 'italic', fontSize: 'clamp(2.25rem, 6vw, 4.5rem)', lineHeight: 0.9, letterSpacing: '-0.03em', margin: 0, color: isLight ? '#111' : '#fff' }}
           >
             Visualizing,<br />motion.
           </h2>
@@ -136,11 +132,9 @@ export default function DynamicsSection() {
                   }}
                 >
                   <motion.img
-                    src={card.imagePath}
+                    src={(card as any).imagePath}
                     alt={card.title}
-                    variants={{
-                      hover: { scale: 1.05 }
-                    }}
+                    variants={{ hover: { scale: 1.05 } }}
                     transition={{ duration: 0.4, ease: 'easeOut' }}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
@@ -149,49 +143,50 @@ export default function DynamicsSection() {
                 <div
                   style={{
                     flex: 1,
-                    background: 'rgba(255,255,255,0.04)',
+                    background: isLight ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.04)',
                     borderRadius: '0.75rem',
                     marginBottom: '0.875rem',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    border: '1px dashed rgba(255,255,255,0.15)',
+                    border: isLight ? '1px dashed rgba(0,0,0,0.1)' : '1px dashed rgba(255,255,255,0.15)',
                     minHeight: 80,
                   }}
                 >
-                  <span className="font-body text-white/25 text-xs">Image Placeholder</span>
+                  <span className="font-body text-xs" style={{ color: isLight ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.25)' }}>Image Placeholder</span>
                 </div>
               )}
 
-              {/* Icon + tags */}
-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10, marginBottom: '0.75rem' }}>
-                <motion.div
-                  className="liquid-glass"
-                  variants={{
-                    hover: { rotate: 15, scale: 1.05 }
-                  }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  style={{ width: 38, height: 38, borderRadius: '0.625rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d={card.iconPath} /></svg>
-                </motion.div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-end', gap: 4 }}>
-                  {card.tags.map((tag) => (
-                    <span key={tag} className="liquid-glass font-body text-white/80" style={{ borderRadius: 9999, padding: '3px 8px', fontSize: 10, whiteSpace: 'nowrap' }}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: '0.75rem' }}>
+                {card.tags.map(tag => (
+                  <span
+                    key={tag}
+                    className="liquid-glass font-body"
+                    style={{ borderRadius: 9999, padding: '4px 10px', fontSize: 11, whiteSpace: 'nowrap', color: isLight ? '#111' : 'rgba(255,255,255,0.9)', background: isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.1)' }}
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
 
-              {/* Title + body */}
-              <div>
-                <h3 className="font-heading text-white" style={{ fontStyle: 'italic', fontSize: 'clamp(1.35rem, 2.5vw, 1.9rem)', letterSpacing: '-0.03em', lineHeight: 1, margin: 0 }}>
-                  {card.title}
-                </h3>
-                <p className="font-body font-light text-white/80 text-xs" style={{ marginTop: '0.5rem', lineHeight: 1.55, maxWidth: '30ch' }}>
-                  {card.body}
-                </p>
+              <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                <motion.div
+                  variants={{ hover: { rotate: 15, scale: 1.05 } }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  style={{ width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 4 }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill={isLight ? "#111" : "white"}>
+                    <path d={card.iconPath} />
+                  </svg>
+                </motion.div>
+                <div>
+                  <h3 className="font-heading" style={{ fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.5vw, 1.75rem)', letterSpacing: '-0.02em', lineHeight: 1, margin: 0, color: isLight ? '#111' : '#fff' }}>
+                    {card.title}
+                  </h3>
+                  <p className="font-body text-sm" style={{ marginTop: '0.5rem', lineHeight: 1.6, color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)' }}>
+                    {card.body}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}
