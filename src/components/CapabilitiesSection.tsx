@@ -121,9 +121,19 @@ export default function CapabilitiesSection() {
         </motion.div>
 
         {/* Two-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center flex-1 min-h-0">
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))',
+            gap: '2.5rem',
+            alignItems: 'center',
+            flex: 1,
+            minHeight: 0,
+            width: '100%',
+          }}
+        >
           {/* Left Column: Squeezed Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1 }}>
             {CARDS.map((card, i) => (
               <motion.div
                 key={card.title}
@@ -186,7 +196,17 @@ export default function CapabilitiesSection() {
           </div>
 
           {/* Right Column: Transparent Video */}
-          <div className="lg:col-span-7 flex justify-center items-center relative w-full h-full min-h-[300px] lg:min-h-[450px]">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              position: 'relative',
+              width: '100%',
+              height: '100%',
+              minHeight: '300px',
+            }}
+          >
             <video
               autoPlay
               loop
