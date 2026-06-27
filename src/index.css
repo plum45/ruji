@@ -299,6 +299,13 @@ html, body, section, nav, footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  /* ย้ายและบังคับให้ผสมสีที่ระดับกล่องควบคุม เพื่อแก้ปัญหาเบราว์เซอร์ Chrome/Edge บน Windows ไม่เรนเดอร์โปร่งแสง */
+  mix-blend-mode: screen;
+  
+  /* บังคับสร้าง Hardware Acceleration layer เพื่อแก้ไขบั๊กพื้นหลังดำ */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 /* ตัวลูกกลมๆ แก้วเหลว (The Glassy Orb) */
@@ -308,7 +315,7 @@ html, body, section, nav, footer {
   object-fit: contain;
   
   /* 1. ขยายขนาดให้ Massive ตามสเปก scale-125 */
-  transform: scale(1.25); 
+  transform: scale(1.25) translate3d(0, 0, 0); 
   
   /* 2. เจาะพื้นหลังสีดำออกให้เหลือแต่ตัวแก้วใสๆ */
   mix-blend-mode: screen; 
