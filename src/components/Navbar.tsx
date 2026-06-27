@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { ArrowUpRight, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
 
@@ -32,17 +33,22 @@ export default function Navbar() {
         boxShadow: '0 4px 24px rgba(0,0,0,0.3)',
       };
 
+  const hoverBg = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.1)';
+
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 flex items-center justify-between px-4 lg:px-8 pointer-events-none">
       {/* Logo */}
-      <div
+      <motion.div
+        whileHover={{ scale: 1.05, backgroundColor: hoverBg }}
+        whileTap={{ scale: 0.95 }}
         className={isLight ? 'pointer-events-auto flex items-center justify-center' : 'liquid-glass pointer-events-auto flex items-center justify-center'}
-        style={{ width: 48, height: 48, borderRadius: '50%', cursor: 'default', ...glassStyle }}
+        style={{ width: 48, height: 48, borderRadius: '50%', cursor: 'pointer', ...glassStyle }}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         <span style={{ fontFamily: '"Instrument Serif", serif', fontStyle: 'italic', fontSize: '1.25rem', color: textColor }}>
           c
         </span>
-      </div>
+      </motion.div>
 
       {/* Center pill nav */}
       <div
@@ -50,9 +56,11 @@ export default function Navbar() {
         style={{ borderRadius: 9999, padding: '6px', ...glassStyle }}
       >
         {NAV_LINKS.map((link) => (
-          <a
+          <motion.a
             key={link.label}
             href={link.href}
+            whileHover={{ scale: 1.05, backgroundColor: hoverBg }}
+            whileTap={{ scale: 0.95 }}
             onClick={(e) => {
               const target = document.querySelector(link.href);
               if (target) {
@@ -69,10 +77,12 @@ export default function Navbar() {
             }}
           >
             {link.label}
-          </a>
+          </motion.a>
         ))}
-        <a
+        <motion.a
           href="#footer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={(e) => {
             const target = document.querySelector('#footer');
             if (target) {
@@ -92,11 +102,13 @@ export default function Navbar() {
         >
           Read Now
           <ArrowUpRight size={14} />
-        </a>
+        </motion.a>
       </div>
 
       {/* Right: theme toggle */}
-      <button
+      <motion.button
+        whileHover={{ scale: 1.05, rotate: 15 }}
+        whileTap={{ scale: 0.95 }}
         onClick={toggle}
         aria-label="Toggle theme"
         className="pointer-events-auto flex items-center justify-center"
@@ -117,7 +129,7 @@ export default function Navbar() {
           ? <Moon size={18} color="#111" />
           : <Sun size={18} color="#fff" />
         }
-      </button>
+      </motion.button>
     </nav>
   );
 }
