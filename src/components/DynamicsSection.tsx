@@ -9,13 +9,13 @@ const CARDS: TopicCard[] = [
     tags: ['Microfilaments', 'Motility', 'Shape', 'Actin'],
     iconPath: 'M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21H5Zm1-4h12l-3.75-5-3 4L9 13l-3 4Z',
     title: 'Actin Filaments',
-    body: 'Microfilaments providing mechanical support, determining cell shape, and enabling directed cell movement.',
+    body: 'เป็นเส้นใยโครงร่างเซลล์ที่มีขนาดเล็กที่สุด (เส้นผ่านศูนย์กลางประมาณ 5-9 นาโนเมตร) โครงสร้างเกิดจากโปรตีนแอกทิน (Actin) ต่อกันเป็นสายยาวและพันกันเป็นเกลียวคู่',
   },
   {
     tags: ['Transport', 'Mitosis', 'Tubulin', 'Rigid'],
     iconPath: 'M4 6.47 5.76 10H20v8H4V6.47M22 4h-4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.89-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4Z',
     title: 'Microtubules',
-    body: 'Rigid hollow rods functioning as tracks for intracellular transport and orchestrating chromosome separation.',
+    body: 'เป็นหลอดกลวงโปรตีนทิวบูลินขนาดใหญ่ที่สุด มีคุณสมบัติยืดหดได้รวดเร็ว (Dynamic instability) โดยสร้างจากเซนโทรโซมหน้าที่หลัก: ช่วยค้ำจุนเซลล์, เป็นรางให้โปรตีนมอเตอร์ขนส่งสาร, สร้างเส้นใยสปินเดิลดึงแยกโครโมโซม และเป็นแกนกลางของซีเลียและแฟลเจลลา',
   },
   {
     tags: ['ATP Driven', 'Kinesin', 'Dynein', 'Myosin'],
