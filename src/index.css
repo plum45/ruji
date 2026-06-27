@@ -279,3 +279,44 @@ html, body, section, nav, footer {
 [data-theme="light"] .scroll-bar {
   background: linear-gradient(90deg, #111 0%, rgba(0,0,0,0.3) 100%);
 }
+
+/* ─── Glassy Orb Responsive Layout ────────────────────────────── */
+:root {
+  --orb-display: none;
+}
+@media (min-width: 1024px) {
+  :root {
+    --orb-display: flex;
+  }
+}
+
+/* กล่องควบคุมขนาดและการจัดตำแหน่ง */
+.orb-wrapper {
+  position: relative;
+  width: 480px;  /* สามารถปรับขนาดความกว้างตามที่ต้องการจัดหน้าเว็บได้ */
+  height: 480px; /* สามารถปรับขนาดความสูงตามที่ต้องการจัดหน้าเว็บได้ */
+  overflow: visible; /* ยอมให้ตัว Orb ขยายล้นขอบกล่องออกมาได้เล็กน้อยตามสเปก */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ตัวลูกกลมๆ แก้วเหลว (The Glassy Orb) */
+.glassy-orb {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  
+  /* 1. ขยายขนาดให้ Massive ตามสเปก scale-125 */
+  transform: scale(1.25); 
+  
+  /* 2. เจาะพื้นหลังสีดำออกให้เหลือแต่ตัวแก้วใสๆ */
+  mix-blend-mode: screen; 
+  
+  /* 3. ปรับสีจากม่วงเป็น "น้ำเงินไฟฟ้า" (Electric Brand Blue) ตามสูตร contrast/brightness */
+  filter: hue-rotate(-55deg) saturate(250%) brightness(1.2) contrast(1.1);
+  
+  /* ป้องกันการกระตุกและช่วยให้การเรนเดอร์ภาพสมูทขึ้น */
+  will-change: filter, transform;
+}
+
