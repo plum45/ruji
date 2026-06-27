@@ -61,7 +61,9 @@ export default function DynamicsSection() {
       style={{
         position: 'relative',
         height: '100svh',
-        background: isLight ? '#f5f4f0' : '#000',
+        background: isLight
+          ? 'linear-gradient(180deg, #eae8e3 0%, #f5f4f0 100%)'
+          : 'linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%)',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
