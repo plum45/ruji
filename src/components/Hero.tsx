@@ -31,6 +31,17 @@ export default function Hero() {
         playbackRate={0.75}
       />
 
+      {/* Dark Vignette Overlay for Text Readability */}
+      <div 
+        style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          background: 'linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.15) 100%), linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%)', 
+          zIndex: 1,
+          pointerEvents: 'none'
+        }} 
+      />
+
       {/* z-10 content layer */}
       <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', flex: 1 }}>
 
@@ -64,7 +75,7 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Headline — BlurText */}
+          {/* Headline — BlurText with shadow */}
           <BlurText
             text="Cytoskeleton and Motility"
             className="font-heading text-white"
@@ -76,13 +87,21 @@ export default function Hero() {
               letterSpacing: '-0.04em',
               marginBottom: '1rem',
               justifyContent: 'flex-start',
+              textShadow: '0 4px 30px rgba(0,0,0,0.65), 0 2px 10px rgba(0,0,0,0.85)',
             } as React.CSSProperties}
           />
 
-          {/* Subheading */}
+          {/* Subheading with shadow */}
           <motion.p {...FADE_UP(0.8)}
             className="font-body font-light text-white"
-            style={{ fontSize: 'clamp(0.875rem, 2vw, 1rem)', maxWidth: 520, lineHeight: 1.6, marginTop: '1rem', marginBottom: 0 }}
+            style={{ 
+              fontSize: 'clamp(0.875rem, 2vw, 1rem)', 
+              maxWidth: 520, 
+              lineHeight: 1.6, 
+              marginTop: '1rem', 
+              marginBottom: 0,
+              textShadow: '0 2px 15px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.85)',
+            }}
           >
             Exploring the intricate network of protein filaments that organize the cell and drive its dynamic movements.
           </motion.p>
