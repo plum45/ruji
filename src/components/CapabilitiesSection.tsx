@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
 import { useTheme } from '../ThemeContext';
+import { useSmoothMouse } from '../hooks/useSmoothMouse';
+import { motion, useTransform } from 'framer-motion';
 
 const CARDS = [
   {
@@ -54,6 +55,14 @@ export default function CapabilitiesSection() {
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
+  // Mouse tilt variables
+  const { x, y } = useSmoothMouse();
+  const rotateX = useTransform(y, [-0.5, 0.5], [4, -4]); // subtle vertical tilt
+  const rotateY = useTransform(x, [-0.5, 0.5], [-4, 4]); // subtle horizontal tilt
+
+  const orbX = useTransform(x, [-0.5, 0.5], [30, -30]); // moves opposite to mouse
+  const orbY = useTransform(y, [-0.5, 0.5], [30, -30]);
+
   return (
     <section
       id="topics"
@@ -66,14 +75,15 @@ export default function CapabilitiesSection() {
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
+        perspective: 1200, // Enable 3D space
       }}
     >
       {/* Ambient background glow orbs */}
-      <div className="glow-orb orb-1" style={{ top: '10%', left: '-5%' }} />
-      <div className="glow-orb orb-2" style={{ bottom: '15%', right: '-5%' }} />
+      <motion.div className="glow-orb orb-1" style={{ top: '10%', left: '-5%', x: orbX, y: orbY }} />
+      <motion.div className="glow-orb orb-2" style={{ bottom: '15%', right: '-5%', x: orbX, y: orbY }} />
 
       {/* Content */}
-      <div
+      <motion.div
         style={{
           position: 'relative',
           zIndex: 10,
@@ -82,6 +92,9 @@ export default function CapabilitiesSection() {
           flex: 1,
           padding: 'clamp(3.5rem, 7vh, 5.5rem) clamp(1.5rem, 5vw, 5rem) clamp(1.5rem, 3vh, 2.5rem)',
           minHeight: 0,
+          rotateX,
+          rotateY,
+          transformStyle: 'preserve-3d', // Enable 3D tilt
         }}
       >
         {/* Header */}
@@ -219,7 +232,7 @@ export default function CapabilitiesSection() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

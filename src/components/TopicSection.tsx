@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useTransform } from 'framer-motion';
+import { useSmoothMouse } from '../hooks/useSmoothMouse';
 
 export interface TopicCard {
   tags: string[];
@@ -55,6 +56,14 @@ export default function TopicSection({
 }: TopicSectionProps) {
   const headingLines = heading.split('\n');
 
+  // Mouse tilt variables
+  const { x, y } = useSmoothMouse();
+  const rotateX = useTransform(y, [-0.5, 0.5], [4, -4]); // subtle vertical tilt
+  const rotateY = useTransform(x, [-0.5, 0.5], [-4, 4]); // subtle horizontal tilt
+
+  const orbX = useTransform(x, [-0.5, 0.5], [30, -30]); // moves opposite to mouse
+  const orbY = useTransform(y, [-0.5, 0.5], [30, -30]);
+
   return (
     <section
       id={id}
@@ -65,6 +74,7 @@ export default function TopicSection({
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
+        perspective: 1200, // Enable 3D space
       }}
     >
       {/* Subtle background gradient */}
@@ -78,11 +88,11 @@ export default function TopicSection({
       />
 
       {/* Ambient background glow orbs */}
-      <div className="glow-orb orb-1" style={{ top: '15%', left: '10%' }} />
-      <div className="glow-orb orb-2" style={{ bottom: '20%', right: '10%' }} />
+      <motion.div className="glow-orb orb-1" style={{ top: '15%', left: '10%', x: orbX, y: orbY }} />
+      <motion.div className="glow-orb orb-2" style={{ bottom: '20%', right: '10%', x: orbX, y: orbY }} />
 
       {/* Content */}
-      <div
+      <motion.div
         style={{
           position: 'relative',
           zIndex: 10,
@@ -91,6 +101,9 @@ export default function TopicSection({
           flex: 1,
           padding: 'clamp(3.5rem, 7vh, 5.5rem) clamp(1.5rem, 5vw, 5rem) clamp(1.5rem, 3vh, 2.5rem)',
           minHeight: 0,
+          rotateX,
+          rotateY,
+          transformStyle: 'preserve-3d', // Enable 3D tilt
         }}
       >
         {/* Header */}
@@ -230,7 +243,7 @@ export default function TopicSection({
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -75,9 +75,22 @@ function Card({ label, gradient }: { label: string; gradient: string }) {
   );
 }
 
+import { useTransform } from 'framer-motion';
+import { useSmoothMouse } from '../hooks/useSmoothMouse';
+
+// ... (Card code goes here) ...
+
 export default function GallerySection() {
   const { theme } = useTheme();
   const isLight = theme === 'light';
+
+  // Mouse tilt variables
+  const { x, y } = useSmoothMouse();
+  const rotateX = useTransform(y, [-0.5, 0.5], [4, -4]); // subtle vertical tilt
+  const rotateY = useTransform(x, [-0.5, 0.5], [-4, 4]); // subtle horizontal tilt
+
+  const videoX = useTransform(x, [-0.5, 0.5], [25, -25]); // moves opposite to mouse
+  const videoY = useTransform(y, [-0.5, 0.5], [25, -25]);
 
   return (
     <section
@@ -91,24 +104,34 @@ export default function GallerySection() {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
+        perspective: 1200, // Enable 3D space
       }}
     >
-      {/* Background video — full bleed */}
-      <FadingVideo
-        src="https://www.dropbox.com/scl/fi/h5k8xh5dfoaq74ofehpne/3D_glass_sculpture_fluid_motion_202606271449.mp4?rlkey=1grlebvruxp2pqz628uf7ixh9&raw=1"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
-      />
-      <div 
-        style={{ 
-          position: 'absolute', 
-          inset: 0, 
-          background: isLight ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.35)', 
-          zIndex: 1 
-        }} 
-      />
+      {/* Background video parallax wrapper */}
+      <motion.div
+        style={{
+          position: 'absolute',
+          inset: '-25px', // Extend slightly so we don't see edges on translation
+          zIndex: 0,
+          x: videoX,
+          y: videoY,
+        }}
+      >
+        <FadingVideo
+          src="https://www.dropbox.com/scl/fi/h5k8xh5dfoaq74ofehpne/3D_glass_sculpture_fluid_motion_202606271449.mp4?rlkey=1grlebvruxp2pqz628uf7ixh9&raw=1"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+        <div 
+          style={{ 
+            position: 'absolute', 
+            inset: 0, 
+            background: isLight ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.35)', 
+          }} 
+        />
+      </motion.div>
 
       {/* Centered Content Wrapper */}
-      <div 
+      <motion.div 
         style={{ 
           position: 'relative', 
           zIndex: 10, 
@@ -116,7 +139,10 @@ export default function GallerySection() {
           flexDirection: 'column', 
           alignItems: 'center', 
           justifyContent: 'center',
-          width: '100%'
+          width: '100%',
+          rotateX,
+          rotateY,
+          transformStyle: 'preserve-3d', // Enable 3D tilt
         }}
       >
         {/* Header */}
@@ -186,7 +212,7 @@ export default function GallerySection() {
             </Marquee>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
