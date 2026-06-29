@@ -275,6 +275,12 @@ html, body, section, nav, footer {
   color: #111 !important;
 }
 
+/* ─── Exception: Gallery Card Labels always stay white ───────── */
+[data-theme="light"] #gallery .gallery-card-label {
+  color: #fff !important;
+}
+
+
 [data-theme="light"] .scroll-bar {
   background: linear-gradient(90deg, #111 0%, rgba(0,0,0,0.3) 100%);
 }

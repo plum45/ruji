@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useTransform } from 'framer-motion';
 import Marquee from './Marquee';
 import FadingVideo from './FadingVideo';
 import { useTheme } from '../ThemeContext';
@@ -10,26 +10,35 @@ const FADE_UP = (delay: number) => ({
   transition: { duration: 0.7, delay, ease: 'easeOut' as const },
 });
 
+/** Ken Burns pan+zoom variants — each card gets one assigned by index */
+const KENBURNS = [
+  { animate: { scale: [1, 1.12, 1.08], x: [0, -12, 6], y: [0, -8, 4] } },
+  { animate: { scale: [1.05, 1, 1.1], x: [0, 10, -6], y: [0, 6, -8] } },
+  { animate: { scale: [1, 1.08, 1.14], x: [0, 8, -10], y: [0, -6, 10] } },
+  { animate: { scale: [1.08, 1.14, 1.04], x: [-8, 4, 10], y: [6, -10, 2] } },
+];
+
 /** Placeholder image cards — gradient boxes with labels */
 const ROW_1 = [
-  { label: 'Actin Networks', gradient: 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)' },
-  { label: 'Mitotic Spindle', gradient: 'linear-gradient(135deg, #000428, #004e92)' },
-  { label: 'Cell Migration', gradient: 'linear-gradient(135deg, #141e30, #243b55)' },
-  { label: 'Lamellipodia', gradient: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)' },
-  { label: 'Axonemal Structure', gradient: 'linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)' },
-  { label: 'Cytokinesis', gradient: 'linear-gradient(135deg, #200122, #6f0000)' },
+  { label: 'Actin Networks', gradient: 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)', imagePath: '/gallery/actin_networks.png' },
+  { label: 'Mitotic Spindle', gradient: 'linear-gradient(135deg, #000428, #004e92)', imagePath: '/gallery/mitotic_spindle.png' },
+  { label: 'Cell Migration', gradient: 'linear-gradient(135deg, #141e30, #243b55)', imagePath: '/gallery/cell_migration.png' },
+  { label: 'Lamellipodia', gradient: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)', imagePath: '/gallery/lamellipodia.png' },
+  { label: 'Axonemal Structure', gradient: 'linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)', imagePath: '/gallery/axonemal_structure.png' },
+  { label: 'Cytokinesis', gradient: 'linear-gradient(135deg, #200122, #6f0000)', imagePath: '/gallery/cytokinesis.png' },
 ];
 
 const ROW_2 = [
-  { label: 'Microtubules', gradient: 'linear-gradient(135deg, #232526, #414345)' },
-  { label: 'Motor Proteins', gradient: 'linear-gradient(135deg, #0d324d, #7f5a83)' },
-  { label: 'Kinetochore', gradient: 'linear-gradient(135deg, #0b486b, #f56217)' },
-  { label: 'Intermediate Filaments', gradient: 'linear-gradient(135deg, #1d4350, #a43931)' },
-  { label: 'Cell Cortex', gradient: 'linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b)' },
-  { label: 'Myosin Bundles', gradient: 'linear-gradient(135deg, #1f1c2c, #928dab)' },
+  { label: 'Microtubules', gradient: 'linear-gradient(135deg, #232526, #414345)', imagePath: '/gallery/microtubules.png' },
+  { label: 'Motor Proteins', gradient: 'linear-gradient(135deg, #0d324d, #7f5a83)', imagePath: '/gallery/motor_proteins.png' },
+  { label: 'Kinetochore', gradient: 'linear-gradient(135deg, #0b486b, #f56217)', imagePath: '/gallery/kinetochore.png' },
+  { label: 'Intermediate Filaments', gradient: 'linear-gradient(135deg, #1d4350, #a43931)', imagePath: '/gallery/intermediate_filaments.png' },
+  { label: 'Cell Cortex', gradient: 'linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b)', imagePath: '/gallery/cell_cortex.png' },
+  { label: 'Myosin Bundles', gradient: 'linear-gradient(135deg, #1f1c2c, #928dab)', imagePath: '/gallery/myosin_bundles.png' },
 ];
 
-function Card({ label, gradient }: { label: string; gradient: string }) {
+function Card({ label, gradient, imagePath, kenBurnsIndex = 0 }: { label: string; gradient: string; imagePath?: string; kenBurnsIndex?: number }) {
+  const kb = KENBURNS[kenBurnsIndex % KENBURNS.length];
   return (
     <div
       className="liquid-glass"
@@ -44,6 +53,35 @@ function Card({ label, gradient }: { label: string; gradient: string }) {
         boxShadow: '0 12px 32px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
       }}
     >
+      {imagePath ? (
+        <motion.img
+          src={imagePath}
+          alt={label}
+          animate={kb.animate}
+          transition={{ duration: 12, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            position: 'absolute',
+            inset: 0,
+            transformOrigin: 'center center',
+          }}
+        />
+      ) : (
+        <div 
+          style={{ 
+            background: gradient, 
+            width: '100%', 
+            height: '100%', 
+            position: 'absolute', 
+            inset: 0,
+            opacity: 0.5, // Semi-transparent for colored glass look
+          }} 
+        />
+      )}
+
+      {/* Color tint overlay to blend microscopy images with the card theme */}
       <div 
         style={{ 
           background: gradient, 
@@ -51,23 +89,30 @@ function Card({ label, gradient }: { label: string; gradient: string }) {
           height: '100%', 
           position: 'absolute', 
           inset: 0,
-          opacity: 0.5, // Semi-transparent for colored glass look
+          opacity: 0.15,
+          mixBlendMode: 'overlay',
+          zIndex: 1,
         }} 
       />
-      <div style={{ position: 'absolute', inset: 0, border: '1.5px dashed rgba(255,255,255,0.25)', margin: '10px', borderRadius: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <span className="font-body text-white/40 text-xs font-medium">Image Preview</span>
-      </div>
+
+      {!imagePath && (
+        <div style={{ position: 'absolute', inset: 0, border: '1.5px dashed rgba(255,255,255,0.25)', margin: '10px', borderRadius: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span className="font-body text-white/40 text-xs font-medium">Image Preview</span>
+        </div>
+      )}
+
       <div
         style={{
           position: 'absolute',
           bottom: 0,
           left: 0,
           right: 0,
-          padding: '1rem',
-          background: 'linear-gradient(transparent, rgba(0,0,0,0.85))',
+          padding: '1.25rem 1rem 1rem',
+          background: 'linear-gradient(transparent, rgba(0,0,0,0.92) 60%, rgba(0,0,0,0.98))',
+          zIndex: 2,
         }}
       >
-        <span className="font-heading text-white font-medium" style={{ fontStyle: 'italic', fontSize: '1.25rem', letterSpacing: '-0.02em', textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
+        <span className="font-heading font-semibold gallery-card-label" style={{ fontStyle: 'italic', fontSize: '1.35rem', letterSpacing: '-0.02em', color: '#fff', textShadow: '0 1px 3px rgba(0,0,0,1), 0 4px 16px rgba(0,0,0,0.95), 0 8px 32px rgba(0,0,0,0.8)' }}>
           {label}
         </span>
       </div>
@@ -75,10 +120,7 @@ function Card({ label, gradient }: { label: string; gradient: string }) {
   );
 }
 
-import { useTransform } from 'framer-motion';
 import { useSmoothMouse } from '../hooks/useSmoothMouse';
-
-// ... (Card code goes here) ...
 
 export default function GallerySection() {
   const { theme } = useTheme();
@@ -197,8 +239,8 @@ export default function GallerySection() {
           {/* Row 1 — scrolls left */}
           <motion.div {...FADE_UP(0.15)}>
             <Marquee speed={30} direction="left" gap={20}>
-              {ROW_1.map((item) => (
-                <Card key={item.label} {...item} />
+              {ROW_1.map((item, i) => (
+                <Card key={item.label} {...item} kenBurnsIndex={i} />
               ))}
             </Marquee>
           </motion.div>
@@ -206,8 +248,8 @@ export default function GallerySection() {
           {/* Row 2 — scrolls right */}
           <motion.div {...FADE_UP(0.25)}>
             <Marquee speed={25} direction="right" gap={20}>
-              {ROW_2.map((item) => (
-                <Card key={item.label} {...item} />
+              {ROW_2.map((item, i) => (
+                <Card key={item.label} {...item} kenBurnsIndex={i + 2} />
               ))}
             </Marquee>
           </motion.div>
