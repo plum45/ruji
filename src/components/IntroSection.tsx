@@ -48,7 +48,8 @@ export default function IntroSection() {
         playsInline
         style={{
           position: 'absolute',
-          left: '5%',
+          right: '5%',
+          left: 'auto',
           top: '5%',
           width: '45%',
           height: '90%',
@@ -94,13 +95,10 @@ export default function IntroSection() {
             maxWidth: '1800px',
             margin: '0 auto',
           }}
-          className="lg:!grid-cols-[1.45fr_1.55fr]"
+          className="lg:!grid-cols-[1.55fr_1.45fr]"
         >
-          {/* Left Column: Empty space to let background video show through */}
-          <div style={{ minHeight: '350px' }} />
-
-          {/* Right Column: Introduction Content */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          {/* Left Column: Introduction Content (with reduced size) */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '620px', width: '100%' }}>
             <motion.div {...FADE_UP(0.2)}>
               <p
                 className="font-body text-sm"
@@ -188,6 +186,9 @@ export default function IntroSection() {
               </p>
             </motion.div>
           </div>
+
+          {/* Right Column: Empty space to let background video show through on the right side */}
+          <div style={{ minHeight: '350px' }} />
         </div>
       </motion.div>
     </section>
