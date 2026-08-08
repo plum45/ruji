@@ -56,6 +56,7 @@ export default function IntroSection() {
           objectPosition: 'left center',
           zIndex: 1,
           mixBlendMode: isLight ? 'multiply' : 'normal',
+          filter: isLight ? 'contrast(1.35) brightness(1.15)' : 'none',
           opacity: 0.95,
           pointerEvents: 'none',
         }}
