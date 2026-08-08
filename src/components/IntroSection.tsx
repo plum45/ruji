@@ -183,17 +183,6 @@ export default function IntroSection() {
                 </span>
               </div>
 
-              <p
-                className="font-body text-sm"
-                style={{
-                  lineHeight: 1.7,
-                  margin: 0,
-                  color: isLight ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.95)',
-                }}
-              >
-                ยินดีต้อนรับสู่แฟ้มสะสมผลงานอิเล็กทรอนิกส์ (E-Portfolio) การฝึกประสบการณ์วิชาชีพครูของ <strong style={{ color: isLight ? '#0284c7' : '#38bdf8' }}>ครูภูริม</strong>
-              </p>
-
               <div
                 style={{
                   borderTop: isLight ? '1px solid rgba(0,0,0,0.08)' : '1px solid rgba(255,255,255,0.1)',
