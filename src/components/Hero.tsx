@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Play } from 'lucide-react';
-import { useEffect, useRef } from 'react';
 import BlurText from './BlurText';
 
 const FADE_UP = (delay: number) => ({
@@ -9,55 +8,7 @@ const FADE_UP = (delay: number) => ({
   transition: { duration: 0.7, delay, ease: 'easeOut' as const },
 });
 
-export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const targetTimeRef = useRef<number>(0);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    let rafId: number;
-
-    const updateVideoTime = () => {
-      if (video.duration) {
-        const diff = targetTimeRef.current - video.currentTime;
-        if (Math.abs(diff) > 0.01) {
-          video.currentTime += diff * 0.12; // smooth transition speed
-        }
-      }
-      rafId = requestAnimationFrame(updateVideoTime);
-    };
-
-    const onMetadata = () => {
-      targetTimeRef.current = video.duration / 2;
-      video.currentTime = video.duration / 2;
-    };
-
-    video.addEventListener('loadedmetadata', onMetadata);
-    if (video.readyState >= 1) {
-      onMetadata();
-    }
-
-    rafId = requestAnimationFrame(updateVideoTime);
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (video.duration) {
-        const rect = window.innerWidth;
-        const normalizedX = e.clientX / rect; // 0 to 1
-        targetTimeRef.current = normalizedX * video.duration;
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      video.removeEventListener('loadedmetadata', onMetadata);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
+export default function Hero({ setActiveTab }: { setActiveTab?: (tab: string) => void }) {
   return (
     <section
       id="hero"
@@ -72,12 +23,13 @@ export default function Hero() {
         flexDirection: 'column',
       }}
     >
-      {/* Background video — Interactive mouse control scrubbing */}
+      {/* Background video — Autoplay and loop */}
       <video
-        ref={videoRef}
         src="https://www.dropbox.com/scl/fi/eatqb1dephucbo0ldwqov/3D_character_head_rotation_video_202608081305.mp4?rlkey=06eaviikvb4ph3vltbkuxisus&raw=1"
         className="absolute inset-0 object-cover object-center"
         style={{ width: '100%', height: '100%', zIndex: 0, filter: 'brightness(1.08) contrast(1.02)', pointerEvents: 'none' }}
+        autoPlay
+        loop
         muted
         playsInline
         preload="auto"
@@ -178,6 +130,13 @@ export default function Hero() {
           >
             <a
               href="#profile"
+              onClick={(e) => {
+                if (setActiveTab) {
+                  e.preventDefault();
+                  setActiveTab('overview');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
               className="liquid-glass-strong font-body font-medium text-sm flex items-center gap-1.5"
               style={{ borderRadius: 9999, padding: '10px 20px', textDecoration: 'none', color: 'inherit' }}
             >
@@ -186,6 +145,13 @@ export default function Hero() {
             </a>
             <a
               href="#teaching"
+              onClick={(e) => {
+                if (setActiveTab) {
+                  e.preventDefault();
+                  setActiveTab('teaching');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
               className="font-body text-sm flex items-center gap-1.5"
               style={{ textDecoration: 'none', color: 'inherit' }}
             >

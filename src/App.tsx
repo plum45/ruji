@@ -147,7 +147,7 @@ function AppInner() {
         {/* ── Home ── */}
         {activeTab === 'home' && (
           <>
-            <Hero />
+            <Hero setActiveTab={setActiveTab} />
             <IntroSection />
             <GallerySection />
           </>
