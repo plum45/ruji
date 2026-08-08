@@ -28,7 +28,7 @@ export default function Hero() {
       <FadingVideo
         src="https://www.dropbox.com/scl/fi/eatqb1dephucbo0ldwqov/3D_character_head_rotation_video_202608081305.mp4?rlkey=06eaviikvb4ph3vltbkuxisus&raw=1"
         className="absolute inset-0 object-cover object-center"
-        style={{ width: '100%', height: '100%', zIndex: 0 }}
+        style={{ width: '100%', height: '100%', zIndex: 0, filter: 'brightness(1.2) contrast(1.05)' }}
         playbackRate={0.75}
       />
       {/* Glow Effect Overlay */}
@@ -46,12 +46,12 @@ export default function Hero() {
         }}
       />
 
-      {/* Dark Vignette Overlay for Text Readability */}
+      {/* Dark Vignette Overlay for Text Readability — Clearer on the right side for the face */}
       <div 
         style={{ 
           position: 'absolute', 
           inset: 0, 
-          background: 'linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.15) 100%), linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%)', 
+          background: 'linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0) 75%)', 
           zIndex: 1,
           pointerEvents: 'none'
         }} 
