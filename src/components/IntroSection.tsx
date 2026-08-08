@@ -50,8 +50,8 @@ export default function IntroSection() {
           objectPosition: '25% center',
           zIndex: 0,
           mixBlendMode: isLight ? 'multiply' : 'normal',
-          filter: isLight ? 'contrast(1.12) brightness(1.06)' : 'brightness(0.85)',
-          opacity: 0.95,
+          filter: isLight ? 'contrast(1.05) brightness(1.0)' : 'none',
+          opacity: 1,
           pointerEvents: 'none',
         }}
         autoPlay
@@ -61,14 +61,14 @@ export default function IntroSection() {
         preload="auto"
       />
 
-      {/* Soft gradient overlay for text readability on the right */}
+      {/* Gradient overlay — 100% transparent on the left over the person, only fading in on the right for text */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           background: isLight
-            ? 'linear-gradient(to right, rgba(247,245,240,0.1) 0%, rgba(247,245,240,0.4) 40%, rgba(247,245,240,0.92) 75%)'
-            : 'linear-gradient(to right, rgba(11,10,8,0.1) 0%, rgba(11,10,8,0.4) 40%, rgba(11,10,8,0.92) 75%)',
+            ? 'linear-gradient(to right, transparent 0%, transparent 45%, rgba(247,245,240,0.85) 70%, rgba(247,245,240,0.98) 100%)'
+            : 'linear-gradient(to right, transparent 0%, transparent 45%, rgba(11,10,8,0.85) 70%, rgba(11,10,8,0.98) 100%)',
           zIndex: 1,
           pointerEvents: 'none',
         }}
