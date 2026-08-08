@@ -224,17 +224,17 @@ export default function TopicSection({
                 border: `1px solid ${cardBorder}`,
               }}
             >
-              {/* Image / Placeholder / Multiple Images */}
+              {/* Image / Placeholder / Multiple Images Grid */}
               {card.images && card.images.length > 0 ? (
                 <div
                   style={{
                     display: 'grid',
                     gridTemplateColumns: `repeat(${Math.min(card.images.length, 3)}, 1fr)`,
-                    gap: '0.4rem',
+                    gap: '0.65rem',
                     borderRadius: '0.75rem',
-                    marginBottom: '0.875rem',
+                    marginBottom: '1rem',
                     overflow: 'hidden',
-                    height: 150,
+                    height: 'clamp(240px, 35vh, 380px)',
                   }}
                 >
                   {card.images.map((img, idx) => (
