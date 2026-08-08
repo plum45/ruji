@@ -11,6 +11,17 @@ import { ThemeProvider, useTheme } from './ThemeContext';
 // ── B: กิจกรรม (Activities) ──────────────────────────────
 const ACTIVITIES_CARDS: TopicCard[] = [
   {
+    tags: ['ประเพณีวัฒนธรรม', 'กิจกรรมชุมชน', 'บุญบั้งไฟ'],
+    iconPath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z',
+    title: 'กิจกรรมบุญบั้งไฟ',
+    body: 'เข้าร่วมและมีส่วนร่วมในกิจกรรมประเพณีบุญบั้งไฟ เพื่อส่งเสริมและสืบสานวัฒนธรรมท้องถิ่นร่วมกับชุมชน',
+    images: [
+      'https://www.dropbox.com/scl/fi/vwdjrbl6n65vo303vhkgo/715305167_1534475648476178_354223048349085859_n.jpg?rlkey=iziofog406o1sef8uh1onrn2d&raw=1',
+      'https://www.dropbox.com/scl/fi/43ceq4qzuxvu6jprol613/2.jpg?rlkey=ps96xz1vzbthbgz5gfiwh29y8&raw=1',
+      'https://www.dropbox.com/scl/fi/i0w3orzc6t65oclk3vgst/.jpg?rlkey=3yln8xusjp4ev247wvw8xl9bh&raw=1',
+    ],
+  },
+  {
     tags: ['อบรมพัฒนา', 'วิชาชีพครู', 'การเขียนแผน'],
     iconPath: 'M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z',
     title: 'การอบรมและพัฒนาตนเอง',

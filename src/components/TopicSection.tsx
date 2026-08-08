@@ -9,6 +9,7 @@ export interface TopicCard {
   title: string;
   body: string;
   imagePath?: string;
+  images?: string[];
 }
 
 interface TopicSectionProps {
@@ -223,8 +224,31 @@ export default function TopicSection({
                 border: `1px solid ${cardBorder}`,
               }}
             >
-              {/* Image / Placeholder */}
-              {card.imagePath ? (
+              {/* Image / Placeholder / Multiple Images */}
+              {card.images && card.images.length > 0 ? (
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: `repeat(${Math.min(card.images.length, 3)}, 1fr)`,
+                    gap: '0.4rem',
+                    borderRadius: '0.75rem',
+                    marginBottom: '0.875rem',
+                    overflow: 'hidden',
+                    height: 150,
+                  }}
+                >
+                  {card.images.map((img, idx) => (
+                    <motion.img
+                      key={idx}
+                      src={img}
+                      alt={`${card.title} ${idx + 1}`}
+                      variants={{ hover: { scale: 1.05 } }}
+                      transition={{ duration: 0.4, ease: 'easeOut' }}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.5rem' }}
+                    />
+                  ))}
+                </div>
+              ) : card.imagePath ? (
                 <div
                   style={{
                     flex: 1,
