@@ -89,18 +89,30 @@ export default function IntroSection() {
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
           >
-            <div className="orb-wrapper" style={{ width: '100%', maxWidth: '400px', height: '400px', borderRadius: '50%', overflow: 'hidden' }}>
+            <div 
+              style={{ 
+                width: '100%', 
+                maxWidth: '440px', 
+                borderRadius: '1.5rem', 
+                overflow: 'hidden',
+                boxShadow: isLight ? '0 10px 40px rgba(0,0,0,0.08)' : '0 10px 40px rgba(0,0,0,0.5)',
+                border: isLight ? '1px solid rgba(0,0,0,0.06)' : '1px solid rgba(255,255,255,0.08)',
+                background: isLight ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.2)',
+                backdropFilter: 'blur(10px)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
               <video
-                className="glassy-orb"
                 autoPlay
                 loop
                 muted
                 playsInline
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
               >
                 <source src="https://www.dropbox.com/scl/fi/3i4rfwk8eiwj5pag7iovh/Person_performing_greeting_anima-_202608081341.mp4?rlkey=om9ka54vnlk0gie7uzx5ebroo&raw=1" type="video/mp4" />
               </video>
-              <div className="orb-overlay" />
             </div>
           </motion.div>
 
