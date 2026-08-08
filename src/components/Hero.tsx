@@ -16,18 +16,19 @@ export default function Hero() {
       style={{
         position: 'relative',
         width: '100%',
-        minHeight: '100vh',
+        aspectRatio: '16 / 9',
+        minHeight: 'min(100vh, 600px)',
         overflow: 'hidden',
         background: '#000',
         display: 'flex',
         flexDirection: 'column',
       }}
     >
-      {/* Background video — 120% width, top-aligned */}
+      {/* Background video — 16:9 ratio, centered */}
       <FadingVideo
         src="https://www.dropbox.com/scl/fi/eatqb1dephucbo0ldwqov/3D_character_head_rotation_video_202608081305.mp4?rlkey=06eaviikvb4ph3vltbkuxisus&raw=1"
-        className="absolute left-1/2 top-0 -translate-x-1/2 object-cover object-top"
-        style={{ width: '120%', height: '120%', zIndex: 0 }}
+        className="absolute inset-0 object-cover object-center"
+        style={{ width: '100%', height: '100%', zIndex: 0 }}
         playbackRate={0.75}
       />
       {/* Glow Effect Overlay */}
