@@ -20,9 +20,6 @@ export default function IntroSection() {
   const rotateX = useTransform(y, [-0.5, 0.5], [4, -4]); // subtle vertical tilt
   const rotateY = useTransform(x, [-0.5, 0.5], [-4, 4]); // subtle horizontal tilt
 
-  const orbX = useTransform(x, [-0.5, 0.5], [-25, 25]); // drift horizontal
-  const orbY = useTransform(y, [-0.5, 0.5], [-25, 25]); // drift vertical
-
   const bgOrbX = useTransform(x, [-0.5, 0.5], [30, -30]); // moves opposite to mouse
   const bgOrbY = useTransform(y, [-0.5, 0.5], [30, -30]);
 
@@ -43,9 +40,31 @@ export default function IntroSection() {
         perspective: 1200, // Enable 3D space
       }}
     >
+      {/* Background greeting video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: '15% center', // Align the person to the left
+          zIndex: 1,
+          mixBlendMode: isLight ? 'multiply' : 'normal',
+          opacity: 0.95,
+          pointerEvents: 'none',
+        }}
+      >
+        <source src="https://www.dropbox.com/scl/fi/3i4rfwk8eiwj5pag7iovh/Person_performing_greeting_anima-_202608081341.mp4?rlkey=om9ka54vnlk0gie7uzx5ebroo&raw=1" type="video/mp4" />
+      </video>
+
       {/* Ambient background glow orbs */}
-      <motion.div className="glow-orb orb-1" style={{ top: '15%', right: '5%', x: bgOrbX, y: bgOrbY }} />
-      <motion.div className="glow-orb orb-2" style={{ bottom: '15%', left: '5%', x: bgOrbX, y: bgOrbY }} />
+      <motion.div className="glow-orb orb-1" style={{ top: '15%', right: '5%', x: bgOrbX, y: bgOrbY, zIndex: 2 }} />
+      <motion.div className="glow-orb orb-2" style={{ bottom: '15%', left: '5%', x: bgOrbX, y: bgOrbY, zIndex: 2 }} />
 
       {/* Content wrapper with 3D Parallax Tilt */}
       <motion.div
@@ -73,44 +92,10 @@ export default function IntroSection() {
             maxWidth: '1800px',
             margin: '0 auto',
           }}
-          className="lg:!grid-cols-[1fr_1.8fr]"
+          className="lg:!grid-cols-[1.2fr_1.8fr]"
         >
-          {/* Left Column: Greeting Video aligned left and enlarged */}
-          <motion.div
-            style={{
-              display: 'flex',
-              justifyContent: 'flex-start',
-              alignItems: 'center',
-              x: orbX,
-              y: orbY,
-            }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 1.2, ease: 'easeOut' }}
-          >
-            <div 
-              style={{ 
-                width: '100%', 
-                maxWidth: '520px', 
-                overflow: 'hidden',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                mixBlendMode: isLight ? 'multiply' : 'normal',
-              }}
-            >
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                style={{ width: '100%', height: 'auto', display: 'block' }}
-              >
-                <source src="https://www.dropbox.com/scl/fi/3i4rfwk8eiwj5pag7iovh/Person_performing_greeting_anima-_202608081341.mp4?rlkey=om9ka54vnlk0gie7uzx5ebroo&raw=1" type="video/mp4" />
-              </video>
-            </div>
-          </motion.div>
+          {/* Left Column: Empty space to let background video person shine */}
+          <div style={{ minHeight: '350px' }} />
 
           {/* Right Column: Introduction Content */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
