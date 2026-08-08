@@ -40,7 +40,7 @@ export default function IntroSection() {
         perspective: 1200, // Enable 3D space
       }}
     >
-      {/* Background greeting video — resized and shifted left */}
+      {/* Background greeting video — resized to contain to prevent overflow */}
       <video
         autoPlay
         loop
@@ -48,12 +48,12 @@ export default function IntroSection() {
         playsInline
         style={{
           position: 'absolute',
-          left: '-2%',
+          left: '2%',
           top: 0,
           width: '45%',
           height: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center',
+          objectFit: 'contain',
+          objectPosition: 'left center',
           zIndex: 1,
           mixBlendMode: isLight ? 'multiply' : 'normal',
           opacity: 0.95,
