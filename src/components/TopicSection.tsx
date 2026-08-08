@@ -237,7 +237,48 @@ export default function TopicSection({
                 </div>
 
                 {/* Image Gallery Grid */}
-                {card.images && card.images.length > 0 && (
+                {card.images && card.images.length === 5 ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', width: '100%' }}>
+                    {/* Top Row: 3 Images */}
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem' }}>
+                      {card.images.slice(0, 3).map((img, idx) => (
+                        <motion.img
+                          key={idx}
+                          src={img}
+                          alt={`${card.title} ${idx + 1}`}
+                          whileHover={{ scale: 1.03 }}
+                          transition={{ duration: 0.3 }}
+                          style={{
+                            width: '100%',
+                            aspectRatio: card.aspectRatio || '3/2',
+                            objectFit: 'cover',
+                            objectPosition: 'center 15%',
+                            borderRadius: '0.75rem',
+                          }}
+                        />
+                      ))}
+                    </div>
+                    {/* Bottom Row: 2 Centered Images with matching width */}
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem' }}>
+                      {card.images.slice(3, 5).map((img, idx) => (
+                        <motion.img
+                          key={idx + 3}
+                          src={img}
+                          alt={`${card.title} ${idx + 4}`}
+                          whileHover={{ scale: 1.03 }}
+                          transition={{ duration: 0.3 }}
+                          style={{
+                            width: 'calc(33.333% - 0.5rem)',
+                            aspectRatio: card.aspectRatio || '3/2',
+                            objectFit: 'cover',
+                            objectPosition: 'center 15%',
+                            borderRadius: '0.75rem',
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ) : card.images && card.images.length > 0 ? (
                   <div
                     style={{
                       display: 'flex',
@@ -257,11 +298,8 @@ export default function TopicSection({
                         whileHover={{ scale: 1.03 }}
                         transition={{ duration: 0.3 }}
                         style={{
-                          flex: card.images!.length === 5
-                            ? '1 1 calc(31% - 0.5rem)'
-                            : `1 1 min(100%, ${card.images!.length === 2 ? '380px' : '260px'})`,
+                          flex: `1 1 min(100%, ${card.images!.length === 2 ? '380px' : '260px'})`,
                           minWidth: '220px',
-                          maxWidth: card.images!.length === 5 ? '380px' : '100%',
                           height: 'auto',
                           aspectRatio: card.aspectRatio || '3/2',
                           objectFit: 'cover',
@@ -271,7 +309,7 @@ export default function TopicSection({
                       />
                     ))}
                   </div>
-                )}
+                ) : null}
 
                 {/* Single Image fallback */}
                 {card.imagePath && !card.images && (
