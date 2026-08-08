@@ -18,23 +18,27 @@ const KENBURNS = [
   { animate: { scale: [1.08, 1.14, 1.04], x: [-8, 4, 10], y: [6, -10, 2] } },
 ];
 
-/** Placeholder image cards — gradient boxes with labels */
+/** Gallery image cards — filled with real teacher photos and media */
 const ROW_1 = [
-  { label: 'Actin Networks', gradient: 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)', imagePath: '/gallery/actin_networks.png' },
-  { label: 'Mitotic Spindle', gradient: 'linear-gradient(135deg, #000428, #004e92)', imagePath: '/gallery/mitotic_spindle.png' },
-  { label: 'Cell Migration', gradient: 'linear-gradient(135deg, #141e30, #243b55)', imagePath: '/gallery/cell_migration.png' },
-  { label: 'Lamellipodia', gradient: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)', imagePath: '/gallery/lamellipodia.png' },
-  { label: 'Axonemal Structure', gradient: 'linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)', imagePath: '/gallery/axonemal_structure.png' },
-  { label: 'Cytokinesis', gradient: 'linear-gradient(135deg, #200122, #6f0000)', imagePath: '/gallery/cytokinesis.png' },
+  { label: 'กิจกรรมบุญบั้งไฟ', gradient: 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)', imagePath: 'https://www.dropbox.com/scl/fi/vwdjrbl6n65vo303vhkgo/715305167_1534475648476178_354223048349085859_n.jpg?rlkey=iziofog406o1sef8uh1onrn2d&raw=1' },
+  { label: 'ประชุมเตรียมเปิดภาคเรียน', gradient: 'linear-gradient(135deg, #000428, #004e92)', imagePath: 'https://www.dropbox.com/scl/fi/m71sd4de5ymmpua0dgn84/696940132_1513148423942234_6542711132573575747_n.jpg?rlkey=y1nhwf1ld15qz871jcj76k1e3&raw=1' },
+  { label: 'ต้อนรับนักเรียน', gradient: 'linear-gradient(135deg, #141e30, #243b55)', imagePath: 'https://www.dropbox.com/scl/fi/u4wyytkge55oqp9ghlwhe/702652947_1517318753525201_2860933062066954796_n.jpg?rlkey=8fpshfbr9u2liz7i6zc9kiul0&raw=1' },
+  { label: 'เซิ้งบุญบั้งไฟ', gradient: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)', imagePath: 'https://www.dropbox.com/scl/fi/fltuwp39w4qa79vsrl86x/IMG_6933.JPG?rlkey=f7zip06r1jas6dz7mkakzkmft&raw=1' },
+  { label: 'บรรยากาศการสอน', gradient: 'linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)', imagePath: 'https://www.dropbox.com/scl/fi/ogan1ahrtf7c29g774ild/IMG_0637.jpg?rlkey=ilz2sjbb00gbtoyhe457o222g&raw=1' },
+  { label: 'Action Potential AI', gradient: 'linear-gradient(135deg, #200122, #6f0000)', imagePath: '/ai_media_1.png' },
+  { label: 'BioExplore 3D', gradient: 'linear-gradient(135deg, #11998e, #38ef7d)', imagePath: '/ai_media_2.png' },
+  { label: 'Blooket Learning', gradient: 'linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)', imagePath: '/web_online_1.png' },
 ];
 
 const ROW_2 = [
-  { label: 'Microtubules', gradient: 'linear-gradient(135deg, #232526, #414345)', imagePath: '/gallery/microtubules.png' },
-  { label: 'Motor Proteins', gradient: 'linear-gradient(135deg, #0d324d, #7f5a83)', imagePath: '/gallery/motor_proteins.png' },
-  { label: 'Kinetochore', gradient: 'linear-gradient(135deg, #0b486b, #f56217)', imagePath: '/gallery/kinetochore.png' },
-  { label: 'Intermediate Filaments', gradient: 'linear-gradient(135deg, #1d4350, #a43931)', imagePath: '/gallery/intermediate_filaments.png' },
-  { label: 'Cell Cortex', gradient: 'linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b)', imagePath: '/gallery/cell_cortex.png' },
-  { label: 'Myosin Bundles', gradient: 'linear-gradient(135deg, #1f1c2c, #928dab)', imagePath: '/gallery/myosin_bundles.png' },
+  { label: 'การทดลองและฝึกปฏิบัติ', gradient: 'linear-gradient(135deg, #232526, #414345)', imagePath: 'https://www.dropbox.com/scl/fi/zt2y8jutsp2g03xkvm8wj/IMG_0559.jpg?rlkey=qruf7upy1gv6c5be8gspglfbd&raw=1' },
+  { label: 'บรรยากาศในชั้นเรียน', gradient: 'linear-gradient(135deg, #0d324d, #7f5a83)', imagePath: 'https://www.dropbox.com/scl/fi/9bwlbpx5lxt13efnmwy5a/IMG_0640.jpg?rlkey=o3wgix0tvhjlq2aa0vhc2fnzd&raw=1' },
+  { label: 'ร่วมกิจกรรมทำบุญ', gradient: 'linear-gradient(135deg, #0b486b, #f56217)', imagePath: 'https://www.dropbox.com/scl/fi/27khn8kyizkv6gz3klapf/IMG_0662.jpg?rlkey=7n4e5febt2qodh1seibuw8deq&raw=1' },
+  { label: 'แนะนำตัววันเปิดภาคเรียน', gradient: 'linear-gradient(135deg, #1d4350, #a43931)', imagePath: 'https://www.dropbox.com/scl/fi/gbibnb5tw05h2lxi54d2t/702305477_1517957523461324_2327958114495464782_n.jpg?rlkey=fote59p26zlnxjug8pgf2j797&raw=1' },
+  { label: 'การประชุมวิชาการ', gradient: 'linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b)', imagePath: 'https://www.dropbox.com/scl/fi/qkqav6hg5ycow4oxgiivs/697351469_1513150307275379_3091590413808241786_n.jpg?rlkey=5erze8sxmlwv8mt4j5p2jv6n7&raw=1' },
+  { label: 'ZEP QUIZ Metaverse', gradient: 'linear-gradient(135deg, #1f1c2c, #928dab)', imagePath: '/web_online_2.png' },
+  { label: 'BioDigital Human 3D', gradient: 'linear-gradient(135deg, #4b6cb7, #182848)', imagePath: '/web_online_3.png' },
+  { label: 'การเรียนรู้เชิงรุก', gradient: 'linear-gradient(135deg, #00b4db, #0083b0)', imagePath: 'https://www.dropbox.com/scl/fi/epeblqgjbnvtn63liclqw/IMG_0619.jpg?rlkey=4e45bkygxjf4xte6shlojoxhz&raw=1' },
 ];
 
 function Card({ label, gradient, imagePath, kenBurnsIndex = 0 }: { label: string; gradient: string; imagePath?: string; kenBurnsIndex?: number }) {
