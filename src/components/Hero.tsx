@@ -134,7 +134,12 @@ export default function Hero({ setActiveTab }: { setActiveTab?: (tab: string) =>
                 if (setActiveTab) {
                   e.preventDefault();
                   setActiveTab('overview');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  setTimeout(() => {
+                    const target = document.querySelector('#intro');
+                    if (target) {
+                      target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 100);
                 }
               }}
               className="liquid-glass-strong font-body font-medium text-sm flex items-center gap-1.5"

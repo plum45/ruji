@@ -7,33 +7,6 @@ import GallerySection from './components/GallerySection';
 import TopicSection, { type TopicCard } from './components/TopicSection';
 import { ThemeProvider, useTheme } from './ThemeContext';
 
-// ── A: ข้อมูลส่วนตัว (Overview) ──────────────────────────
-const OVERVIEW_CARDS: TopicCard[] = [
-  {
-    tags: ['ประวัติการศึกษา', 'วุฒิการศึกษา', 'ครุศาสตรบัณฑิต'],
-    iconPath: 'M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.89 12.5L12 15.82l6.11-3.32L12 9.18 5.89 12.5z',
-    title: 'ประวัติการศึกษา',
-    body: 'สำเร็จการศึกษาระดับปริญญาตรี หลักสูตรครุศาสตรบัณฑิต (ค.บ.) มุ่งเน้นการจัดการเรียนรู้และการพัฒนาหลักสูตร ด้วยผลการเรียนดีเยี่ยมและกิจกรรมเด่น',
-  },
-  {
-    tags: ['ปรัชญาการสอน', 'ผู้เรียนเป็นสำคัญ', 'Active Learning'],
-    iconPath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z',
-    title: 'ปรัชญาการสอน',
-    body: 'เชื่อมั่นว่าห้องเรียนไม่ใช่แค่พื้นที่ส่งผ่านความรู้ แต่เป็นพื้นที่สร้างสรรค์ประสบการณ์ที่กระตุ้นให้ผู้เรียนคิดวิเคราะห์ แก้ไขปัญหา และสร้างองค์ความรู้ได้ด้วยตัวเอง',
-  },
-  {
-    tags: ['ทักษะวิชาชีพครู', 'การจัดการเรียนรู้', 'จิตวิทยา'],
-    iconPath: 'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z',
-    title: 'ทักษะวิชาชีพครู',
-    body: 'มีความเชี่ยวชาญในการออกแบบแผนการจัดเรียนรู้ การประยุกต์ใช้จิตวิทยาวัยรุ่นเพื่อสร้างบรรยากาศเชิงบวกในชั้นเรียน และการแก้ปัญหาพฤติกรรมผู้เรียน',
-  },
-  {
-    tags: ['ทักษะ EdTech', 'สื่อดิจิทัล', 'การเรียนรู้ยุคใหม่'],
-    iconPath: 'M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z',
-    title: 'ความสามารถด้านเทคโนโลยี',
-    body: 'ประยุกต์ใช้แพลตฟอร์มการศึกษาสมัยใหม่ (Google Workspace for Education, Canva, Interactive Quizzes) เพื่อส่งเสริมการเรียนรู้แบบผสมผสาน (Blended Learning)',
-  },
-];
 
 // ── B: กิจกรรม (Activities) ──────────────────────────────
 const ACTIVITIES_CARDS: TopicCard[] = [
@@ -144,25 +117,12 @@ function AppInner() {
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main>
-        {/* ── Home ── */}
-        {activeTab === 'home' && (
+        {/* ── Home & ข้อมูลส่วนตัว ── */}
+        {(activeTab === 'home' || activeTab === 'overview') && (
           <>
             <Hero setActiveTab={setActiveTab} />
-            <GallerySection />
-          </>
-        )}
-
-        {/* ── ข้อมูลส่วนตัว ── */}
-        {activeTab === 'overview' && (
-          <>
             <IntroSection />
-            <TopicSection
-              id="overview"
-              label="// ประวัติและการศึกษา"
-              heading={"Profile &\nEducation."}
-              cards={OVERVIEW_CARDS}
-              {...t('overview')}
-            />
+            <GallerySection />
           </>
         )}
 

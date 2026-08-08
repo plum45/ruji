@@ -47,7 +47,12 @@ export default function Navbar({
     setActiveTab(link.tab);
     
     setTimeout(() => {
-      if (link.href === '#gallery') {
+      if (link.tab === 'overview') {
+        const target = document.querySelector('#intro');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else if (link.href === '#gallery') {
         const target = document.querySelector('#gallery');
         if (target) {
           target.scrollIntoView({ behavior: 'smooth' });
