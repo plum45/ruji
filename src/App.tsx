@@ -53,6 +53,17 @@ const ACTIVITIES_CARDS: TopicCard[] = [
       'https://www.dropbox.com/scl/fi/27khn8kyizkv6gz3klapf/IMG_0662.jpg?rlkey=7n4e5febt2qodh1seibuw8deq&raw=1',
     ],
   },
+  {
+    tags: ['จิตอาสา', 'การสนับสนุนงานโรงเรียน', 'ภารกิจครู'],
+    iconPath: 'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z',
+    title: 'ช่วยเหลืองานครู/โรงเรียน',
+    body: 'การมีส่วนร่วมช่วยเหลือและปฏิบัติภารกิจงานของโรงเรียนร่วมกับคณะครูอย่างเต็มกำลัง เพื่อความเรียบร้อยและการดำเนินงานของสถานศึกษาเป็นไปอย่างมีประสิทธิภาพ',
+    images: [
+      'https://www.dropbox.com/scl/fi/4fefl6s8v5thx83rgtaf2/.jpg?rlkey=vi3iawbvzehdtgp0w1urg11t0&raw=1',
+      'https://www.dropbox.com/scl/fi/9r0lsszu56wiyflqise54/S__11157548_0.jpg?rlkey=j39gpczwh5hd3ix6gbr6ms497&raw=1',
+      'https://www.dropbox.com/scl/fi/z3x659sdokf7rnj8odkvy/S__11157545.jpg?rlkey=nx323d159onwv3kyw4qqpgqw3&raw=1',
+    ],
+  },
 ];
 
 // ── C: การสอน (Teaching) ──────────────────────────────────────
