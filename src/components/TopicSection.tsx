@@ -236,12 +236,12 @@ export default function TopicSection({
                   </div>
                 </div>
 
-                {/* 3-Image Gallery Grid */}
+                {/* Image Gallery Grid */}
                 {card.images && card.images.length > 0 && (
                   <div
                     style={{
                       display: 'grid',
-                      gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, ${card.aspectRatio ? '300px' : '280px'}), 1fr))`,
+                      gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, ${card.images.length >= 4 ? '200px' : '260px'}), 1fr))`,
                       gap: '0.75rem',
                       borderRadius: '1rem',
                       overflow: 'hidden',
@@ -257,8 +257,8 @@ export default function TopicSection({
                         transition={{ duration: 0.3 }}
                         style={{
                           width: '100%',
-                          height: card.aspectRatio ? 'auto' : 'clamp(220px, 34vh, 380px)',
-                          aspectRatio: card.aspectRatio || 'auto',
+                          height: 'auto',
+                          aspectRatio: card.aspectRatio || '3/2',
                           objectFit: 'cover',
                           objectPosition: 'center 15%',
                           borderRadius: '0.75rem',
@@ -278,7 +278,8 @@ export default function TopicSection({
                       transition={{ duration: 0.3 }}
                       style={{
                         width: '100%',
-                        height: 'clamp(220px, 34vh, 380px)',
+                        height: 'auto',
+                        aspectRatio: card.aspectRatio || '3/2',
                         objectFit: 'cover',
                         objectPosition: 'center 15%',
                         borderRadius: '0.75rem',
