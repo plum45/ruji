@@ -75,11 +75,11 @@ export default function IntroSection() {
           }}
           className="lg:!grid-cols-[1fr_1.8fr]"
         >
-          {/* Left Column: Glassy Orb Video */}
+          {/* Left Column: Greeting Video aligned left and enlarged */}
           <motion.div
             style={{
               display: 'flex',
-              justifyContent: 'center',
+              justifyContent: 'flex-start',
               alignItems: 'center',
               x: orbX,
               y: orbY,
@@ -92,16 +92,12 @@ export default function IntroSection() {
             <div 
               style={{ 
                 width: '100%', 
-                maxWidth: '440px', 
-                borderRadius: '1.5rem', 
+                maxWidth: '520px', 
                 overflow: 'hidden',
-                boxShadow: isLight ? '0 10px 40px rgba(0,0,0,0.08)' : '0 10px 40px rgba(0,0,0,0.5)',
-                border: isLight ? '1px solid rgba(0,0,0,0.06)' : '1px solid rgba(255,255,255,0.08)',
-                background: isLight ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.2)',
-                backdropFilter: 'blur(10px)',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'flex-start',
+                mixBlendMode: isLight ? 'multiply' : 'normal',
               }}
             >
               <video
