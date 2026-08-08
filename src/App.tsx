@@ -77,10 +77,45 @@ const TEACHING_CARDS: TopicCard[] = [
     body: 'จัดทำแผนการจัดกิจกรรมที่เน้นการปฏิบัติและการแก้ปัญหาจริง บูรณาการความรู้ทางวิทยาศาสตร์ เทคโนโลยี วิศวกรรมศาสตร์ และคณิตศาสตร์ (STEM Education)',
   },
   {
+    tags: ['สื่อนวัตกรรม', 'Generative AI', 'EdTech'],
+    iconPath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z',
+    title: 'สื่อการสอนที่ทำจาก AI',
+    body: 'การประยุกต์ใช้ปัญญาประดิษฐ์ (AI) ในการออกแบบสื่อนวัตกรรมการเรียนรู้และเว็บบอร์ดตอบคำถามปฏิสัมพันธ์ทางชีววิทยา เพื่อเพิ่มประสิทธิภาพและความกระตือรือร้นในการเรียนรู้ของผู้เรียน',
+    webLinks: [
+      {
+        url: 'https://apt-bice-five.vercel.app/',
+        title: 'Action Potential Interactive Learning',
+        image: '/ai_media_1.png',
+      },
+      {
+        url: 'https://bio55-ten.vercel.app/',
+        title: 'BioExplore 3D - ระบบวิเคราะห์กายวิภาค',
+        image: '/ai_media_2.png',
+      },
+      {
+        url: 'https://script.google.com/macros/s/AKfycbzyDwoektNKgmooMEKMKNAuCtUP2BwFtqwws2-gxYyB5O4ItotkuV8CI05kx81wN4Hs/exec',
+        title: 'Nerve Race: Quiz Battle',
+        image: '/ai_media_3.png',
+      },
+    ],
+  },
+  {
     tags: ['สื่อนวัตกรรม', 'เกมการศึกษา', 'EdTech'],
     iconPath: 'M21.58 17.47L20.01 19l-7-7 7-7 1.57 1.53L16.12 12l5.46 5.47zM8 5v14l11-7L8 5z',
-    title: 'การผลิตและใช้สื่อนวัตกรรม',
-    body: 'ออกแบบสื่อนวัตกรรมการสอนประเภทบอร์ดเกมเพื่อการเรียนรู้ และแบบทดสอบเชิงโต้ตอบทางออนไลน์ ช่วยเพิ่มความกระตือรือร้นและผลสัมฤทธิ์ทางการเรียนของผู้เรียน',
+    title: 'สื่อการสอนออนไลน์',
+    body: 'การประยุกต์ใช้แพลตฟอร์มเกมการศึกษาออนไลน์ (Gamified Learning Platforms) เช่น Blooket และ ZEP QUIZ เพื่อสร้างการมีส่วนร่วมและประเมินความเข้าใจผู้เรียนในรูปแบบเกมสนุกสนาน',
+    webLinks: [
+      {
+        url: 'https://www.blooket.com/',
+        title: 'Blooket - Learning Games',
+        image: '/web_online_1.png',
+      },
+      {
+        url: 'https://quiz.zep.us/th/public',
+        title: 'ZEP QUIZ - เมตาเวิร์สเกมควิซ',
+        image: '/web_online_2.png',
+      },
+    ],
   },
   {
     tags: ['การวัดผล', 'แบบทดสอบ', 'ประเมินผล'],

@@ -2,6 +2,12 @@ import { motion, useTransform } from 'framer-motion';
 import { useSmoothMouse } from '../hooks/useSmoothMouse';
 import { useTheme } from '../ThemeContext';
 
+export interface WebLinkItem {
+  url: string;
+  title: string;
+  image: string;
+}
+
 export interface TopicCard {
   tags: string[];
   iconPath: string;
@@ -10,6 +16,7 @@ export interface TopicCard {
   imagePath?: string;
   images?: string[];
   aspectRatio?: string;
+  webLinks?: WebLinkItem[];
 }
 
 interface TopicSectionProps {
@@ -82,8 +89,8 @@ export default function TopicSection({
   const cardBorder = hexToRgba(accentColor, isLight ? 0.15 : 0.2);
   const accentGlow = hexToRgba(accentColor, 0.12);
 
-  // If cards have images, render each card as its own full 100vh section
-  const isSectionPerCard = cards.some((c) => (c.images && c.images.length > 0) || c.imagePath);
+  // If cards have images or webLinks, render each card as its own full 100vh section
+  const isSectionPerCard = cards.some((c) => (c.images && c.images.length > 0) || c.imagePath || (c.webLinks && c.webLinks.length > 0));
 
   if (isSectionPerCard) {
     return (
@@ -328,6 +335,90 @@ export default function TopicSection({
                         borderRadius: '0.75rem',
                       }}
                     />
+                  </div>
+                )}
+
+                {/* Interactive Web App Links & Screenshots */}
+                {card.webLinks && card.webLinks.length > 0 && (
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, 280px), 1fr))`,
+                      gap: '1rem',
+                      width: '100%',
+                    }}
+                  >
+                    {card.webLinks.map((link, idx) => (
+                      <motion.a
+                        key={idx}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ y: -6, scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          borderRadius: '0.85rem',
+                          overflow: 'hidden',
+                          background: isLight ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.5)',
+                          border: `1px solid ${hexToRgba(accentColor, 0.3)}`,
+                          textDecoration: 'none',
+                          boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
+                        }}
+                      >
+                        {/* Browser Window Header Mockup */}
+                        <div
+                          style={{
+                            padding: '6px 12px',
+                            background: isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.08)',
+                            borderBottom: isLight ? '1px solid rgba(0,0,0,0.06)' : '1px solid rgba(255,255,255,0.08)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                          }}
+                        >
+                          <div style={{ display: 'flex', gap: 5 }}>
+                            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff5f56' }} />
+                            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#ffbd2e' }} />
+                            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#27c93f' }} />
+                          </div>
+                          <span className="font-mono text-xs opacity-70 truncate" style={{ maxWidth: '180px', color: isLight ? '#333' : '#eee' }}>
+                            {link.url.replace(/^https?:\/\//, '')}
+                          </span>
+                          <span style={{ fontSize: 11, fontWeight: 'bold', color: accentColor }}>↗</span>
+                        </div>
+
+                        {/* Screenshot Preview Image */}
+                        <div style={{ overflow: 'hidden', height: 180, position: 'relative' }}>
+                          <img
+                            src={link.image}
+                            alt={link.title}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
+                          />
+                        </div>
+
+                        {/* Title and Open Badge */}
+                        <div style={{ padding: '0.75rem 1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+                          <span className="font-body text-xs font-semibold truncate" style={{ color: isLight ? '#111' : '#fff' }}>
+                            {link.title}
+                          </span>
+                          <span
+                            className="font-body text-xs font-bold"
+                            style={{
+                              padding: '3px 10px',
+                              borderRadius: 999,
+                              background: tagBg,
+                              color: accentColor,
+                              whiteSpace: 'nowrap',
+                              border: `1px solid ${hexToRgba(accentColor, 0.25)}`,
+                            }}
+                          >
+                            ทดลองใช้งาน ↗
+                          </span>
+                        </div>
+                      </motion.a>
+                    ))}
                   </div>
                 )}
 
