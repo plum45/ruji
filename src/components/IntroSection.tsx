@@ -40,6 +40,30 @@ export default function IntroSection() {
         perspective: 1200, // Enable 3D space
       }}
     >
+      {/* Background greeting video — placed absolute behind text */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute',
+          left: '5%',
+          top: '5%',
+          width: '45%',
+          height: '90%',
+          objectFit: 'contain',
+          objectPosition: 'center',
+          zIndex: 1,
+          mixBlendMode: isLight ? 'multiply' : 'normal',
+          filter: isLight ? 'contrast(1.12) brightness(1.06)' : 'none',
+          opacity: 0.95,
+          pointerEvents: 'none',
+        }}
+      >
+        <source src="https://www.dropbox.com/scl/fi/3i4rfwk8eiwj5pag7iovh/Person_performing_greeting_anima-_202608081341.mp4?rlkey=om9ka54vnlk0gie7uzx5ebroo&raw=1" type="video/mp4" />
+      </video>
+
       {/* Ambient background glow orbs */}
       <motion.div className="glow-orb orb-1" style={{ top: '15%', right: '5%', x: bgOrbX, y: bgOrbY, zIndex: 2 }} />
       <motion.div className="glow-orb orb-2" style={{ bottom: '15%', left: '5%', x: bgOrbX, y: bgOrbY, zIndex: 2 }} />
@@ -72,37 +96,8 @@ export default function IntroSection() {
           }}
           className="lg:!grid-cols-[1.45fr_1.55fr]"
         >
-          {/* Left Column: Greeting Video centered on the left side */}
-          <motion.div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            initial={{ opacity: 0, scale: 0.85 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
-          >
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{
-                width: '100%',
-                maxWidth: '600px', // Significantly enlarged size
-                height: 'auto',
-                display: 'block',
-                mixBlendMode: isLight ? 'multiply' : 'normal',
-                filter: isLight ? 'contrast(1.15) brightness(1.08) saturate(1.05)' : 'none',
-                opacity: 0.95,
-                pointerEvents: 'none',
-              }}
-            >
-              <source src="https://www.dropbox.com/scl/fi/3i4rfwk8eiwj5pag7iovh/Person_performing_greeting_anima-_202608081341.mp4?rlkey=om9ka54vnlk0gie7uzx5ebroo&raw=1" type="video/mp4" />
-            </video>
-          </motion.div>
+          {/* Left Column: Empty space to let background video show through */}
+          <div style={{ minHeight: '350px' }} />
 
           {/* Right Column: Introduction Content */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
