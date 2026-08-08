@@ -30,9 +30,7 @@ export default function IntroSection() {
       style={{
         position: 'relative',
         minHeight: '100svh',
-        background: isLight
-          ? 'linear-gradient(180deg, #f7f5f0 0%, #eae7e0 100%)'
-          : 'linear-gradient(180deg, #0b0a08 0%, #050504 100%)',
+        background: isLight ? '#f7f5f0' : '#0b0a08',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
@@ -40,30 +38,41 @@ export default function IntroSection() {
         perspective: 1200, // Enable 3D space
       }}
     >
-      {/* Background greeting video — placed absolute behind text */}
+      {/* Background video — full bleed background like Hero section */}
       <video
+        src="https://www.dropbox.com/scl/fi/3i4rfwk8eiwj5pag7iovh/Person_performing_greeting_anima-_202608081341.mp4?rlkey=om9ka54vnlk0gie7uzx5ebroo&raw=1"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: '25% center',
+          zIndex: 0,
+          mixBlendMode: isLight ? 'multiply' : 'normal',
+          filter: isLight ? 'contrast(1.12) brightness(1.06)' : 'brightness(0.85)',
+          opacity: 0.95,
+          pointerEvents: 'none',
+        }}
         autoPlay
         loop
         muted
         playsInline
+        preload="auto"
+      />
+
+      {/* Soft gradient overlay for text readability on the right */}
+      <div
         style={{
           position: 'absolute',
-          right: '5%',
-          left: 'auto',
-          top: '5%',
-          width: '45%',
-          height: '90%',
-          objectFit: 'contain',
-          objectPosition: 'center',
+          inset: 0,
+          background: isLight
+            ? 'linear-gradient(to right, rgba(247,245,240,0.1) 0%, rgba(247,245,240,0.4) 40%, rgba(247,245,240,0.92) 75%)'
+            : 'linear-gradient(to right, rgba(11,10,8,0.1) 0%, rgba(11,10,8,0.4) 40%, rgba(11,10,8,0.92) 75%)',
           zIndex: 1,
-          mixBlendMode: isLight ? 'multiply' : 'normal',
-          filter: isLight ? 'contrast(1.12) brightness(1.06)' : 'none',
-          opacity: 0.95,
           pointerEvents: 'none',
         }}
-      >
-        <source src="https://www.dropbox.com/scl/fi/3i4rfwk8eiwj5pag7iovh/Person_performing_greeting_anima-_202608081341.mp4?rlkey=om9ka54vnlk0gie7uzx5ebroo&raw=1" type="video/mp4" />
-      </video>
+      />
 
       {/* Ambient background glow orbs */}
       <motion.div className="glow-orb orb-1" style={{ top: '15%', right: '5%', x: bgOrbX, y: bgOrbY, zIndex: 2 }} />
@@ -78,7 +87,7 @@ export default function IntroSection() {
           flexDirection: 'column',
           justifyContent: 'center',
           flex: 1,
-          padding: 'clamp(3rem, 6vh, 4.5rem) clamp(1rem, 3vw, 3.5rem)',
+          padding: 'clamp(3rem, 6vh, 4.5rem) clamp(1.5rem, 4vw, 5rem)',
           rotateX,
           rotateY,
           transformStyle: 'preserve-3d',
@@ -88,22 +97,34 @@ export default function IntroSection() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))',
-            gap: '3rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
+            gap: '2rem',
             alignItems: 'center',
             width: '100%',
-            maxWidth: '1800px',
+            maxWidth: '1600px',
             margin: '0 auto',
           }}
-          className="lg:!grid-cols-[1.55fr_1.45fr]"
+          className="lg:!grid-cols-[1fr_1fr]"
         >
-          {/* Left Column: Introduction Content (with reduced size) */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '620px', width: '100%' }}>
+          {/* Left Column: Empty space so background video person is visible */}
+          <div style={{ minHeight: '200px' }} />
+
+          {/* Right Column: Text Box on the Right with reduced size & placeholder content */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.25rem',
+              maxWidth: '480px',
+              marginLeft: 'auto',
+              width: '100%',
+            }}
+          >
             <motion.div {...FADE_UP(0.2)}>
               <p
                 className="font-body text-sm"
                 style={{
-                  marginBottom: '0.5rem',
+                  marginBottom: '0.4rem',
                   letterSpacing: '0.05em',
                   color: isLight ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.6)',
                 }}
@@ -114,7 +135,7 @@ export default function IntroSection() {
                 className="font-heading"
                 style={{
                   fontStyle: 'italic',
-                  fontSize: 'clamp(2.25rem, 5vw, 4rem)',
+                  fontSize: 'clamp(2rem, 4vw, 3.25rem)',
                   lineHeight: 0.95,
                   letterSpacing: '-0.03em',
                   margin: 0,
@@ -125,70 +146,50 @@ export default function IntroSection() {
               </h2>
             </motion.div>
 
+            {/* Reduced Size Liquid Glass Container with Placeholder Content */}
             <motion.div
               {...FADE_UP(0.4)}
               className="liquid-glass"
               style={{
                 borderRadius: '1.25rem',
-                padding: '2rem 2.25rem',
+                padding: '1.5rem 1.75rem',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '1.25rem',
+                gap: '1rem',
               }}
             >
               <p
                 className="font-body text-sm"
                 style={{
-                  lineHeight: 1.8,
+                  lineHeight: 1.7,
                   margin: 0,
                   color: isLight ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.9)',
-                  textAlign: 'justify',
                 }}
               >
-                ยินดีต้อนรับสู่แฟ้มสะสมผลงานอิเล็กทรอนิกส์ (E-Portfolio) การฝึกประสบการณ์วิชาชีพครูของ <strong style={{ color: isLight ? '#0284c7' : '#38bdf8' }}>ครูภูริม</strong> มุ่งมั่นขับเคลื่อนกระบวนการเรียนรู้ที่มีประสิทธิภาพและพัฒนาผู้เรียนในศตวรรษที่ 21 ผ่าน 3 องค์ประกอบหลัก:
+                ยินดีต้อนรับสู่แฟ้มสะสมผลงานอิเล็กทรอนิกส์ (E-Portfolio) การฝึกประสบการณ์วิชาชีพครูของ <strong style={{ color: isLight ? '#0284c7' : '#38bdf8' }}>ครูภูริม</strong>
               </p>
 
-              <ul
-                className="font-body text-sm"
+              <div
                 style={{
-                  margin: '0 0 0 1.25rem',
-                  padding: 0,
-                  lineHeight: 1.8,
-                  listStyleType: 'disc',
-                  color: isLight ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.9)',
+                  borderTop: isLight ? '1px solid rgba(0,0,0,0.08)' : '1px solid rgba(255,255,255,0.1)',
+                  paddingTop: '0.75rem',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.6rem',
+                  gap: '0.5rem',
                 }}
               >
-                <li>
-                  <strong style={{ color: isLight ? '#c2410c' : '#fb923c' }}>การจัดการเรียนรู้เชิงรุก (Active Learning):</strong> จัดกิจกรรมการเรียนรู้แบบสืบเสาะหาความรู้ (5E) และกิจกรรมกลุ่มที่เน้นกระบวนการคิด
-                </li>
-                <li>
-                  <strong style={{ color: isLight ? '#047857' : '#34d399' }}>นวัตกรรมและสื่อการสอน (Educational Media):</strong> ผลิตและใช้สื่อเทคโนโลยี เกมการศึกษาที่น่าสนใจ เพื่อดึงดูดผู้เรียนในยุคดิจิทัล
-                </li>
-                <li>
-                  <strong style={{ color: isLight ? '#6d28d9' : '#a78bfa' }}>การวัดและประเมินผล (Authentic Assessment):</strong> ประเมินผลตามสภาพจริงด้วยเครื่องมือที่หลากหลาย เหมาะสมกับบริบทรายบุคคล
-                </li>
-              </ul>
-
-              <p
-                className="font-body text-sm"
-                style={{
-                  lineHeight: 1.8,
-                  margin: 0,
-                  color: isLight ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.9)',
-                  textAlign: 'justify',
-                  textIndent: '2rem',
-                }}
-              >
-                นอกเหนือจากการจัดการเรียนรู้ในวิชาหลักแล้ว ยังส่งเสริมกิจกรรมทักษะชีวิต คุณธรรมจริยธรรม และศึกษาความต้องการเชิงลึกในบริบทโรงเรียนเพื่อการวิจัยและพัฒนาผลสัมฤทธิ์ของผู้เรียนอย่างยั่งยืน
-              </p>
+                <p className="font-body text-xs" style={{ color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)', margin: 0 }}>
+                  • [เนื้อหาสมมุติ] การจัดการเรียนรู้เชิงรุก (Active Learning)
+                </p>
+                <p className="font-body text-xs" style={{ color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)', margin: 0 }}>
+                  • [เนื้อหาสมมุติ] การประยุกต์ใช้นวัตกรรมดิจิทัลเพื่อการศึกษา (EdTech)
+                </p>
+                <p className="font-body text-xs" style={{ color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)', margin: 0 }}>
+                  • [เนื้อหาสมมุติ] การวัดและประเมินผลตามสภาพจริงผู้เรียน
+                </p>
+              </div>
             </motion.div>
           </div>
-
-          {/* Right Column: Empty space to let background video show through on the right side */}
-          <div style={{ minHeight: '350px' }} />
         </div>
       </motion.div>
     </section>
