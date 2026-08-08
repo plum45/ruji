@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Play } from 'lucide-react';
+import FadingVideo from './FadingVideo';
 import BlurText from './BlurText';
 
 const FADE_UP = (delay: number) => ({
@@ -17,11 +18,18 @@ export default function Hero() {
         width: '100%',
         minHeight: '100vh',
         overflow: 'hidden',
-        background: 'radial-gradient(circle at 50% 30%, #1e1b4b 0%, #030712 100%)',
+        background: '#000',
         display: 'flex',
         flexDirection: 'column',
       }}
     >
+      {/* Background video — 120% width, top-aligned */}
+      <FadingVideo
+        src="https://www.dropbox.com/scl/fi/eatqb1dephucbo0ldwqov/3D_character_head_rotation_video_202608081305.mp4?rlkey=06eaviikvb4ph3vltbkuxisus&raw=1"
+        className="absolute left-1/2 top-0 -translate-x-1/2 object-cover object-top"
+        style={{ width: '120%', height: '120%', zIndex: 0 }}
+        playbackRate={0.75}
+      />
       {/* Glow Effect Overlay */}
       <div
         style={{
