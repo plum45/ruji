@@ -27,7 +27,7 @@ const ACTIVITIES_CARDS: TopicCard[] = [
     title: 'ประชุมเตรียมความพร้อมเปิดภาคเรียน',
     body: 'เข้าร่วมการประชุมคณะครูและบุคลากรเพื่อเตรียมความพร้อม วางแผนการจัดการเรียนรู้ และรับมอบหมายภารกิจก่อนเปิดภาคเรียน',
     images: [
-      'https://www.dropbox.com/scl/fi/43ceq4qzuxvu6jprol613/2.jpg?rlkey=ps96xz1vzbthbgz5gfiwh29y8&raw=1',
+      'https://www.dropbox.com/scl/fi/m71sd4de5ymmpua0dgn84/696940132_1513148423942234_6542711132573575747_n.jpg?rlkey=y1nhwf1ld15qz871jcj76k1e3&raw=1',
       'https://www.dropbox.com/scl/fi/qkqav6hg5ycow4oxgiivs/697351469_1513150307275379_3091590413808241786_n.jpg?rlkey=5erze8sxmlwv8mt4j5p2jv6n7&raw=1',
       'https://www.dropbox.com/scl/fi/hte9xuz1cxvkrq6sdbbee/699141989_1513152943941782_477116334265431866_n.jpg?rlkey=k97tgghvtzukzw2ogvu97i4sa&raw=1',
     ],
