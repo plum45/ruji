@@ -4,8 +4,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import IntroSection from './components/IntroSection';
 import GallerySection from './components/GallerySection';
-import CapabilitiesSection from './components/CapabilitiesSection';
-import DynamicsSection from './components/DynamicsSection';
 import TopicSection, { type TopicCard } from './components/TopicSection';
 import { ThemeProvider, useTheme } from './ThemeContext';
 
@@ -27,7 +25,7 @@ const OVERVIEW_CARDS: TopicCard[] = [
     tags: ['ทักษะวิชาชีพครู', 'การจัดการเรียนรู้', 'จิตวิทยา'],
     iconPath: 'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z',
     title: 'ทักษะวิชาชีพครู',
-    body: 'มีความเชี่ยวชาญในการออกแบบแผนการจัดเรียนรู้ การประยุกต์ใช้จิตวิทยาวัยรุ่นเพื่อสร้างบรรยากาศเชิงบวกในชั้นเรียน และการแก้ปัญหาพฤทีพรรณผู้เรียน',
+    body: 'มีความเชี่ยวชาญในการออกแบบแผนการจัดเรียนรู้ การประยุกต์ใช้จิตวิทยาวัยรุ่นเพื่อสร้างบรรยากาศเชิงบวกในชั้นเรียน และการแก้ปัญหาพฤติกรรมผู้เรียน',
   },
   {
     tags: ['ทักษะ EdTech', 'สื่อดิจิทัล', 'การเรียนรู้ยุคใหม่'],
@@ -157,17 +155,13 @@ function AppInner() {
 
         {/* ── ข้อมูลส่วนตัว ── */}
         {activeTab === 'overview' && (
-          <>
-            <CapabilitiesSection />
-            <DynamicsSection />
-            <TopicSection
-              id="overview"
-              label="// ประวัติและการศึกษา"
-              heading={"Profile &\nEducation."}
-              cards={OVERVIEW_CARDS}
-              {...t('overview')}
-            />
-          </>
+          <TopicSection
+            id="overview"
+            label="// ประวัติและการศึกษา"
+            heading={"Profile &\nEducation."}
+            cards={OVERVIEW_CARDS}
+            {...t('overview')}
+          />
         )}
 
         {/* ── กิจกรรม ── */}
@@ -220,11 +214,11 @@ function AppInner() {
             style={{ width: 40, height: 40, borderRadius: '50%' }}
           >
             <span style={{ fontFamily: '"Instrument Serif", serif', fontStyle: 'italic', fontSize: '1rem', color: isLight ? '#111' : '#fff' }}>
-              R
+              P
             </span>
           </div>
           <p className="font-body text-sm" style={{ color: isLight ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)' }}>
-            © 2026 ครูรุจิราภรณ์ | E-Portfolio. All rights reserved.
+            © 2026 ครูภูริม | E-Portfolio. All rights reserved.
           </p>
         </div>
       </footer>

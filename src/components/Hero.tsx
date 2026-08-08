@@ -83,7 +83,7 @@ export default function Hero() {
 
           {/* Headline — BlurText with shadow */}
           <BlurText
-            text="Rujiraporn's Portfolio"
+            text="Purim's Portfolio"
             className="font-heading text-white"
             style={{
               fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
