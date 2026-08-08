@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion, useTransform } from 'framer-motion';
 import { useTheme } from '../ThemeContext';
 import { useSmoothMouse } from '../hooks/useSmoothMouse';
@@ -14,15 +14,6 @@ export default function IntroSection() {
   const { theme } = useTheme();
   const isLight = theme === 'light';
   const sectionRef = useRef<HTMLElement>(null);
-
-  // Detect mobile devices/Safari to serve transparent WebP instead of WebM
-  const [isMobileOrSafari, setIsMobileOrSafari] = useState(false);
-  useEffect(() => {
-    const ua = navigator.userAgent.toLowerCase();
-    const isMobile = /mobi|android|iphone|ipad|ipod/.test(ua);
-    const isSafari = ua.includes('safari') && !ua.includes('chrome') && !ua.includes('android');
-    setIsMobileOrSafari(isMobile || isSafari);
-  }, []);
 
   // Mouse parallax variables
   const { x, y } = useSmoothMouse();
@@ -98,26 +89,17 @@ export default function IntroSection() {
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
           >
-            <div className="orb-wrapper" style={{ width: '100%', maxWidth: '400px', height: '400px' }}>
-              {isMobileOrSafari ? (
-                <img
-                  className="glassy-orb"
-                  src="/orb-purple.webp"
-                  alt="Glassy Orb"
-                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                />
-              ) : (
-                <video
-                  className="glassy-orb"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  style={{ width: '100%', height: '100%' }}
-                >
-                  <source src="/orb-purple.webm" type="video/webm" />
-                </video>
-              )}
+            <div className="orb-wrapper" style={{ width: '100%', maxWidth: '400px', height: '400px', borderRadius: '50%', overflow: 'hidden' }}>
+              <video
+                className="glassy-orb"
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              >
+                <source src="https://www.dropbox.com/scl/fi/3i4rfwk8eiwj5pag7iovh/Person_performing_greeting_anima-_202608081341.mp4?rlkey=om9ka54vnlk0gie7uzx5ebroo&raw=1" type="video/mp4" />
+              </video>
               <div className="orb-overlay" />
             </div>
           </motion.div>
