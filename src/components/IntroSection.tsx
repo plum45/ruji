@@ -135,14 +135,15 @@ export default function IntroSection() {
                 className="font-heading"
                 style={{
                   fontStyle: 'italic',
-                  fontSize: 'clamp(2rem, 4vw, 3.25rem)',
-                  lineHeight: 0.95,
-                  letterSpacing: '-0.03em',
+                  fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
+                  lineHeight: 1,
+                  letterSpacing: '-0.02em',
                   margin: 0,
                   color: isLight ? '#111' : '#fff',
+                  whiteSpace: 'nowrap',
                 }}
               >
-                นายปุริม<br />หลวงสนาม
+                นายปุริม หลวงสนาม
               </h2>
             </motion.div>
 
