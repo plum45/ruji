@@ -240,12 +240,13 @@ export default function TopicSection({
                 {card.images && card.images.length > 0 && (
                   <div
                     style={{
-                      display: 'grid',
-                      gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, ${card.images.length >= 4 ? '200px' : '260px'}), 1fr))`,
+                      display: 'flex',
+                      flexWrap: 'wrap',
                       gap: '0.75rem',
+                      justifyContent: 'center',
                       borderRadius: '1rem',
                       overflow: 'hidden',
-                      justifyContent: 'center',
+                      width: '100%',
                     }}
                   >
                     {card.images.map((img, idx) => (
@@ -256,7 +257,11 @@ export default function TopicSection({
                         whileHover={{ scale: 1.03 }}
                         transition={{ duration: 0.3 }}
                         style={{
-                          width: '100%',
+                          flex: card.images!.length === 5
+                            ? '1 1 calc(31% - 0.5rem)'
+                            : `1 1 min(100%, ${card.images!.length === 2 ? '380px' : '260px'})`,
+                          minWidth: '220px',
+                          maxWidth: card.images!.length === 5 ? '380px' : '100%',
                           height: 'auto',
                           aspectRatio: card.aspectRatio || '3/2',
                           objectFit: 'cover',
