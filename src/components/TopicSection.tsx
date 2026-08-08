@@ -255,8 +255,9 @@ export default function TopicSection({
                         transition={{ duration: 0.3 }}
                         style={{
                           width: '100%',
-                          height: 'clamp(200px, 32vh, 360px)',
+                          height: 'clamp(220px, 34vh, 380px)',
                           objectFit: 'cover',
+                          objectPosition: 'center 15%',
                           borderRadius: '0.75rem',
                         }}
                       />
@@ -274,8 +275,9 @@ export default function TopicSection({
                       transition={{ duration: 0.3 }}
                       style={{
                         width: '100%',
-                        height: 'clamp(200px, 32vh, 360px)',
+                        height: 'clamp(220px, 34vh, 380px)',
                         objectFit: 'cover',
+                        objectPosition: 'center 15%',
                         borderRadius: '0.75rem',
                       }}
                     />
