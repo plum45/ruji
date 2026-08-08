@@ -47,6 +47,7 @@ const ACTIVITIES_CARDS: TopicCard[] = [
     iconPath: 'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z',
     title: 'ร่วมทำบุญ/เซิ้งบุญบั้งไฟ',
     body: 'ร่วมสืบสานประเพณีอันดีงาม ร่วมทำบุญและร่วมกิจกรรมเซิ้งบุญบั้งไฟ เพื่อสร้างความสุขและความภาคภูมิใจในวัฒนธรรมท้องถิ่นร่วมกับชุมชน',
+    aspectRatio: '4/3',
     images: [
       'https://www.dropbox.com/scl/fi/fltuwp39w4qa79vsrl86x/IMG_6933.JPG?rlkey=f7zip06r1jas6dz7mkakzkmft&raw=1',
       'https://www.dropbox.com/scl/fi/27khn8kyizkv6gz3klapf/IMG_0662.jpg?rlkey=7n4e5febt2qodh1seibuw8deq&raw=1',

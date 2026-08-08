@@ -9,6 +9,7 @@ export interface TopicCard {
   body: string;
   imagePath?: string;
   images?: string[];
+  aspectRatio?: string;
 }
 
 interface TopicSectionProps {
@@ -240,10 +241,11 @@ export default function TopicSection({
                   <div
                     style={{
                       display: 'grid',
-                      gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, 280px), 1fr))`,
+                      gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, ${card.aspectRatio ? '300px' : '280px'}), 1fr))`,
                       gap: '0.75rem',
                       borderRadius: '1rem',
                       overflow: 'hidden',
+                      justifyContent: 'center',
                     }}
                   >
                     {card.images.map((img, idx) => (
@@ -255,7 +257,8 @@ export default function TopicSection({
                         transition={{ duration: 0.3 }}
                         style={{
                           width: '100%',
-                          height: 'clamp(220px, 34vh, 380px)',
+                          height: card.aspectRatio ? 'auto' : 'clamp(220px, 34vh, 380px)',
+                          aspectRatio: card.aspectRatio || 'auto',
                           objectFit: 'cover',
                           objectPosition: 'center 15%',
                           borderRadius: '0.75rem',
