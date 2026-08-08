@@ -58,6 +58,19 @@ const ACTIVITIES_CARDS: TopicCard[] = [
 // ── C: การสอน (Teaching) ──────────────────────────────────────
 const TEACHING_CARDS: TopicCard[] = [
   {
+    tags: ['บรรยากาศการเรียนรู้', 'การจัดการชั้นเรียน', 'Active Learning'],
+    iconPath: 'M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM3.82 9L12 4.53 20.18 9 12 13.47 3.82 9zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z',
+    title: 'บรรยากาศการสอน',
+    body: 'การจัดบรรยากาศชั้นเรียนเชิงบวก กระตุ้นความสนใจของผู้เรียนผ่านการตั้งคำถาม การลงมือปฏิบัติจริง และการทำงานร่วมกันอย่างมีความสุข',
+    images: [
+      'https://www.dropbox.com/scl/fi/ogan1ahrtf7c29g774ild/IMG_0637.jpg?rlkey=ilz2sjbb00gbtoyhe457o222g&raw=1',
+      'https://www.dropbox.com/scl/fi/zt2y8jutsp2g03xkvm8wj/IMG_0559.jpg?rlkey=qruf7upy1gv6c5be8gspglfbd&raw=1',
+      'https://www.dropbox.com/scl/fi/9bwlbpx5lxt13efnmwy5a/IMG_0640.jpg?rlkey=o3wgix0tvhjlq2aa0vhc2fnzd&raw=1',
+      'https://www.dropbox.com/scl/fi/epeblqgjbnvtn63liclqw/IMG_0619.jpg?rlkey=4e45bkygxjf4xte6shlojoxhz&raw=1',
+      'https://www.dropbox.com/scl/fi/yk3ym87ej74qvf6vaof52/IMG_0618.jpg?rlkey=h0jh20kovt7dg7jd1qx4pgx74&raw=1',
+    ],
+  },
+  {
     tags: ['แผนการสอน', 'Active Learning', 'STEM'],
     iconPath: 'M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z',
     title: 'การออกแบบแผนการจัดการเรียนรู้',
