@@ -21,6 +21,17 @@ const ACTIVITIES_CARDS: TopicCard[] = [
       'https://www.dropbox.com/scl/fi/i0w3orzc6t65oclk3vgst/.jpg?rlkey=3yln8xusjp4ev247wvw8xl9bh&raw=1',
     ],
   },
+  {
+    tags: ['การประชุมวิชาการ', 'การเตรียมความพร้อม', 'เปิดภาคเรียน'],
+    iconPath: 'M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z',
+    title: 'ประชุมเตรียมความพร้อมเปิดภาคเรียน',
+    body: 'เข้าร่วมการประชุมคณะครูและบุคลากรเพื่อเตรียมความพร้อม วางแผนการจัดการเรียนรู้ และรับมอบหมายภารกิจก่อนเปิดภาคเรียน',
+    images: [
+      'https://www.dropbox.com/scl/fi/43ceq4qzuxvu6jprol613/2.jpg?rlkey=ps96xz1vzbthbgz5gfiwh29y8&raw=1',
+      'https://www.dropbox.com/scl/fi/qkqav6hg5ycow4oxgiivs/697351469_1513150307275379_3091590413808241786_n.jpg?rlkey=5erze8sxmlwv8mt4j5p2jv6n7&raw=1',
+      'https://www.dropbox.com/scl/fi/hte9xuz1cxvkrq6sdbbee/699141989_1513152943941782_477116334265431866_n.jpg?rlkey=k97tgghvtzukzw2ogvu97i4sa&raw=1',
+    ],
+  },
 ];
 
 // ── C: การสอน (Teaching) ──────────────────────────────────────
