@@ -146,7 +146,7 @@ export default function IntroSection() {
                   color: isLight ? '#111' : '#fff',
                 }}
               >
-                The cellular<br />framework.
+                Professional<br />Teacher.
               </h2>
             </motion.div>
 
@@ -170,7 +170,7 @@ export default function IntroSection() {
                   textAlign: 'justify',
                 }}
               >
-                โครงร่างเซลล์ (<strong style={{ color: isLight ? '#0284c7' : '#38bdf8' }}>Cytoskeleton</strong>) คือเครือข่ายเส้นใยโปรตีนที่มีพลวัตสูง (Dynamic) ทำหน้าที่เปรียบเสมือนเสาเข็มและโครงเหล็กค้ำจุนอยู่ภายในเซลล์ โดยประกอบด้วยเส้นใยหลัก 3 ชนิด:
+                ยินดีต้อนรับสู่แฟ้มสะสมผลงานอิเล็กทรอนิกส์ (E-Portfolio) การฝึกประสบการณ์วิชาชีพครูของ <strong style={{ color: isLight ? '#0284c7' : '#38bdf8' }}>ครูรุจิราภรณ์</strong> มุ่งมั่นขับเคลื่อนกระบวนการเรียนรู้ที่มีประสิทธิภาพและพัฒนาผู้เรียนในศตวรรษที่ 21 ผ่าน 3 องค์ประกอบหลัก:
               </p>
 
               <ul
@@ -187,13 +187,13 @@ export default function IntroSection() {
                 }}
               >
                 <li>
-                  <strong style={{ color: isLight ? '#c2410c' : '#fb923c' }}>Microfilaments (ไมโครฟิลาเมนต์):</strong> เส้นใยขนาดเล็กที่ยืดหยุ่นสูง ช่วยรักษารูปร่างและการขยับตัวของเซลล์
+                  <strong style={{ color: isLight ? '#c2410c' : '#fb923c' }}>การจัดการเรียนรู้เชิงรุก (Active Learning):</strong> จัดกิจกรรมการเรียนรู้แบบสืบเสาะหาความรู้ (5E) และกิจกรรมกลุ่มที่เน้นกระบวนการคิด
                 </li>
                 <li>
-                  <strong style={{ color: isLight ? '#047857' : '#34d399' }}>Microtubules (ไมโครทิวบูล):</strong> หลอดกลวงแข็งแรง ทำหน้าที่เป็นทางด่วนลำเลียงสารและช่วยแบ่งเซลล์
+                  <strong style={{ color: isLight ? '#047857' : '#34d399' }}>นวัตกรรมและสื่อการสอน (Educational Media):</strong> ผลิตและใช้สื่อเทคโนโลยี เกมการศึกษาที่น่าสนใจ เพื่อดึงดูดผู้เรียนในยุคดิจิทัล
                 </li>
                 <li>
-                  <strong style={{ color: isLight ? '#6d28d9' : '#a78bfa' }}>Intermediate Filaments (อินเทอร์มีเดียทฟิลาเมนต์):</strong> เส้นใยเหนียวพิเศษ ช่วยรับแรงดึงและต้านทานแรงกดทางกล
+                  <strong style={{ color: isLight ? '#6d28d9' : '#a78bfa' }}>การวัดและประเมินผล (Authentic Assessment):</strong> ประเมินผลตามสภาพจริงด้วยเครื่องมือที่หลากหลาย เหมาะสมกับบริบทรายบุคคล
                 </li>
               </ul>
 
@@ -207,7 +207,7 @@ export default function IntroSection() {
                   textIndent: '2rem',
                 }}
               >
-                นอกเหนือจากโครงสร้างค้ำจุนแล้ว โครงร่างเซลล์ยังมีบทบาทหลักในการ<strong style={{ color: isLight ? '#0284c7' : '#38bdf8' }}>เคลื่อนที่ (Motility)</strong> โดยทำงานประสานกับ<strong style={{ color: isLight ? '#0284c7' : '#38bdf8' }}>โปรตีนมอเตอร์ (Motor Proteins)</strong> เพื่อขนส่งสารภายในเซลล์ และเป็นแกนขับเคลื่อนโครงสร้างการโบกพัดอย่างซีเลียและแฟลเจลลา
+                นอกเหนือจากการจัดการเรียนรู้ในวิชาหลักแล้ว ยังส่งเสริมกิจกรรมทักษะชีวิต คุณธรรมจริยธรรม และศึกษาความต้องการเชิงลึกในบริบทโรงเรียนเพื่อการวิจัยและพัฒนาผลสัมฤทธิ์ของผู้เรียนอย่างยั่งยืน
               </p>
             </motion.div>
           </div>

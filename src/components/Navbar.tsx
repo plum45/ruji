@@ -5,15 +5,10 @@ import { useTheme } from '../ThemeContext';
 
 const NAV_LINKS = [
   { label: 'Home',             tab: 'home',           href: '#hero' },
-  { label: 'Components',       tab: 'overview',       href: '#overview' },
-  { label: 'Microfilaments',   tab: 'microfilaments', href: '#microfilaments' },
-  { label: 'Int. Filaments',   tab: 'intermediate',   href: '#intermediate' },
-  { label: 'Microtubules',     tab: 'microtubules',   href: '#microtubules' },
-  { label: 'Cell Structure',   tab: 'structure',      href: '#structure' },
-  { label: 'Movement',         tab: 'movement',       href: '#movement' },
-  { label: 'Cilia & Flagella', tab: 'cilia',          href: '#cilia' },
-  { label: 'Cell Division',    tab: 'division',       href: '#division' },
-  { label: 'Additional',       tab: 'additional',     href: '#additional' },
+  { label: 'ข้อมูลส่วนตัว',       tab: 'overview',       href: '#overview' },
+  { label: 'กิจกรรม',           tab: 'activities',     href: '#activities' },
+  { label: 'การสอน',           tab: 'teaching',       href: '#teaching' },
+  { label: 'ข้อมูลบริบทโรงเรียน',  tab: 'school',         href: '#school' },
 ];
 
 

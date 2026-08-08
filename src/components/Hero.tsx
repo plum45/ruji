@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Play } from 'lucide-react';
-import FadingVideo from './FadingVideo';
 import BlurText from './BlurText';
 
 const FADE_UP = (delay: number) => ({
@@ -18,17 +17,24 @@ export default function Hero() {
         width: '100%',
         minHeight: '100vh',
         overflow: 'hidden',
-        background: '#000',
+        background: 'radial-gradient(circle at 50% 30%, #1e1b4b 0%, #030712 100%)',
         display: 'flex',
         flexDirection: 'column',
       }}
     >
-      {/* Background video — 120% width, top-aligned */}
-      <FadingVideo
-        src="https://www.dropbox.com/scl/fi/1ps43mtjxmkbfwwncotcm/Untitled-design.mp4?rlkey=g1lbbmqla0h65lftu9fdiq399&raw=1"
-        className="absolute left-1/2 top-0 -translate-x-1/2 object-cover object-top"
-        style={{ width: '120%', height: '120%', zIndex: 0 }}
-        playbackRate={0.75}
+      {/* Glow Effect Overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '20%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%)',
+          zIndex: 1,
+          pointerEvents: 'none',
+        }}
       />
 
       {/* Dark Vignette Overlay for Text Readability */}
@@ -68,22 +74,22 @@ export default function Hero() {
               className="font-body font-semibold text-black text-xs"
               style={{ background: '#fff', borderRadius: 9999, padding: '4px 12px' }}
             >
-              New
+              Teacher
             </span>
             <span className="font-body text-white/90 text-sm" style={{ paddingRight: 12 }}>
-              Explore cellular mechanics
+              E-Portfolio
             </span>
           </motion.div>
 
           {/* Headline — BlurText with shadow */}
           <BlurText
-            text="Cytoskeleton and Motility"
+            text="Rujiraporn's Portfolio"
             className="font-heading text-white"
             style={{
-              fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
+              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
               fontStyle: 'italic',
-              lineHeight: 0.85,
-              maxWidth: '700px',
+              lineHeight: 0.95,
+              maxWidth: '850px',
               letterSpacing: '-0.04em',
               marginBottom: '1rem',
               justifyContent: 'flex-start',
@@ -95,15 +101,15 @@ export default function Hero() {
           <motion.p {...FADE_UP(0.8)}
             className="font-body font-light text-white"
             style={{ 
-              fontSize: 'clamp(0.875rem, 2vw, 1rem)', 
-              maxWidth: 520, 
+              fontSize: 'clamp(0.875rem, 2vw, 1.1rem)', 
+              maxWidth: 580, 
               lineHeight: 1.6, 
               marginTop: '1rem', 
               marginBottom: 0,
               textShadow: '0 2px 15px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.85)',
             }}
           >
-            Exploring the intricate network of protein filaments that organize the cell and drive its dynamic movements.
+            ยินดีต้อนรับสู่แฟ้มสะสมผลงานอิเล็กทรอนิกส์การฝึกประสบการณ์วิชาชีพครู มุ่งเน้นการจัดการเรียนรู้เชิงรุก (Active Learning) การพัฒนาสื่อนวัตกรรม และการเรียนรู้ของผู้เรียนเป็นสำคัญ
           </motion.p>
 
           {/* CTAs */}
@@ -111,19 +117,19 @@ export default function Hero() {
             style={{ display: 'flex', alignItems: 'center', gap: 24, marginTop: '1.5rem' }}
           >
             <a
-              href="#topics"
+              href="#profile"
               className="liquid-glass-strong font-body font-medium text-sm flex items-center gap-1.5"
               style={{ borderRadius: 9999, padding: '10px 20px', textDecoration: 'none', color: 'inherit' }}
             >
-              Explore Structure
+              ดูประวัติส่วนตัว
               <ArrowUpRight size={18} />
             </a>
             <a
-              href="#articles"
+              href="#teaching"
               className="font-body text-sm flex items-center gap-1.5"
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
-              View Dynamics
+              ผลงานการสอน
               <Play size={14} fill="currentColor" />
             </a>
           </motion.div>
