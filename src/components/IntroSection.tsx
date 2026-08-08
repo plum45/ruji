@@ -70,7 +70,7 @@ export default function IntroSection() {
             maxWidth: '1800px',
             margin: '0 auto',
           }}
-          className="lg:!grid-cols-[1.2fr_1.8fr]"
+          className="lg:!grid-cols-[1.45fr_1.55fr]"
         >
           {/* Left Column: Greeting Video centered on the left side */}
           <motion.div
@@ -91,11 +91,11 @@ export default function IntroSection() {
               playsInline
               style={{
                 width: '100%',
-                maxWidth: '480px', // Enlarged size
+                maxWidth: '600px', // Significantly enlarged size
                 height: 'auto',
                 display: 'block',
                 mixBlendMode: isLight ? 'multiply' : 'normal',
-                filter: isLight ? 'contrast(1.12) brightness(1.06)' : 'none',
+                filter: isLight ? 'contrast(1.15) brightness(1.08) saturate(1.05)' : 'none',
                 opacity: 0.95,
                 pointerEvents: 'none',
               }}
