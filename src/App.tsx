@@ -148,20 +148,22 @@ function AppInner() {
         {activeTab === 'home' && (
           <>
             <Hero setActiveTab={setActiveTab} />
-            <IntroSection />
             <GallerySection />
           </>
         )}
 
         {/* ── ข้อมูลส่วนตัว ── */}
         {activeTab === 'overview' && (
-          <TopicSection
-            id="overview"
-            label="// ประวัติและการศึกษา"
-            heading={"Profile &\nEducation."}
-            cards={OVERVIEW_CARDS}
-            {...t('overview')}
-          />
+          <>
+            <IntroSection />
+            <TopicSection
+              id="overview"
+              label="// ประวัติและการศึกษา"
+              heading={"Profile &\nEducation."}
+              cards={OVERVIEW_CARDS}
+              {...t('overview')}
+            />
+          </>
         )}
 
         {/* ── กิจกรรม ── */}
