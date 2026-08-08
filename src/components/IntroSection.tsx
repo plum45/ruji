@@ -129,7 +129,7 @@ export default function IntroSection() {
                   color: isLight ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.6)',
                 }}
               >
-                // Introduction
+                // ข้อมูลส่วนตัว (Personal Profile)
               </p>
               <h2
                 className="font-heading"
@@ -142,11 +142,11 @@ export default function IntroSection() {
                   color: isLight ? '#111' : '#fff',
                 }}
               >
-                Professional<br />Teacher.
+                นายปุริม<br />หลวงสนาม
               </h2>
             </motion.div>
 
-            {/* Reduced Size Liquid Glass Container with Placeholder Content */}
+            {/* Liquid Glass Container with Personal Info */}
             <motion.div
               {...FADE_UP(0.4)}
               className="liquid-glass"
@@ -158,12 +158,37 @@ export default function IntroSection() {
                 gap: '1rem',
               }}
             >
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <span
+                  className="font-body text-xs font-semibold"
+                  style={{
+                    background: isLight ? 'rgba(2,132,199,0.1)' : 'rgba(56,189,248,0.15)',
+                    color: isLight ? '#0284c7' : '#38bdf8',
+                    padding: '4px 12px',
+                    borderRadius: '9999px',
+                  }}
+                >
+                  รหัส 67414201028
+                </span>
+                <span
+                  className="font-body text-xs font-semibold"
+                  style={{
+                    background: isLight ? 'rgba(194,65,12,0.1)' : 'rgba(251,146,60,0.15)',
+                    color: isLight ? '#c2410c' : '#fb923c',
+                    padding: '4px 12px',
+                    borderRadius: '9999px',
+                  }}
+                >
+                  สาขาชีววิทยา
+                </span>
+              </div>
+
               <p
                 className="font-body text-sm"
                 style={{
                   lineHeight: 1.7,
                   margin: 0,
-                  color: isLight ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.9)',
+                  color: isLight ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.95)',
                 }}
               >
                 ยินดีต้อนรับสู่แฟ้มสะสมผลงานอิเล็กทรอนิกส์ (E-Portfolio) การฝึกประสบการณ์วิชาชีพครูของ <strong style={{ color: isLight ? '#0284c7' : '#38bdf8' }}>ครูภูริม</strong>
@@ -172,21 +197,52 @@ export default function IntroSection() {
               <div
                 style={{
                   borderTop: isLight ? '1px solid rgba(0,0,0,0.08)' : '1px solid rgba(255,255,255,0.1)',
-                  paddingTop: '0.75rem',
+                  paddingTop: '0.85rem',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.5rem',
+                  gap: '0.65rem',
                 }}
               >
-                <p className="font-body text-xs" style={{ color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)', margin: 0 }}>
-                  • [เนื้อหาสมมุติ] การจัดการเรียนรู้เชิงรุก (Active Learning)
-                </p>
-                <p className="font-body text-xs" style={{ color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)', margin: 0 }}>
-                  • [เนื้อหาสมมุติ] การประยุกต์ใช้นวัตกรรมดิจิทัลเพื่อการศึกษา (EdTech)
-                </p>
-                <p className="font-body text-xs" style={{ color: isLight ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.7)', margin: 0 }}>
-                  • [เนื้อหาสมมุติ] การวัดและประเมินผลตามสภาพจริงผู้เรียน
-                </p>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
+                  <span className="font-body text-xs font-bold" style={{ minWidth: '95px', color: isLight ? '#111' : '#eee' }}>
+                    • ชื่อ-นามสกุล:
+                  </span>
+                  <span className="font-body text-sm font-medium" style={{ color: isLight ? '#333' : '#ddd' }}>
+                    นายปุริม หลวงสนาม
+                  </span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
+                  <span className="font-body text-xs font-bold" style={{ minWidth: '95px', color: isLight ? '#111' : '#eee' }}>
+                    • รหัสนักศึกษา:
+                  </span>
+                  <span className="font-body text-sm font-medium" style={{ color: isLight ? '#333' : '#ddd' }}>
+                    67414201028
+                  </span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
+                  <span className="font-body text-xs font-bold" style={{ minWidth: '95px', color: isLight ? '#111' : '#eee' }}>
+                    • สาขาวิชา:
+                  </span>
+                  <span className="font-body text-sm font-medium" style={{ color: isLight ? '#333' : '#ddd' }}>
+                    ชีววิทยา
+                  </span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
+                  <span className="font-body text-xs font-bold" style={{ minWidth: '95px', color: isLight ? '#111' : '#eee' }}>
+                    • คณะ:
+                  </span>
+                  <span className="font-body text-sm font-medium" style={{ color: isLight ? '#333' : '#ddd' }}>
+                    ศิลปศาสตร์และวิทยาศาสตร์
+                  </span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
+                  <span className="font-body text-xs font-bold" style={{ minWidth: '95px', color: isLight ? '#111' : '#eee' }}>
+                    • สถาบัน:
+                  </span>
+                  <span className="font-body text-sm font-medium" style={{ color: isLight ? '#333' : '#ddd' }}>
+                    มหาวิทยาลัยราชภัฏร้อยเอ็ด
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>
