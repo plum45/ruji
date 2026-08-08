@@ -49,7 +49,7 @@ const ACTIVITIES_CARDS: TopicCard[] = [
     body: 'ร่วมสืบสานประเพณีอันดีงาม ร่วมทำบุญและร่วมกิจกรรมเซิ้งบุญบั้งไฟ เพื่อสร้างความสุขและความภาคภูมิใจในวัฒนธรรมท้องถิ่นร่วมกับชุมชน',
     images: [
       'https://www.dropbox.com/scl/fi/fltuwp39w4qa79vsrl86x/IMG_6933.JPG?rlkey=f7zip06r1jas6dz7mkakzkmft&raw=1',
-      'https://www.dropbox.com/scl/fi/vpf5n7sxgxhsnldx3393q/IMG_0662.HEIC?rlkey=d2j1tv3qifnpzac2axatkijgj&raw=1',
+      'https://www.dropbox.com/scl/fi/27khn8kyizkv6gz3klapf/IMG_0662.jpg?rlkey=7n4e5febt2qodh1seibuw8deq&raw=1',
     ],
   },
 ];
